@@ -1,0 +1,10 @@
+//
+   Created by Juan Carlos on 28/02/2018.
+extends layout
+
+block content
+    h1= user
+    p Welcome to #{title}
+    form(action="logout" method="POST")
+
+        input(type="submit" value="Logout")
