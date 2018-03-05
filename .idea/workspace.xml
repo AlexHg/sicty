@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7284df06-8a7a-4d4d-8835-0f77040cd113" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/app.jade" afterPath="$PROJECT_DIR$/views/app.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/index.js" afterPath="$PROJECT_DIR$/routes/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script.sql" afterPath="$PROJECT_DIR$/script.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/connection/connection.js" afterPath="$PROJECT_DIR$/connection/connection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sicty.iml" afterPath="$PROJECT_DIR$/.idea/sicty.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/connection/connection.js" afterPath="$PROJECT_DIR$/connection/connection.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/Reportes_LocalModel.js" afterPath="$PROJECT_DIR$/models/Reportes_LocalModel.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/UserModel.js" afterPath="$PROJECT_DIR$/models/UserModel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/index.js" afterPath="$PROJECT_DIR$/routes/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script.sql" afterPath="$PROJECT_DIR$/script.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/app.jade" afterPath="$PROJECT_DIR$/views/app.jade" />
     </list>
     <ignored path="sicty.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -289,12 +289,20 @@
       <workItem from="1520142090372" duration="207000" />
       <workItem from="1520223433874" duration="75000" />
       <workItem from="1520223885073" duration="4675000" />
-      <workItem from="1520228612967" duration="48000" />
+      <workItem from="1520228612967" duration="145000" />
     </task>
+    <task id="LOCAL-00001" summary="modelos: ReporteLocal, Usuario, LOGIN50%">
+      <created>1520228751308</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1520228751308</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6836000" />
+    <option name="totallyTimeSpent" value="6933000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1288" y="-8" width="1296" height="1000" extended-state="6" />
@@ -329,6 +337,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="modelos: ReporteLocal, Usuario, LOGIN50%" />
+    <option name="LAST_COMMIT_MESSAGE" value="modelos: ReporteLocal, Usuario, LOGIN50%" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
