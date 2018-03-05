@@ -5,6 +5,7 @@ extends layout
 block content
     h1= user
     p Welcome to #{title}
+    h2 Nombre #{user.nombre}
     form(action="logout" method="POST")
 
         input(type="submit" value="Logout")

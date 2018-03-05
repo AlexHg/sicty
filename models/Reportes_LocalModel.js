@@ -3,11 +3,11 @@
  */
 
 var connection = require('../connection/connection');
-var UsuarioModel = {};
+var ReporteLocalModel = {};
 
-UsuarioModel.getAll = function (callback) {
+ReporteLocalModel.getAll = function (callback) {
     if (connection){
-        var sql = "SELECT * FROM usuario";
+        var sql = "select * from reporte inner join reporte_local on reporte.idreporte = reporte_local.idreporte_local;";
         connection.query(sql, function (error,data) {
             if (error)
                 throw error;
@@ -18,9 +18,9 @@ UsuarioModel.getAll = function (callback) {
     }
 };
 
-UsuarioModel.findById = function (id,callback) {
+ReporteLocalModel.findById = function (id,callback) {
     if (connection){
-        var sql = "SELECT * FROM usuario where correo = ?";
+        var sql = "select * from reporte inner join reporte_local on reporte.idreporte = reporte_local.idreporte_local where idreporte = ?";
         connection.query(sql,id, function (error,data) {
             if (error)
                 throw error;
@@ -31,23 +31,55 @@ UsuarioModel.findById = function (id,callback) {
     }
 };
 
-UsuarioModel.login = function (params,callback) {
+
+ReporteLocalModel.save=function(reporte,callback){
+
+    connection.beginTransaction(function(err) {
+        if (err) { callback(true,{"er":"connection","cod":error}); }
+
+        connection.query("INSERT INTO `reporte`  VALUES (NULL, ?, ?, ?, ?, ?, ?)",reporte[0],function (error, results) {
+            if (error) {
+                return connection.rollback(function() {
+                    callback(true,{"er":"usr","cod":error});
+                });
+            }else{
+                reporte[1][0] = results.insertId;
+                connection.query("INSERT INTO `reporte_local` VALUES (?, ?, ?, ?, ?, ?)",reporte[1], function (error, results, fields) {
+                    if (error) {
+                        return connection.rollback(function() {
+                            callback(true,{"er":"log","cod":error});
+                        });
+                    }else{
+                        connection.commit(function(err) {
+                            if (err) {
+                                return connection.rollback(function() {
+                                    callback(true,{"er":"comit","cod":error});
+                                });
+                            }
+                            console.log('success!');
+                            callback(false,results);
+                        });
+                    }
+                });
+            }
+
+        });
+    });
+};
+
+
+/*ReporteLocalModel.delete = function (id,callback) {
     if (connection){
-        var sql = "SELECT * FROM usuario where correo = ? and contra = ?";
-        var a = sql.replace('?',params[0]).replace('?',params[1])
-        console.log(a)
-        connection.query(sql,params, function (error,data) {
+        var sql = "select * from reporte inner join reporte_local on reporte.idreporte = reporte_local.idreporte_local where idreporte = ?";
+        connection.query(sql,id, function (error,data) {
             if (error)
-                callback(true,null,false);
+                throw error;
             else{
-                if(data.length > 0){
-                    callback(null,data,true);
-                }else{
-                    callback(null,data,false);
-                }
+                callback(null,data);
             }
         });
     }
-};
+};*/
 
-module.exports= UsuarioModel;
+
+module.exports= ReporteLocalModel;
