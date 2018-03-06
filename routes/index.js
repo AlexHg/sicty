@@ -6,7 +6,8 @@
 var express = require('express');
 var router = express.Router();
 var usuario = require('../models/UserModel')
-var reporteLcal = require('../models/Reportes_LocalModel')
+var reporteLcal = require('../models/Reportes_LocalModel');
+var reporteEmpresa = require('../models/Reporte_EmpresaModel');
 /* GET home page. */
 router.get('/', function(req, res, next) {
  // console.log(req.session);
@@ -124,9 +125,35 @@ router.post('/reporte_local', function(req, res, next) {
   });
 });
 
+router.post('/reporte_empresa', function(req, res, next) {
+  var reporte = [],a=req.body;
+  reporte[0] = [a.fechini,a.fechmod,1,a.cat,a.operador,0];
+  reporte[1] = [0,a.empresa];
+  reporteEmpresa.save(reporte,function (err, data) {
+    if (!err){
+      console.log(data)
+      res.status(200).json(data);
+    }
+  });
+});
 
+router.get('/reporte_empresa/', function(req, res, next) {
+  //console.log(req.body)
+  reporteEmpresa.getAll(function (err, data) {
+    if (!err){
+      res.status(200).json(data);
+    }
+  });
+});
 
-
+router.get('/reporte_empresa/:id', function(req, res, next) {
+  //console.log(req.body)
+  reporteEmpresa.findById(req.params.id,function (err, data) {
+    if (!err){
+      res.status(200).json(data);
+    }
+  });
+});
 
 
 
