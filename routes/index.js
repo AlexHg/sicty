@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
 router.get('/app', function(req, res, next) {
   if(req.session.nombre != null){
     console.log(req.session);
-    res.render('app', { title: 'Express',user:req.session.nombre });
+    res.render('demo', { title: 'Sicty report system',user:req.session.nombre });
   }else{
     res.redirect('/')
   }
