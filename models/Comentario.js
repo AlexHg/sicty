@@ -3,11 +3,12 @@
  */
 
 var connection = require('../connection/connection');
-var ReporteLocalModel = {};
+var ComentarioModel = {};
 
-ReporteLocalModel.getAll = function (callback) {
+
+ComentarioModel.getAll = function (callback) {
     if (connection){
-        var sql = "select * from reporte inner join reporte_local on reporte.idreporte = reporte_local.idreporte_local;";
+        var sql = "SELECT * FROM `mensaje` INNER JOIN msjusuario on mensaje.idmensaje = msjusuario.idmensaje where mensaje.isnota =0";
         connection.query(sql, function (error,data) {
             if (error)
                 throw error;
@@ -18,9 +19,9 @@ ReporteLocalModel.getAll = function (callback) {
     }
 };
 
-ReporteLocalModel.findById = function (id,callback) {
+ComentarioModel.findById = function (id,callback) {
     if (connection){
-        var sql = "select * from reporte inner join reporte_local on reporte.idreporte = reporte_local.idreporte_local where idreporte = ?";
+        var sql = "SELECT * FROM `mensaje` INNER JOIN msjusuario on mensaje.idmensaje = msjusuario.idmensaje WHERE mensaje.idmensaje = ? and mensaje.isnota =0";
         connection.query(sql,id, function (error,data) {
             if (error)
                 throw error;
@@ -32,19 +33,40 @@ ReporteLocalModel.findById = function (id,callback) {
 };
 
 
-ReporteLocalModel.save=function(reporte,callback){
+
+ComentarioModel.findByReporte = function (id,callback) {
+    if (connection){
+        var sql = "SELECT * FROM `mensaje` INNER JOIN msjusuario on mensaje.idmensaje = msjusuario.idmensaje WHERE mensaje.idreporte = ? and mensaje.isnota =0";
+        connection.query(sql,id, function (error,data) {
+            if (error)
+                throw error;
+            else{
+                callback(null,data);
+            }
+        });
+    }
+};
+
+
+
+
+
+
+
+
+ComentarioModel.save=function(reporte,callback){
 
     connection.beginTransaction(function(err) {
         if (err) { callback(true,{"er":"connection","cod":error}); }
 
-        connection.query("INSERT INTO `reporte`  VALUES (NULL, ?, ?, ?, ?, ?, ?)",reporte[0],function (error, results) {
+        connection.query("INSERT INTO `mensaje`  VALUES (NULL, ?, ?, ?,0)",reporte[0],function (error, results) {
             if (error) {
                 return connection.rollback(function() {
                     callback(true,{"er":"usr","cod":error});
                 });
             }else{
                 reporte[1][0] = results.insertId;
-                connection.query("INSERT INTO `reporte_local` VALUES (?, ?, ?, ?, ?, ?)",reporte[1], function (error, results, fields) {
+                connection.query("INSERT INTO `msjusuario`  VALUES (?, ?);",reporte[1], function (error, results, fields) {
                     if (error) {
                         return connection.rollback(function() {
                             callback(true,{"er":"log","cod":error});
@@ -57,7 +79,7 @@ ReporteLocalModel.save=function(reporte,callback){
                                 });
                             }
                             console.log('success!');
-                            callback(false, reporte[1][0]);
+                            callback(false,results);
                         });
                     }
                 });
@@ -69,17 +91,17 @@ ReporteLocalModel.save=function(reporte,callback){
 
 
 /*ReporteLocalModel.delete = function (id,callback) {
-    if (connection){
-        var sql = "select * from reporte inner join reporte_local on reporte.idreporte = reporte_local.idreporte_local where idreporte = ?";
-        connection.query(sql,id, function (error,data) {
-            if (error)
-                throw error;
-            else{
-                callback(null,data);
-            }
-        });
-    }
-};*/
+ if (connection){
+ var sql = "select * from reporte inner join reporte_local on reporte.idreporte = reporte_local.idreporte_local where idreporte = ?";
+ connection.query(sql,id, function (error,data) {
+ if (error)
+ throw error;
+ else{
+ callback(null,data);
+ }
+ });
+ }
+ };*/
 
 
-module.exports= ReporteLocalModel;
+module.exports= ComentarioModel;
