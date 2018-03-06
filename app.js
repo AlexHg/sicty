@@ -38,17 +38,21 @@ app.use(function(req, res, next){
 
 
 app.use('/',routes);
-
+var id  = 1;
 
 app.post('/upload', function(req, res) {
     if (!req.files)
         return res.status(400).send('No files were uploaded.');
 
+    id++;
     // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
     var sampleFile = req.files.sampleFile;
 
+    var aux = sampleFile.mimetype.split('/');
+    var name = id+'.'+aux[1];
+    var pth = 'files/perfil/'+name;
     // Use the mv() method to place the file somewhere on your server
-    sampleFile.mv(path.join(__dirname, 'files/perfil/a.jpg'), function(err) {
+    sampleFile.mv(path.join(__dirname,pth ), function(err) {
         if (err)
             return res.status(500).send(err);
 
@@ -61,6 +65,8 @@ app.get('/upload', function(req, res, next) {
     // console.log(req.session);
     res.render('file');
 });
+
+
 
 
 

@@ -1,0 +1,8 @@
+//
+   Created by Juan Carlos on 05/03/2018.
+
+html
+    body
+        form#uploadForm(ref='uploadForm', action='/upload', method='post', enctype='multipart/form-data')
+            input(type='file', name='sampleFile')
+            input(type='submit', value='Upload!')
