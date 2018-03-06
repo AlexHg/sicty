@@ -385,7 +385,7 @@
       <workItem from="1520223433874" duration="75000" />
       <workItem from="1520223885073" duration="4675000" />
       <workItem from="1520228612967" duration="1377000" />
-      <workItem from="1520302310745" duration="2257000" />
+      <workItem from="1520302310745" duration="2378000" />
     </task>
     <task id="LOCAL-00001" summary="modelos: ReporteLocal, Usuario, LOGIN50%">
       <created>1520228751308</created>
@@ -415,15 +415,22 @@
       <option name="project" value="LOCAL" />
       <updated>1520304535878</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="modelos: ReporteLocal, Usuario, LOGIN50%, fileupload">
+      <created>1520304578030</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1520304578030</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10422000" />
+    <option name="totallyTimeSpent" value="10543000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1288" y="-92" width="1296" height="1000" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
