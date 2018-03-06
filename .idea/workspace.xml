@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7284df06-8a7a-4d4d-8835-0f77040cd113" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="7284df06-8a7a-4d4d-8835-0f77040cd113" name="Default" comment="" />
     <ignored path="sicty.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -139,6 +137,7 @@
         <option value="Charly2" />
       </list>
     </option>
+    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -385,7 +384,7 @@
       <workItem from="1520223433874" duration="75000" />
       <workItem from="1520223885073" duration="4675000" />
       <workItem from="1520228612967" duration="1377000" />
-      <workItem from="1520302310745" duration="3203000" />
+      <workItem from="1520302310745" duration="3364000" />
     </task>
     <task id="LOCAL-00001" summary="modelos: ReporteLocal, Usuario, LOGIN50%">
       <created>1520228751308</created>
@@ -429,11 +428,18 @@
       <option name="project" value="LOCAL" />
       <updated>1520304707091</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="modelos: ReporteLocal, Usuario, LOGIN50%, fileupload, modelo reporte emrpesa">
+      <created>1520305527888</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1520305527888</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11368000" />
+    <option name="totallyTimeSpent" value="11529000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1288" y="-92" width="1296" height="1000" extended-state="6" />
