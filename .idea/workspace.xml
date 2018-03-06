@@ -385,7 +385,7 @@
       <workItem from="1520223433874" duration="75000" />
       <workItem from="1520223885073" duration="4675000" />
       <workItem from="1520228612967" duration="1377000" />
-      <workItem from="1520302310745" duration="2404000" />
+      <workItem from="1520302310745" duration="3203000" />
     </task>
     <task id="LOCAL-00001" summary="modelos: ReporteLocal, Usuario, LOGIN50%">
       <created>1520228751308</created>
@@ -433,7 +433,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10569000" />
+    <option name="totallyTimeSpent" value="11368000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1288" y="-92" width="1296" height="1000" extended-state="6" />
