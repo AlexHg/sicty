@@ -8,7 +8,7 @@ var mysql = require('mysql'),
             port : '3306',
             user : 'root',
             password: '',
-            database: 'mydb'
+            database: 'sicty'
         }
     );
 
