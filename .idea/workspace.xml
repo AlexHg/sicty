@@ -385,7 +385,7 @@
       <workItem from="1520223433874" duration="75000" />
       <workItem from="1520223885073" duration="4675000" />
       <workItem from="1520228612967" duration="1377000" />
-      <workItem from="1520302310745" duration="2378000" />
+      <workItem from="1520302310745" duration="2404000" />
     </task>
     <task id="LOCAL-00001" summary="modelos: ReporteLocal, Usuario, LOGIN50%">
       <created>1520228751308</created>
@@ -422,11 +422,18 @@
       <option name="project" value="LOCAL" />
       <updated>1520304578030</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="modelos: ReporteLocal, Usuario, LOGIN50%, fileupload, modelo reporte emrpesa">
+      <created>1520304707091</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1520304707091</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10543000" />
+    <option name="totallyTimeSpent" value="10569000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1288" y="-92" width="1296" height="1000" extended-state="6" />
@@ -465,7 +472,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="modelos: ReporteLocal, Usuario, LOGIN50%" />
     <MESSAGE value="modelos: ReporteLocal, Usuario, LOGIN50%, fileupload" />
-    <option name="LAST_COMMIT_MESSAGE" value="modelos: ReporteLocal, Usuario, LOGIN50%, fileupload" />
+    <MESSAGE value="modelos: ReporteLocal, Usuario, LOGIN50%, fileupload, modelo reporte emrpesa" />
+    <option name="LAST_COMMIT_MESSAGE" value="modelos: ReporteLocal, Usuario, LOGIN50%, fileupload, modelo reporte emrpesa" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
