@@ -3,4 +3,7 @@
         img.img-circle.profile_img(src="images/img.jpg" alt="...")
     .profile_info
         span Welcome,
-        h2 John Doe
+        h2  #{user.nombre}
+        script(type='text/javascript')
+            | console.dir('#{user.nombre}')
+

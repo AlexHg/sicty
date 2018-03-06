@@ -1,0 +1,67 @@
+//
+   Created by Juan Carlos on 06/03/2018.
+extends layout
+
+block content
+
+    div
+        .page-title
+            .title_left
+                h3
+                    | Tables
+                    small Some examples to get you started
+            .title_right
+                .col-md-5.col-sm-5.col-xs-12.form-group.pull-right.top_search
+                    .input-group
+                        input.form-control(type='text', placeholder='Search for...')
+                        span.input-group-btn
+                            button.btn.btn-default(type='button') Go!
+        .clearfix
+        .row
+            .clearfix
+            .col-md-12.col-sm-12.col-xs-12
+                .x_panel
+                    .x_title
+                        h2
+                            | Table design
+                            small Custom design
+                        ul.nav.navbar-right.panel_toolbox
+                            li
+                                a.collapse-link
+                                    i.fa.fa-chevron-up
+                            li.dropdown
+                                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+                                    i.fa.fa-wrench
+                                ul.dropdown-menu(role='menu')
+                                    li
+                                        a(href='#') Settings 1
+                                    li
+                                        a(href='#') Settings 2
+                            li
+                                a.close-link
+                                    i.fa.fa-close
+                        .clearfix
+                    .x_content
+                        p
+                            | Add class
+                            code bulk_action
+                            |  to table for bulk actions options on row select
+                        .table-responsive
+                            table.table.table-striped.jambo_table.bulk_action
+                                thead
+                                    tr.headings
+                                        th.column-title Nombre
+                                        th.column-title Correocliente
+                                        th.column-title Telefono1
+                                        th.column-title Fechaini
+                                        th.column-title propiedades
+                                tbody
+                                    each dato in datos
+                                        tr.even.pointer
+                                            td.a-center #{dato.nombre}
+                                            td.a-center #{dato.correocliente}
+                                            td.a-center #{dato.telefono1}
+                                            td.a-center #{dato.fechaini}
+                                            td.a-center #{dato.propiedades}
+
+

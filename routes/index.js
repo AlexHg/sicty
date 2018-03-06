@@ -95,6 +95,15 @@ router.post('/user/:id', function(req, res, next) {
 
 
 
+router.get('/reportes/', function(req, res, next) {
+  console.log(req.session.nombre)
+  reporteLcal.getAll(function (err, data) {
+    if (!err){
+      res.render('tablareportes',{datos:data,user:req.session.nombre});
+    }
+  });
+});
+
 
 router.get('/reporte_local/', function(req, res, next) {
   //console.log(req.body)
