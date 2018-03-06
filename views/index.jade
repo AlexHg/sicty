@@ -1,11 +1,15 @@
 extends layout
 
 block content
+<<<<<<< HEAD
+  h1= user.nombre
+=======
   //h1= user
+>>>>>>> afa2f9bca84f0e77d5da6362a9945fc0cd50e141
   p Welcome to #{title}
 
   form(action="login" method="POST")
-    input(value="JUAN CARLOS SANCHEZ" name="nombre")
+    input(value="JUAN CARLOS SANCHEZ " name="nombre")
     input(type="submit" value="login")
 
   form(action="logout" method="POST")

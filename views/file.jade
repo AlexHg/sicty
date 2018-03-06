@@ -1,23 +1,22 @@
 //
    Created by Juan Carlos on 05/03/2018.
-
-html
-    body
-        form#uploadForm(ref='uploadForm', action='/upload', method='post', enctype='multipart/form-data')
-            input(type='file', name='sampleFile')
-            input(type='submit', value='Upload!')
-        br
-        br
-        form#reporte(ref='uploadForm', action='/reporte_local', method='post', enctype='multipart/form-data')
-            h1 Reporte Empresa
-            input(type='', name='fecha' value="2018-03-12")
-            select(type='', name='cat' value="1")
-                option(value=0) Software
-                option(value=1) Hardware
-            input(type='', name='operador' value="1")
-            input(type='', name='correo' value="mail@hotmail.com")
-            input(type='', name='nombre' value="Juan Carlos Sanchez ")
-            input(type='', name='tel' value="5567582223 ")
-            input(type='', name='tel2' value="5500000000 ")
-            input(type='', name='props' value="{color:red} ")
-            input(type='submit', value='Crear')
+extends layout
+block content
+    form#uploadForm(ref='uploadForm', action='/upload', method='post', enctype='multipart/form-data')
+        input(type='file', name='sampleFile')
+        input(type='submit', value='Upload!')
+    br
+    br
+    form#reporte(ref='uploadForm', action='/reporte_local', method='post', enctype='multipart/form-data')
+        h1 Reporte Local
+        input(type='', name='fecha' value="2018-03-05")
+        select(type='', name='cat' value="")
+            option(value=0) Software
+            option(value=1) Hardware
+        input(type='', name='operador' value="1")
+        input(type='', name='correo' value="mail@hotmail.com")
+        input(type='', name='nombre' value="Juan Carlos Sanchez ")
+        input(type='', name='tel' value="5567582223 ")
+        input(type='', name='tel2' value="5500000000 ")
+        input(type='', name='props' value="{color:red} ")
+        input(type='submit', value='Crear')

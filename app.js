@@ -63,7 +63,7 @@ app.post('/upload', function(req, res) {
 app.get('/upload', function(req, res, next) {
     
     // console.log(req.session);
-    res.render('file');
+    res.render('file',{user:req.session.nombre});
 });
 
 
