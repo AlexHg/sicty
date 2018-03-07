@@ -1,0 +1,287 @@
+extends layout
+
+block content
+    div
+        .page-title
+            .title_left
+                h3
+                    | Reporte cliente local
+                    small  #254854
+            .title_right
+                .col-md-5.col-sm-5.col-xs-12.form-group.pull-right.top_search
+                    .input-group
+                        input.form-control(type='text', placeholder='Search for...')
+                        span.input-group-btn
+                            button.btn.btn-default(type='button') Go!
+        .clearfix
+        .row
+            .col-md-12
+                .x_panel
+                    .x_title
+                        h2 Cambio de pantalla Galaxy S9+
+                        ul.nav.navbar-right.panel_toolbox
+                            li
+                                a.collapse-link
+                                    i.fa.fa-chevron-up
+                            li.dropdown
+                                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+                                    i.fa.fa-wrench
+                                ul.dropdown-menu(role='menu')
+                                    li
+                                        a(href='#') Settings 1
+                                    li
+                                        a(href='#') Settings 2
+                            li
+                                a.close-link
+                                    i.fa.fa-close
+                        .clearfix
+                    .x_content
+                        .col-md-8.col-sm-8.col-xs-12
+                            ul.stats-overview
+                                li
+                                    span.name  Costo del servicio
+                                    span.value.text-success  $6300
+                                li
+                                    span.name  Fecha de entrega
+                                    span.value.text-success  06/04/2018
+                                li.hidden-phone
+                                    span.name  Estado
+                                    span.value.text-success  En revisión
+                            br
+                            .col-md-12
+                                .col-md-55
+                                    .thumbnail
+                                        .image.view.view-first
+                                            img(style='width: 100%; display: block;', src='images/media.jpg', alt='image')
+                                            .mask.no-caption
+                                                .tools.tools-bottom
+                                                    a(href='#')
+                                                        i.fa.fa-link
+                                                    a(href='#')
+                                                        i.fa.fa-pencil
+                                                    a(href='#')
+                                                        i.fa.fa-times
+                                        .caption
+                                            p
+                                                strong Image Name
+                                            p Snow and Ice Incoming
+                                .col-md-55
+                                    .thumbnail
+                                        .image.view.view-first
+                                            img(style='width: 100%; display: block;', src='images/media.jpg', alt='image')
+                                            .mask.no-caption
+                                                .tools.tools-bottom
+                                                    a(href='#')
+                                                        i.fa.fa-link
+                                                    a(href='#')
+                                                        i.fa.fa-pencil
+                                                    a(href='#')
+                                                        i.fa.fa-times
+                                        .caption
+                                            p
+                                                strong Image Name
+                                            p Snow and Ice Incoming
+
+                                .col-md-55
+                                    .thumbnail
+                                        .image.view.view-first
+                                            img(style='width: 100%; display: block;', src='images/media.jpg', alt='image')
+                                            .mask.no-caption
+                                                .tools.tools-bottom
+                                                    a(href='#')
+                                                        i.fa.fa-link
+                                                    a(href='#')
+                                                        i.fa.fa-pencil
+                                                    a(href='#')
+                                                        i.fa.fa-times
+                                        .caption
+                                            p
+                                                strong Image Name
+                                            p Snow and Ice Incoming
+                                .col-md-55
+                                    .thumbnail
+                                        .image.view.view-first
+                                            img(style='width: 100%; display: block;', src='images/media.jpg', alt='image')
+                                            .mask.no-caption
+                                                .tools.tools-bottom
+                                                    a(href='#')
+                                                        i.fa.fa-link
+                                                    a(href='#')
+                                                        i.fa.fa-pencil
+                                                    a(href='#')
+                                                        i.fa.fa-times
+                                        .caption
+                                            p
+                                                strong Image Name
+                                            p Snow and Ice Incoming
+
+                                .col-md-55
+                                    .thumbnail
+                                        .image.view.view-first
+                                            img(style='width: 100%; display: block;', src='images/media.jpg', alt='image')
+                                            .mask.no-caption
+                                                .tools.tools-bottom
+                                                    a(href='#')
+                                                        i.fa.fa-link
+                                                    a(href='#')
+                                                        i.fa.fa-pencil
+                                                    a(href='#')
+                                                        i.fa.fa-times
+                                        .caption
+                                            p
+                                                strong Image Name
+                                            p Snow and Ice Incoming
+                                .col-md-55
+                                    .thumbnail
+                                        .image.view.view-first
+                                            img(style='width: 100%; display: block;', src='images/media.jpg', alt='image')
+                                            .mask.no-caption
+                                                .tools.tools-bottom
+                                                    a(href='#')
+                                                        i.fa.fa-link
+                                                    a(href='#')
+                                                        i.fa.fa-pencil
+                                                    a(href='#')
+                                                        i.fa.fa-times
+                                        .caption
+                                            p
+                                                strong Image Name
+                                            p Snow and Ice Incoming
+
+                            div
+                                h4 Seguimiento & Comentarios
+                                // end of user messages
+                                br
+                                textarea(id="textarea" required="required" name="textarea" class="form-control col-md-7 col-xs-12")
+
+                                div.message_wrapper(style="padding-top:4em;margin-top:2rem;")
+                                    .col-md-7
+                                        button(id="send" type="submit" class="btn btn-success") Enviar
+                                    .col-md-5(align="right")
+                                        div.checkbox
+                                            input(type="checkbox" value="" checked)
+                                            | Privado
+
+                                br
+                            div
+                                ul.messages
+                                    div.message_wrapper(style="padding-top:3em;")
+                                    li
+                                        img.avatar(src='images/img.jpg', alt='Avatar')
+                                        .message_date
+                                            h3.date.text-info 24
+                                            p.month May
+                                        .message_wrapper
+                                            h4.heading Desmond Davison
+                                                span.label.label-primary(style="font-size: 10px;margin-left: 1rem;") Usuario Sicty
+                                                span.label.label-danger(style="font-size: 10px;margin-left: 1rem;") Privado
+                                            blockquote.message
+                                                | Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.
+                                            br
+                                            p.url
+                                                span.fs1.text-info(aria-hidden='true', data-icon='')
+                                                a(href='#')
+                                                    i.fa.fa-paperclip
+                                                    |  User Acceptance Test.doc
+                                    li
+                                        img.avatar(src='images/img.jpg', alt='Avatar')
+                                        .message_date
+                                            h3.date.text-error 21
+                                            p.month May
+                                        .message_wrapper
+                                            h4.heading Brian Michaels
+                                                span.label.label-default(style="font-size: 10px;margin-left: 1rem;") Cliente Local
+                                            blockquote.message
+                                                | Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.
+                                            br
+                                            p.url
+                                                span.fs1(aria-hidden='true', data-icon='')
+                                                a(href='#', data-original-title='') Download
+                                    li
+                                        img.avatar(src='images/img.jpg', alt='Avatar')
+                                        .message_date
+                                            h3.date.text-error 21
+                                            p.month May
+                                        .message_wrapper
+                                            h4.heading Brian Michaels
+                                                span.label.label-success(style="font-size: 10px;margin-left: 1rem;") Cliente Empresarial
+                                            blockquote.message
+                                                | Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.
+                                            br
+                                            p.url
+                                                span.fs1(aria-hidden='true', data-icon='')
+                                                a(href='#', data-original-title='') Download
+                                    li
+                                        img.avatar(src='images/img.jpg', alt='Avatar')
+                                        .message_date
+                                            h3.date.text-info 24
+                                            p.month May
+                                        .message_wrapper
+                                            h4.heading Desmond Davison
+                                                span.label.label-warning(style="font-size: 10px;margin-left: 1rem;") Admin Sicty
+                                            blockquote.message
+                                                | Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.
+                                            br
+                                            p.url
+                                                span.fs1.text-info(aria-hidden='true', data-icon='')
+                                                a(href='#')
+                                                    i.fa.fa-paperclip
+                                                    |  User Acceptance Test.doc
+                                // end of user messages
+                        // start project-detail sidebar
+                        .col-md-4.col-sm-4.col-xs-12
+                            section.panel
+                                .x_title(style="margin-top: 12px;border-bottom: 1px solid #E6E9ED;")
+                                    h2 Detalles
+                                    .clearfix
+                                .panel-body
+                                    h3.green Cambio de pantalla Galaxy S9+
+
+                                    p
+                                        | Se recibió equipo con detalles en la pantalla, es necesario un cambio de todo el display.
+                                    br
+                                    div.row
+                                        .project_detail.col-md-6
+                                            p.title Nombre
+                                            p Ricardo Ramirez 
+                                            p.title Empresa
+                                            p Deveint Inc
+                                            p.title Correo
+                                            p devi@gmail.com
+                                            p.title Telefono
+                                            p 552874258
+                                        .project_detail.col-md-6
+                                            p.title Reporte anterior
+                                            p
+                                                a(href="#") #5045w23
+                                            p.title Categoria
+                                            p
+                                                a(href="#") Celulares & tablets
+                                    br
+                                    h5 Archivos adjuntos
+                                    ul.list-unstyled.project_files
+                                        li
+                                            a(href='')
+                                                i.fa.fa-file-word-o
+                                                |  Functional-requirements.docx
+                                        li
+                                            a(href='')
+                                                i.fa.fa-file-pdf-o
+                                                |  UAT.pdf
+                                        li
+                                            a(href='')
+                                                i.fa.fa-mail-forward
+                                                |  Email-from-flatbal.mln
+                                        li
+                                            a(href='')
+                                                i.fa.fa-picture-o
+                                                |  Logo.png
+                                        li
+                                            a(href='')
+                                                i.fa.fa-file-word-o
+                                                |  Contract-10_12_2014.docx
+                                    br
+                                    .text-center.mtop20
+                                        a.btn.btn-sm.btn-primary(href='#') Add files
+                                        a.btn.btn-sm.btn-warning(href='#') Report contact
+                        // end project-detail sidebar
