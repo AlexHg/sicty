@@ -37,7 +37,7 @@ router.get('/report', function(req, res, next) {
 
 
 router.post('/login', function(req, res, next) {
-  //console.log(req.body)
+  console.log(req.body)
   usuario.login([req.body.username, req.body.pass],function (err, data,login) {
     if (!err){
       if(login){
@@ -94,7 +94,7 @@ router.get('/user/', function(req, res, next) {
 router.post('/user/:id', function(req, res, next) {
   var UserArray = [req.body.valor,req.params.id]
   console.log(UserArray)
-  usuario.update(UserArray,function (err, data) {
+  usuario.cambiarPassword(UserArray,function (err, data) {
     if (!err){
       res.status(200).json(data);
     }else{
