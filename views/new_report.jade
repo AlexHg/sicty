@@ -1,0 +1,151 @@
+extends layout
+
+block content
+    div
+        .page-title
+            .title_left
+                h3 Nuevo Reporte
+            .title_right
+                .col-md-5.col-sm-5.col-xs-12.form-group.pull-right.top_search
+                    .input-group
+                        input.form-control(type='text', placeholder='Search for...')
+                        span.input-group-btn
+                            button.btn.btn-default(type='button') Go!
+        .clearfix
+        .row
+            .col-md-12.col-sm-12.col-xs-12
+                .x_panel
+                    .x_title
+                        h2
+                            | Nuevo Reporte
+                        ul.nav.navbar-right.panel_toolbox
+                            li
+                                a.collapse-link
+                                    i.fa.fa-chevron-up
+                            li.dropdown
+                                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+                                    i.fa.fa-wrench
+                                ul.dropdown-menu(role='menu')
+                                    li
+                                        a(href='#') Settings 1
+                                    li
+                                        a(href='#') Settings 2
+                            li
+                                a.close-link
+                                    i.fa.fa-close
+                        .clearfix
+                    .x_content
+                        // Smart Wizard
+                        p
+                            //| This is a basic form wizard example that inherits the colors from the selected scheme.
+                        #wizard.form_wizard.wizard_horizontal
+                            ul.wizard_steps
+                                li
+                                    a(href='#step-1')
+                                        span.step_no 1
+                                        span.step_descr
+                                            | Paso 1
+                                            br
+                                            small Datos del cliente
+                                li
+                                    a(href='#step-2')
+                                        span.step_no 2
+                                        span.step_descr
+                                            | Paso 2
+                                            br
+                                            small Descripciones
+                                li
+                                    a(href='#step-3')
+                                        span.step_no 3
+                                        span.step_descr
+                                            | Paso 3
+                                            br
+                                            small Archivos adjuntos
+                                li
+                                    a(href='#step-4')
+                                        span.step_no 4
+                                        span.step_descr
+                                            | Paso 4
+                                            br
+                                            small Comentarios
+                            #step-1
+                                form.form-horizontal.form-label-left
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12
+                                            | Tipo de cliente
+                                            span.required *
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            #gender.btn-group(data-toggle='buttons')
+                                                label.btn.btn-default(data-toggle-class='btn-primary', data-toggle-passive-class='btn-default')
+                                                    input(type='radio', name='gender', value='male')
+                                                    |  Local
+                                                label.btn.btn-primary(data-toggle-class='btn-primary', data-toggle-passive-class='btn-default')
+                                                    input(type='radio', name='gender', value='female')
+                                                    |  Empresa
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='first-name')
+                                            | Nombre del cliente
+                                            span.required *
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            input#first-name.form-control.col-md-7.col-xs-12(type='text', required='required')
+
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='first-name')
+                                            | Nombre de la empresa
+                                            span.required *
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            input#first-name.form-control.col-md-7.col-xs-12(type='text', required='required')
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='middle-name')
+                                            | Correo electronico
+                                            span.required *
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            input#middle-name.form-control.col-md-7.col-xs-12(type='text', name='middle-name')
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='middle-name')
+                                            | Telefono
+                                            span.required *
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            input#middle-name.form-control.col-md-7.col-xs-12(type='text', name='middle-name')
+
+                            #step-2
+                                form.form-horizontal.form-label-left
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='first-name')
+                                            | Reporte anterior (opcional)
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            input#first-name.form-control.col-md-7.col-xs-12(type='text', required='required')
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12 Categoría
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            select.select2_single.form-control(tabindex='-1')
+                                                option
+                                                option(value='AK') Celulares & Tablets
+                                                option(value='HI') Laptop
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12
+                                            | Descripcion
+                                            span.required *
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            textarea.form-control(rows='3')
+
+                            #step-3
+                                h2.StepTitle Step 3 Content
+                                p
+                                    | sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                                    | eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                p
+                                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                                    | in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            #step-4
+                                h2.StepTitle Step 4 Content
+                                p
+                                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    | Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                p
+                                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                                    | in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                p
+                                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                                    | in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        // End SmartWizard Content

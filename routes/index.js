@@ -25,6 +25,16 @@ router.get('/app', function(req, res, next) {
 
 });
 
+router.get('/new-report', function(req, res, next) {
+    if(req.session.nombre != null){
+        console.log(req.session);
+        res.render('new_report', { title: 'Sicty report system',user:req.session.nombre });
+    }else{
+        res.redirect('/')
+    }
+
+});
+
 router.get('/report', function(req, res, next) {
     if(req.session.nombre != null){
         console.log(req.session);
