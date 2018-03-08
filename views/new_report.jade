@@ -109,13 +109,26 @@ block content
                                             input#middle-name.form-control.col-md-7.col-xs-12(type='text', name='middle-name')
 
                             #step-2
-                                h2.StepTitle Step 2 Content
-                                p
-                                    | do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                    | fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                p
-                                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                    | in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                form.form-horizontal.form-label-left
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='first-name')
+                                            | Reporte anterior (opcional)
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            input#first-name.form-control.col-md-7.col-xs-12(type='text', required='required')
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12 Categoría
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            select.select2_single.form-control(tabindex='-1')
+                                                option
+                                                option(value='AK') Celulares & Tablets
+                                                option(value='HI') Laptop
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12
+                                            | Descripcion
+                                            span.required *
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            textarea.form-control(rows='3')
+
                             #step-3
                                 h2.StepTitle Step 3 Content
                                 p
