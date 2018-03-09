@@ -5,6 +5,7 @@
  */
 var express = require('express');
 var router = express.Router();
+var auth = require('../funciones/authentication');
 var usuario = require('../models/UserModel')
 var reporteLcal = require('../models/Reportes_LocalModel');
 var reporteEmpresa = require('../models/Reporte_EmpresaModel');7
@@ -13,38 +14,66 @@ var Notas = require('../models/NotaModel');
 var Archivos = require('../models/Archivo_Mensaje');
 /* GET home page. */
 router.get('/', function(req, res, next) {
- // console.log(req.session);
-  res.render('login');
+
+  auth.loginMach(req,res,function () {
+    res.render('login');
+  });
+
 });
 
+router.post('/login', function(req, res, next) {
+
+  auth.loginMach(req,res,function () {
+    usuario.login([req.body.username, req.body.pass],function (err, data,login) {
+      if (!err){
+        if(login){
+          req.session.nombre = data[0];
+          res.redirect('/app')
+        }
+        else {
+          res.render('login',{user:req.body.username, pass : req.body.pass });
+        }
+      }
+    });
+  });
+
+});
+
+
+
 router.get('/app', function(req, res, next) {
-  if(req.session.nombre != null){
-    console.log(req.session);
-    res.render('demo', { title: 'Sicty report system',user:req.session.nombre });
-  }else{
-    res.redirect('/')
-  }
+  auth.mach(req,res,
+      function (req,res) {
+        res.render('demo', { title: 'Sicty report system',user:req.session.nombre });
+      }
+  );
+
+});
+
+
+router.get('/auth', function (req,res,next) {
+  auth.mach(req,res,
+      function (req,res) {
+        res.render('demo', { title: 'Sicty report system',user:req.session.nombre });
+      }
+  );
 
 });
 
 router.get('/new-report', function(req, res, next) {
-    if(req.session.nombre != null){
-        console.log(req.session);
+  auth.mach(req,res,
+      function (req,res) {
         res.render('new_report', { title: 'Sicty report system',user:req.session.nombre });
-    }else{
-        res.redirect('/')
-    }
-
+      }
+  );
 });
 
 router.get('/report', function(req, res, next) {
-    if(req.session.nombre != null){
-        console.log(req.session);
+  auth.mach(req,res,
+      function (req,res) {
         res.render('report', { title: 'Sicty report system',user:req.session.nombre });
-    }else{
-        res.redirect('/')
-    }
-
+      }
+  );
 });
 
 

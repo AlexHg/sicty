@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 const fileUpload = require('express-fileupload');
+var auth = require('./funciones/authentication');
 
 var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
@@ -38,6 +39,13 @@ app.use(function(req, res, next){
 
 
 app.use('/',routes);
+
+app.all('*',function (req,res,next) {
+    auth.mach(req,res,function (req,res) {
+        res.redirect('/app');
+    })
+});
+
 var id  = 1;
 
 app.post('/upload', function(req, res) {
