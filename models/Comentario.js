@@ -49,11 +49,6 @@ ComentarioModel.findByReporte = function (id,callback) {
 
 
 
-
-
-
-
-
 ComentarioModel.save=function(reporte,callback){
 
     connection.beginTransaction(function(err) {

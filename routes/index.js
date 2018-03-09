@@ -8,7 +8,9 @@ var router = express.Router();
 var usuario = require('../models/UserModel')
 var reporteLcal = require('../models/Reportes_LocalModel');
 var reporteEmpresa = require('../models/Reporte_EmpresaModel');7
-var comentarioModel = require('../models/Comentario')
+var comentarioModel = require('../models/Comentario');
+var Notas = require('../models/NotaModel');
+var Archivos = require('../models/Archivo_Mensaje');
 /* GET home page. */
 router.get('/', function(req, res, next) {
  // console.log(req.session);
@@ -221,7 +223,63 @@ router.get('/comentario/:id', function(req, res, next) {
 
 
 
+router.post('/notas', function(req, res, next) {
+  var reporte = [],a=req.body;
+  reporte[0] = [a.reporte,a.fecha,a.body];
+  reporte[1] = [0,a.user];
+  Notas.save(reporte,function (err, data) {
+    if (!err){
+      console.log(data)
+      res.status(200).json(data);
+    }
+  });
+});
 
+router.get('/notas/', function(req, res, next) {
+  //console.log(req.body)
+  Notas.getAll(function (err, data) {
+    if (!err){
+      res.status(200).json(data);
+    }
+  });
+});
+
+router.get('/notas/:id', function(req, res, next) {
+  //console.log(req.body)
+  Notas.findByReporte(req.params.id,function (err, data) {
+    if (!err){
+      res.status(200).json(data);
+    }
+  });
+});
+
+router.post('/archivo', function(req, res, next) {
+  var a=req.body,reporte = [a.file,a.reporte];
+  Archivos.save(reporte,function (err, data) {
+    if (!err){
+      console.log(data)
+      res.status(200).json(data);
+    }
+  });
+});
+
+router.get('/archivo/', function(req, res, next) {
+  //console.log(req.body)
+  Archivos.getAll(function (err, data) {
+    if (!err){
+      res.status(200).json(data);
+    }
+  });
+});
+
+router.get('/archivo/:id', function(req, res, next) {
+  //console.log(req.body)
+  Archivos.findByReporte(req.params.id,function (err, data) {
+    if (!err){
+      res.status(200).json(data);
+    }
+  });
+});
 
 
 
