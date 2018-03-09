@@ -35,6 +35,16 @@ router.get('/new-report', function(req, res, next) {
 
 });
 
+router.get('/report-list', function(req, res, next) {
+    if(req.session.nombre != null){
+        console.log(req.session);
+        res.render('report_history', { title: 'Sicty report system',user:req.session.nombre });
+    }else{
+        res.redirect('/')
+    }
+
+});
+
 router.get('/report', function(req, res, next) {
     if(req.session.nombre != null){
         console.log(req.session);
