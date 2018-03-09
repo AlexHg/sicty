@@ -69,12 +69,14 @@ router.get('/new-report', function(req, res, next) {
 });
 
 router.get('/report-list', function(req, res, next) {
-    if(req.session.nombre != null){
-        console.log(req.session);
-        res.render('report_history', { title: 'Sicty report system',user:req.session.nombre });
-    }else{
-        res.redirect('/')
-    }
+  auth.mach(req,res,function (req,res) {
+    reporteLcal.getAll(function (err, data) {
+      if (!err){
+        res.render('report_history',{title: 'Sicty report system',datos:data,user:req.session.nombre});
+      }
+    });
+  });
+  
 
 });
 
