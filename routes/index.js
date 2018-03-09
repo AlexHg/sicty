@@ -62,7 +62,7 @@ router.post('/login', function(req, res, next) {
 });
 
 
-router.post('/logout', function(req, res, next) {
+router.get('/logout', function(req, res, next) {
   console.log(req.body.nombre)
   req.session.destroy(function (e) {
     res.redirect('/')
