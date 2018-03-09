@@ -79,7 +79,7 @@ UsuarioModel.save = function (user,callback) {
 };
 
 
-UsuarioModel.update = function (user,callback) {
+UsuarioModel.cambiarPassword = function (user,callback) {
     if (connection){
         var sql = "UPDATE `usuario` SET contra = ? WHERE `idusuario` = ?";
         connection.query(sql,user, function (error,data) {
