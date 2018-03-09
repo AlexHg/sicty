@@ -69,7 +69,7 @@ block content
                                             br
                                             small Comentarios
                             #step-1
-                                form.form-horizontal.form-label-left
+                                form.form-horizontal.form-label-left(action="/report-submit" method="post")
                                     .form-group
                                         label.control-label.col-md-3.col-sm-3.col-xs-12
                                             | Tipo de cliente
@@ -77,83 +77,83 @@ block content
                                         .col-md-6.col-sm-6.col-xs-12
                                             #gender.btn-group(data-toggle='buttons')
                                                 label.btn.btn-default(data-toggle-class='btn-primary', data-toggle-passive-class='btn-default')
-                                                    input(type='radio', name='gender', value='male')
+                                                    input(type='radio', name='tipo', value='male')
                                                     |  Local
                                                 label.btn.btn-primary(data-toggle-class='btn-primary', data-toggle-passive-class='btn-default')
-                                                    input(type='radio', name='gender', value='female')
+                                                    input(type='radio', name='tipo', value='female')
                                                     |  Empresa
                                     .form-group
-                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='first-name')
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='nombre')
                                             | Nombre del cliente
                                             span.required *
                                         .col-md-6.col-sm-6.col-xs-12
-                                            input#first-name.form-control.col-md-7.col-xs-12(type='text', required='required')
+                                            input#first-name.form-control.col-md-7.col-xs-12(type='text', id="nombre", name="nombre", required='required')
 
                                     .form-group
                                         label.control-label.col-md-3.col-sm-3.col-xs-12(for='first-name')
-                                            | Nombre de la empresa
+                                            | id de la empresa (se cambiará por un select)
                                             span.required *
                                         .col-md-6.col-sm-6.col-xs-12
-                                            input#first-name.form-control.col-md-7.col-xs-12(type='text', required='required')
+                                            input#first-name.form-control.col-md-7.col-xs-12(type='text', id="empresa", name="empresa", required='required')
                                     .form-group
-                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='middle-name')
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='email')
                                             | Correo electronico
                                             span.required *
                                         .col-md-6.col-sm-6.col-xs-12
-                                            input#middle-name.form-control.col-md-7.col-xs-12(type='text', name='middle-name')
+                                            input#middle-name.form-control.col-md-7.col-xs-12(type='text', name='email' id="email")
                                     .form-group
-                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='middle-name')
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='telefono')
                                             | Telefono
                                             span.required *
                                         .col-md-6.col-sm-6.col-xs-12
-                                            input#middle-name.form-control.col-md-7.col-xs-12(type='text', name='middle-name')
+                                            input#middle-name.form-control.col-md-7.col-xs-12(type='text', name='telefono' id="telefono")
 
                             #step-2
                                 form.form-horizontal.form-label-left
 
                                     .form-group
-                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='first-name')
-                                            | Reporte anterior (opcional)
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='reporte-ant')
+                                            | Reporte anterior (opcional) {id del reporte anterior}
                                         .col-md-6.col-sm-6.col-xs-12
-                                            input#first-name.form-control.col-md-7.col-xs-12(type='text', required='required')
+                                            input#first-name.form-control.col-md-7.col-xs-12(type='text', id="reporte-ant", name="reporte-ant")
                                     .form-group
-                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='first-name')
-                                            | Costo del servicio
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='costo')
+                                            | Costo del servicio (opcional)
                                             span.required *
                                         .col-md-6.col-sm-6.col-xs-12
-                                            input#first-name.form-control.col-md-7.col-xs-12(type='text', required='required')
+                                            input#first-name.form-control.col-md-7.col-xs-12(type='text', id="costo" name="costo" )
                                     .form-group
-                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='first-name')
-                                            | Fecha de entrega
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='fecha')
+                                            | Fecha de entrega (opcional)
                                             span.required *
                                         .col-md-6.col-sm-6.col-xs-12
-                                            input#first-name.form-control.col-md-7.col-xs-12(type='text', required='required')
+                                            input#first-name.form-control.col-md-7.col-xs-12(type='text', id="fecha" name="fecha")
                                     .form-group
                                         label.control-label.col-md-3.col-sm-3.col-xs-12 Categoría
                                         .col-md-6.col-sm-6.col-xs-12
-                                            select.select2_single.form-control(tabindex='-1')
+                                            select.select2_single.form-control(tabindex='-1' name="categoria")
                                                 option
-                                                option(value='AK') Celulares & Tablets
-                                                option(value='HI') Laptop
+                                                option(value='1') Celulares & Tablets
+                                                option(value='2') Laptop
                                     .form-group
                                         label.control-label.col-md-3.col-sm-3.col-xs-12 Estado inicial
                                         .col-md-6.col-sm-6.col-xs-12
-                                            select.select2_single.form-control(tabindex='-1')
+                                            select.select2_single.form-control(tabindex='-1' name="estado")
                                                 option
-                                                option(value='AK') Recibido por el tecnico
-                                                option(value='HI') Reparando el equipo
+                                                option(value='1') Recibido por el tecnico
+                                                option(value='2') Reparando el equipo
                                     .form-group
                                         label.control-label.col-md-3.col-sm-3.col-xs-12
                                             | Descripcion
                                             span.required *
                                         .col-md-6.col-sm-6.col-xs-12
-                                            textarea.form-control(rows='3')
+                                            textarea.form-control(rows='3', name="descripcion" id="descripcion")
 
                             #step-3
                                 .x_content
                                     p
 
-                                    form.dropzone(action='form_upload.html')
+                                    form.dropzone(action='form_upload.html' )
                                     br
                                     br
                                     br
@@ -164,7 +164,7 @@ block content
                                     h4 Seguimiento & Comentarios
                                     // end of user messages
                                     br
-                                    textarea(id="textarea" required="required" name="textarea" class="form-control col-md-7 col-xs-12" style="min-width:100%; max-width:100%; width:100%; margin-bottom:1rem; min-height:70px;")
+                                    textarea(id="textarea" required="required" name="comentarios" class="form-control col-md-7 col-xs-12" style="min-width:100%; max-width:100%; width:100%; margin-bottom:1rem; min-height:70px;")
 
                                     div.message_wrapper(style="padding-top:4em;margin-top:2rem;")
                                         .col-md-7
