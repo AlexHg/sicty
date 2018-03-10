@@ -29,7 +29,8 @@ router.get('/:id', function(req, res, next) {
                     comentarioModel.usariofindByReporte(id,function (errU,dataU) {
                         if(!errU){
                             datos.comentariosU = dataU;
-                            res.status(200).json(datos);
+                            //res.status(200).json(datos);
+                            res.render('report',{title: 'Sicty report system', data:datos, user:req.session.nombre});
                         }
                     });
                 }
