@@ -8,7 +8,7 @@ var router = express.Router();
 var auth = require('../funciones/authentication');
 var usuario = require('../models/UserModel')
 var reporteLcal = require('../models/Reportes_LocalModel');
-var reporteEmpresa = require('../models/Reporte_EmpresaModel');7
+var reporteEmpresa = require('../models/Reporte_EmpresaModel');
 var comentarioModel = require('../models/Comentario');
 var Notas = require('../models/NotaModel');
 var Archivos = require('../models/Archivo_Mensaje');
@@ -74,13 +74,13 @@ router.get('/auth', function (req,res,next) {
 });
 
 router.get('/new-report', function(req, res, next) {
-  /*auth.mach(req,res,
+  auth.mach(req,res,
       function (req,res) {
         res.render('new_report', { title: 'Sicty report system',user:req.session.nombre });
       }
-  );*/
-  console.log(req.session.nombre)
-  res.render('new_report', { title: 'Sicty report system',user:req.session.nombre });
+  );
+  //console.log(req.session.nombre)
+  //res.render('new_report', { title: 'Sicty report system',user:req.session.nombre });
 });
 
 router.get('/report-list', function(req, res, next) {
@@ -184,37 +184,7 @@ router.get('/reportes/', function(req, res, next) {
 });
 
 
-router.get('/reporte_local/', function(req, res, next) {
-  //console.log(req.body)
-  reporteLcal.getAll(function (err, data) {
-    if (!err){
-      res.status(200).json(data);
-    }
-  });
-});
 
-router.get('/reporte_local/:id', function(req, res, next) {
-  //console.log(req.body)
-  reporteLcal.findById(req.params.id,function (err, data) {
-    if (!err){
-      res.status(200).json(data);
-    }
-  });
-});
-
-router.post('/reporte_local', function(req, res, next) {
-  var reporte = [],a=req.body;
-  reporte[0] = [a.fecha,a.fecha,1,a.cat,a.operador,0];
-  reporte[1] = [0,a.correo,a.nombre,a.tel,a.tel2,a.props];
-  reporteLcal.save(reporte,function (err, data) {
-    if (!err){
-      console.log(data)
-      //res.status(200).json(data);
-      res.redirect('reporte_local/'+data)
-
-    }
-  });
-});
 
 router.post('/reporte_empresa', function(req, res, next) {
   console.log(req.body.fecha)

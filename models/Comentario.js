@@ -21,7 +21,7 @@ ComentarioModel.getAll = function (callback) {
 
 ComentarioModel.findById = function (id,callback) {
     if (connection){
-        var sql = "SELECT * FROM `mensaje` INNER JOIN msjusuario on mensaje.idmensaje = msjusuario.idmensaje WHERE mensaje.idmensaje = ? and mensaje.isnota =0";
+        var sql = "SELECT * FROM `mensaje` INNER JOIN msjusuario on mensaje.idmensaje = msjusuario.idmensaje WHERE mensaje.idmensaje = ? ";
         connection.query(sql,id, function (error,data) {
             if (error)
                 throw error;
@@ -34,9 +34,22 @@ ComentarioModel.findById = function (id,callback) {
 
 
 
-ComentarioModel.findByReporte = function (id,callback) {
+ComentarioModel.usariofindByReporte = function (id,callback) {
     if (connection){
-        var sql = "SELECT * FROM `mensaje` INNER JOIN msjusuario on mensaje.idmensaje = msjusuario.idmensaje WHERE mensaje.idreporte = ? and mensaje.isnota =0";
+        var sql = "SELECT mensaje.*,msjusuario.*,usuario.nombre,usuario.idrol FROM `mensaje` INNER JOIN msjusuario on mensaje.idmensaje = msjusuario.idmensaje INNER JOIN usuario on msjusuario.idusuario = usuario.idusuario  WHERE mensaje.idreporte = ? ";
+        connection.query(sql,id, function (error,data) {
+            if (error)
+                throw error;
+            else{
+                callback(null,data);
+            }
+        });
+    }
+};
+
+ComentarioModel.clientefindByReporte = function (id,callback) {
+    if (connection){
+        var sql = "SELECT * FROM `mensaje` INNER JOIN msjcliente on mensaje.idmensaje = msjcliente.idmensajecliente WHERE mensaje.idreporte = ? ";
         connection.query(sql,id, function (error,data) {
             if (error)
                 throw error;

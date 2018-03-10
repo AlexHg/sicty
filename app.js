@@ -9,6 +9,9 @@ var routes = require('./routes/index');
 const fileUpload = require('express-fileupload');
 var auth = require('./funciones/authentication');
 
+// Controladores
+var ReporteLocal = require('./routes/Reporte_Local');
+
 var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
@@ -39,6 +42,7 @@ app.use(function(req, res, next){
 
 
 app.use('/',routes);
+app.use('/reporte_local',ReporteLocal);
 
 /*app.all('*',function (req,res,next) {
     auth.mach(req,res,function (req,res) {
