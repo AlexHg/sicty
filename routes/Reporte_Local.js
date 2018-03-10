@@ -24,7 +24,7 @@ router.get('/:id', function(req, res, next) {
         reporteLcal.findById(id,function (err, data) {
             if (!err){
                 datos.info = data[0];
-                datos.propiedades = JSON.stringify(datos.info.propiedades);
+                datos.info.propiedades = JSON.stringify(datos.info.propiedades);
                 comentarioModel.clientefindByReporte(id,function (errC,dataC) {
                     if(!errC){
                         datos.comentariosC = dataC;
@@ -56,22 +56,5 @@ router.post('/', function(req, res, next) {
         }
     });
 });
-
-
-
-router.delete('/', function(req, res, next) {
-    var reporte = [],a=req.body;
-    reporte[0] = [a.fecha,a.fecha,1,a.cat,a.operador,0];
-    reporte[1] = [0,a.correo,a.nombre,a.tel,a.tel2,a.props,a.fechaentrega];
-    reporteLcal.save(reporte,function (err, data) {
-        if (!err){
-            console.log(data)
-            //res.status(200).json(data);
-            res.redirect('reporte_local/'+data)
-
-        }
-    });
-});
-
 
 module.exports = router;
