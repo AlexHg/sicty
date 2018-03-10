@@ -16,7 +16,7 @@ var sess = {
     secret: 'AppSycti',
     saveUninitialized: true,
     resave: false,
-    cookie: { maxAge: 60000 }
+    //cookie: { maxAge: 60000 }
 };
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -40,11 +40,11 @@ app.use(function(req, res, next){
 
 app.use('/',routes);
 
-app.all('*',function (req,res,next) {
+/*app.all('*',function (req,res,next) {
     auth.mach(req,res,function (req,res) {
         res.redirect('/app');
     })
-});
+});*/
 
 var id  = 1;
 

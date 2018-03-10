@@ -20,7 +20,7 @@ router.get('/report-submit', function(req, res, next) {
     reporteLcal.getAll(function (err, data) {
       if (!err){
         //Recibe datos del wizard
-        res.render('report_history',{title: 'Sicty report system',datos:data,user:req.session.nombre});
+        res.render('new_report',{title: 'Sicty report system',datos:data,user:req.session.nombre});
       }
     });
   });
@@ -74,11 +74,13 @@ router.get('/auth', function (req,res,next) {
 });
 
 router.get('/new-report', function(req, res, next) {
-  auth.mach(req,res,
+  /*auth.mach(req,res,
       function (req,res) {
         res.render('new_report', { title: 'Sicty report system',user:req.session.nombre });
       }
-  );
+  );*/
+  console.log(req.session.nombre)
+  res.render('new_report', { title: 'Sicty report system',user:req.session.nombre });
 });
 
 router.get('/report-list', function(req, res, next) {
