@@ -20,7 +20,7 @@ ReporteLocalModel.getAll = function (callback) {
 
 ReporteLocalModel.findById = function (id,callback) {
     if (connection){
-        var sql = "select reporte.*,reporte_local.*,usuario.nombre,usuario.idrol from reporte inner join reporte_local on reporte.idreporte = reporte_local.idreporte_local INNER JOIN usuario on reporte.idoperador = usuario.idusuario where reporte.idreporte = ?";
+        var sql = "select DATE_FORMAT(reporte.fechaini,'%d/%m/%Y') AS fec,reporte.*,reporte_local.*,usuario.nombre,usuario.idrol from reporte inner join reporte_local on reporte.idreporte = reporte_local.idreporte_local INNER JOIN usuario on reporte.idoperador = usuario.idusuario where reporte.idreporte = ?";
         connection.query(sql,id, function (error,data) {
             if (error)
                 throw error;

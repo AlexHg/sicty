@@ -6,6 +6,7 @@ var router = express.Router();
 
 var reporteLcal = require('../models/Reportes_LocalModel');
 var comentarioModel = require('../models/Comentario');
+var auth = require('../funciones/authentication');
 
 router.get('/', function(req, res, next) {
     //console.log(req.body)
@@ -17,26 +18,28 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:id', function(req, res, next) {
-    //console.log(req.body)
-    var datos ={};
-    var id = req.params.id;
-    reporteLcal.findById(id,function (err, data) {
-        if (!err){
-            datos.info = data[0];
-            comentarioModel.clientefindByReporte(id,function (errC,dataC) {
-                if(!errC){
-                    datos.comentariosC = dataC;
-                    comentarioModel.usariofindByReporte(id,function (errU,dataU) {
-                        if(!errU){
-                            datos.comentariosU = dataU;
-                            //res.status(200).json(datos);
-                            res.render('report',{title: 'Sicty report system', data:datos, user:req.session.nombre});
-                        }
-                    });
-                }
-            });
-        }
+    auth.mach(req,res,function (req,res) {
+        var datos ={};
+        var id = req.params.id;
+        reporteLcal.findById(id,function (err, data) {
+            if (!err){
+                datos.info = data[0];
+                comentarioModel.clientefindByReporte(id,function (errC,dataC) {
+                    if(!errC){
+                        datos.comentariosC = dataC;
+                        comentarioModel.usariofindByReporte(id,function (errU,dataU) {
+                            if(!errU){
+                                datos.comentariosU = dataU;
+                                //res.status(200).json(datos);
+                                res.render('report',{title: 'Sicty report system', data:datos, user:req.session.nombre});
+                            }
+                        });
+                    }
+                });
+            }
+        });
     });
+
 });
 
 router.post('/', function(req, res, next) {
