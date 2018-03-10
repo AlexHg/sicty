@@ -24,7 +24,7 @@ router.get('/:id', function(req, res, next) {
         reporteLcal.findById(id,function (err, data) {
             if (!err){
                 datos.info = data[0];
-                data.info.propiedades = JSON.stringify(data.info.propiedades);
+                datos.propiedades = JSON.stringify(datos.info.propiedades);
                 comentarioModel.clientefindByReporte(id,function (errC,dataC) {
                     if(!errC){
                         datos.comentariosC = dataC;
