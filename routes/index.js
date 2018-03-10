@@ -73,6 +73,16 @@ router.get('/report-submit', function(req, res, next) {
     });
 });
 
+router.get('/new-company', function(req, res, next) {
+    auth.mach(req,res,function (req,res) {
+        reporteLcal.getAll(function (err, data) {
+            if (!err){
+                //Recibe datos del wizard
+                res.render('new_company',{title: 'Sicty report system',datos:data,user:req.session.nombre});
+            }
+        });
+    });
+});
 
 router.get('/new-category', function(req, res, next) {
     auth.mach(req,res,function (req,res) {
