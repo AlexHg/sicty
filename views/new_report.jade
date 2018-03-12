@@ -16,8 +16,6 @@ block content
             .col-md-12.col-sm-12.col-xs-12
                 .x_panel
                     .x_title
-                        h2
-                            | Nuevo Reporte
                         ul.nav.navbar-right.panel_toolbox
                             li
                                 a.collapse-link
@@ -68,19 +66,20 @@ block content
                                             | Paso 4
                                             br
                                             small Comentarios
-                            #step-1
-                                form.form-horizontal.form-label-left(action="/report-submit" method="post")
+                            form.form-horizontal.form-label-left(action="/report-submit" method="post" name="wizard")
+                                #step-1
+
                                     .form-group
                                         label.control-label.col-md-3.col-sm-3.col-xs-12
                                             | Tipo de cliente
                                             span.required *
                                         .col-md-6.col-sm-6.col-xs-12
-                                            #gender.btn-group(data-toggle='buttons')
-                                                label.btn.btn-default(data-toggle-class='btn-primary', data-toggle-passive-class='btn-default')
-                                                    input(type='radio', name='tipo', value='male')
+                                            #gender.btn-group(data-toggle='buttons' )
+                                                label.btn.btn-default(data-toggle-class='btn-primary', data-toggle-passive-class='btn-default' class="tipoCliente")
+                                                    input(type='radio', name='tipo', value='local')
                                                     |  Local
-                                                label.btn.btn-primary(data-toggle-class='btn-primary', data-toggle-passive-class='btn-default')
-                                                    input(type='radio', name='tipo', value='female')
+                                                label.btn.btn-primary(data-toggle-class='btn-primary', data-toggle-passive-class='btn-default' class="tipoCliente")
+                                                    input(type='radio', name='tipo', value='empresa')
                                                     |  Empresa
                                     .form-group
                                         label.control-label.col-md-3.col-sm-3.col-xs-12(for='nombre')
@@ -88,9 +87,8 @@ block content
                                             span.required *
                                         .col-md-6.col-sm-6.col-xs-12
                                             input.form-control.col-md-7.col-xs-12(type='text', id="nombre", name="nombre", required='required')
-
-                                    .form-group
-                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='first-nameB')
+                                    .form-group#idempresa(style="display:none")
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='empresa')
                                             | id de la empresa (se cambiará por un select)
                                             span.required *
                                         .col-md-6.col-sm-6.col-xs-12
@@ -107,67 +105,92 @@ block content
                                             span.required *
                                         .col-md-6.col-sm-6.col-xs-12
                                             inpuT.form-control.col-md-7.col-xs-12(type='text', name='telefono' id="telefono")
-                            #step-2
-                                form.form-horizontal.form-label-left
-                                    .form-group
-                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='reporte-ant')
-                                            | Reporte anterior (opcional) {id del reporte anterior}
-                                        .col-md-6.col-sm-6.col-xs-12
-                                            input.form-control.col-md-7.col-xs-12(type='text', id="reporte-ant", name="reporte-ant")
-                                    .form-group
-                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='costo')
-                                            | Costo del servicio (opcional)
-                                            span.required *
-                                        .col-md-6.col-sm-6.col-xs-12
-                                            input.form-control.col-md-7.col-xs-12(type='text', id="costo" name="costo" )
-                                    .form-group
-                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='fecha')
-                                            | Fecha de entrega (opcional)
-                                            span.required *
-                                        .col-md-6.col-sm-6.col-xs-12
-                                            input.form-control.col-md-7.col-xs-12(type='text', id="fecha" name="fecha")
-                                    .form-group
-                                        label.control-label.col-md-3.col-sm-3.col-xs-12 Categoría
-                                        .col-md-6.col-sm-6.col-xs-12
-                                            select.select2_single.form-control(tabindex='-1' name="categoria")
-                                                option
-                                                option(value='1') Celulares & Tablets
-                                                option(value='2') Laptop
-                                    .form-group
-                                        label.control-label.col-md-3.col-sm-3.col-xs-12 Estado inicial
-                                        .col-md-6.col-sm-6.col-xs-12
-                                            select.select2_single.form-control(tabindex='-1' name="estado")
-                                                option
-                                                option(value='1') Recibido por el tecnico
-                                                option(value='2') Reparando el equipo
-                                    .form-group
-                                        label.control-label.col-md-3.col-sm-3.col-xs-12
-                                            | Descripcion
-                                            span.required *
-                                        .col-md-6.col-sm-6.col-xs-12
-                                            textarea.form-control(rows='3', name="descripcion" id="descripcion")
-                            #step-3
-                                .x_content
-                                    p
-                                    form.dropzone(action='form_upload.html' )
-                                    br
-                                    br
-                                    br
-                                    br
+                                    script(type='text/javascript').
 
-                            #step-4
-                                div
-                                    h4 Seguimiento & Comentarios
-                                    // end of user messages
-                                    br
-                                    textarea(id="textarea" required="required" name="comentarios" class="form-control col-md-7 col-xs-12" style="min-width:100%; max-width:100%; width:100%; margin-bottom:1rem; min-height:70px;")
+                                        var client_type = document.querySelectorAll(".tipoCliente"),
+                                            local = client_type[0],
+                                            empresa = client_type[1];
 
-                                    div.message_wrapper(style="padding-top:4em;margin-top:2rem;")
-                                        .col-md-7
-                                            button(id="send" type="submit" class="btn btn-success") Enviar
-                                        .col-md-5(align="right")
-                                            div.checkbox
-                                                input(type="checkbox" value="" checked)
-                                                | Privado
+                                        local.addEventListener('click', function(){
+                                            setTimeout(function(){
+                                                if (local.querySelector('input').checked) {
+                                                    document.querySelector("#idempresa").style="display:none";
+                                                }
+                                            },10);
 
-                                    br
+                                        });
+
+                                        empresa.addEventListener('click', function () {
+                                            setTimeout(function () {
+                                                if (empresa.querySelector('input').checked) {
+                                                    document.querySelector("#idempresa").style="display:block";
+                                                }
+                                            }, 10);
+
+                                        });
+
+
+                                #step-2
+                                    form.form-horizontal.form-label-left
+                                        .form-group
+                                            label.control-label.col-md-3.col-sm-3.col-xs-12(for='reporte-ant')
+                                                | Reporte anterior (opcional) {id del reporte anterior}
+                                            .col-md-6.col-sm-6.col-xs-12
+                                                input.form-control.col-md-7.col-xs-12(type='text', id="reporte-ant", name="reporte-ant")
+                                        .form-group
+                                            label.control-label.col-md-3.col-sm-3.col-xs-12(for='costo')
+                                                | Costo del servicio (opcional)
+                                                span.required *
+                                            .col-md-6.col-sm-6.col-xs-12
+                                                input.form-control.col-md-7.col-xs-12(type='text', id="costo" name="costo" )
+                                        .form-group
+                                            label.control-label.col-md-3.col-sm-3.col-xs-12(for='fecha')
+                                                | Fecha de entrega (opcional)
+                                                span.required *
+                                            .col-md-6.col-sm-6.col-xs-12
+                                                input.form-control.col-md-7.col-xs-12(type='text', id="fecha" name="fecha")
+                                        .form-group
+                                            label.control-label.col-md-3.col-sm-3.col-xs-12 Categoría
+                                            .col-md-6.col-sm-6.col-xs-12
+                                                select.select2_single.form-control(tabindex='-1' name="categoria")
+                                                    option
+                                                    option(value='1') Celulares & Tablets
+                                                    option(value='2') Laptop
+                                        .form-group
+                                            label.control-label.col-md-3.col-sm-3.col-xs-12 Estado inicial
+                                            .col-md-6.col-sm-6.col-xs-12
+                                                select.select2_single.form-control(tabindex='-1' name="estado")
+                                                    option
+                                                    option(value='1') Recibido por el tecnico
+                                                    option(value='2') Reparando el equipo
+                                        .form-group
+                                            label.control-label.col-md-3.col-sm-3.col-xs-12
+                                                | Descripcion
+                                                span.required *
+                                            .col-md-6.col-sm-6.col-xs-12
+                                                textarea.form-control(rows='3', name="descripcion" id="descripcion")
+                                #step-3
+                                    .x_content
+                                        p
+                                        form.dropzone(action='form_upload.html' )
+                                        br
+                                        br
+                                        br
+                                        br
+
+                                #step-4
+                                    div
+                                        h4 Seguimiento & Comentarios
+                                        // end of user messages
+                                        br
+                                        textarea(id="textarea" required="required" name="comentarios" class="form-control col-md-7 col-xs-12" style="min-width:100%; max-width:100%; width:100%; margin-bottom:1rem; min-height:70px;")
+
+                                        div.message_wrapper(style="padding-top:4em;margin-top:2rem;")
+                                            .col-md-7
+                                                button(id="send" type="submit" class="btn btn-success") Enviar
+                                            .col-md-5(align="right")
+                                                div.checkbox
+                                                    input(type="checkbox" value="" checked)
+                                                    | Privado
+
+                                        br
