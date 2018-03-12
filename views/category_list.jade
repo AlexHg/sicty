@@ -21,14 +21,15 @@ block content
                                 th Nombre
                                 th Descripcion
                                 th Cantidad reportes
-                                th
+                                th Acciones
                         tbody
-                            tr.even.pointer
-                                td.a-center 1
-                                td.a-center Telefonos
-                                td.a-center Smartphones, telefonos, android, ios
-                                td.a-center 325
-                                td.a-center acciones
+                            each dato in datos
+                                tr.even.pointer
+                                    td.a-center #{dato.idcategoria}
+                                    td.a-center #{dato.nombre}
+                                    td.a-center 325
+                                    td.a-center #{dato.prioridad}
+                                    td Borrar | Editar
                             //each dato in datos
                                 tr.even.pointer
                                     td.a-center
