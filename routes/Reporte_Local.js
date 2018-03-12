@@ -3,6 +3,9 @@
  */
 var express = require('express');
 var router = express.Router();
+var bodyParser = require('body-parser');
+var jsonParser = bodyParser.json();
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 var reporteLcal = require('../models/Reportes_LocalModel');
 var comentarioModel = require('../models/Comentario');
@@ -46,18 +49,10 @@ router.get('/:id', function(req, res, next) {
     });
 });
 
-router.post('/', function(req, res, next) {
-    var reporte = [],a=req.body;
-    reporte[0] = [a.fecha,a.fecha,1,a.cat,a.operador,0];
-    reporte[1] = [0,a.correo,a.nombre,a.tel,a.tel2,a.props,a.fechaentrega];
-    reporteLcal.save(reporte,function (err, data) {
-        if (!err){
-            console.log(data)
-            //res.status(200).json(data);
-            res.redirect('reporte_local/'+data)
-
-        }
-    });
+router.post('/', urlencodedParser, function(req, res, next) {
+    res.render('report',{title: 'Sicty report system', data:req.body, user:req.session.nombre});
+    //if (!req.body) return res.sendStatus(400)
+    //res.send('welcome, ' + req.body.nombre)
 });
 
 

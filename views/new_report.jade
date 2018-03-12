@@ -66,7 +66,7 @@ block content
                                             | Paso 4
                                             br
                                             small Comentarios
-                            form.form-horizontal.form-label-left(action="/report-submit" method="post" name="wizard")
+                            form.form-horizontal.form-label-left(action="/reporte_local" method="post" name="wizard")
                                 #step-1
 
                                     .form-group
@@ -76,7 +76,7 @@ block content
                                         .col-md-6.col-sm-6.col-xs-12
                                             #gender.btn-group(data-toggle='buttons' )
                                                 label.btn.btn-default(data-toggle-class='btn-primary', data-toggle-passive-class='btn-default' class="tipoCliente")
-                                                    input(type='radio', name='tipo', value='local')
+                                                    input(type='radio', name='tipo', value='local' checked)
                                                     |  Local
                                                 label.btn.btn-primary(data-toggle-class='btn-primary', data-toggle-passive-class='btn-default' class="tipoCliente")
                                                     input(type='radio', name='tipo', value='empresa')
@@ -114,6 +114,7 @@ block content
                                         local.addEventListener('click', function(){
                                             setTimeout(function(){
                                                 if (local.querySelector('input').checked) {
+                                                    document.wizard.action = "/reporte_local"
                                                     document.querySelector("#idempresa").style="display:none";
                                                 }
                                             },10);
@@ -123,11 +124,18 @@ block content
                                         empresa.addEventListener('click', function () {
                                             setTimeout(function () {
                                                 if (empresa.querySelector('input').checked) {
+                                                    document.wizard.action = "/reporte_empresa"
                                                     document.querySelector("#idempresa").style="display:block";
                                                 }
                                             }, 10);
 
                                         });
+
+                                        setTimeout(function(){
+                                            local.click();
+                                        },600);
+
+
 
 
                                 #step-2
@@ -194,3 +202,9 @@ block content
                                                     | Privado
 
                                         br
+        script(type="text/javascript").
+            setTimeout(function(){
+                document.querySelector(".buttonFinish.btn.btn-default").addEventListener('click', function () {
+                    document.wizard.submit();
+                });
+            },500);

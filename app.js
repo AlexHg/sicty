@@ -9,11 +9,13 @@ var routes = require('./routes/index');
 const fileUpload = require('express-fileupload');
 var auth = require('./funciones/authentication');
 
+
 // Controladores
 var ReporteLocal = require('./routes/Reporte_Local');
 var ReporteEmprsa = require('./routes/Reporte_Empresa');
 var categoria = require('./routes/Categorias');
 var usuario = require('./routes/Usuarios');
+
 
 var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
@@ -24,6 +26,7 @@ var sess = {
     resave: false,
     //cookie: { maxAge: 60000 }
 };
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('views', path.join(__dirname, 'views'));
