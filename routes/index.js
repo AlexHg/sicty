@@ -62,6 +62,17 @@ router.get('/auth', function (req,res,next) {
 
 });
 
+router.get('/mensajeria', function(req, res, next) {
+    auth.mach(req,res,function (req,res) {
+        reporteLcal.getAll(function (err, data) {
+            if (!err){
+                //Recibe datos del wizard
+                res.render('mensajeria',{title: 'Sicty report system',datos:data,user:req.session.nombre});
+            }
+        });
+    });
+});
+
 router.get('/report-submit', function(req, res, next) {
     auth.mach(req,res,function (req,res) {
         reporteLcal.getAll(function (err, data) {

@@ -1,0 +1,219 @@
+extends layout
+
+block content
+    div
+        .page-title
+            .title_left
+                h3
+                    | Mensajeria instantanea
+            .title_right
+                .col-md-5.col-sm-5.col-xs-12.form-group.pull-right.top_search
+                    .input-group
+                        input.form-control(type='text', placeholder='Search for...')
+                        span.input-group-btn
+                            button.btn.btn-default(type='button') Go!
+        .clearfix
+        .row
+            .col-md-12
+                .x_panel
+                    .x_title
+                        h2(style="display:inline-block")
+                            | Nombre de usuario
+                            small
+                                span.label.label-success.pull-right(style="color:white;margin-top:.4rem;") conectado
+                        ul.nav.navbar-right.panel_toolbox
+                            li
+                                a.collapse-link
+                                    i.fa.fa-chevron-up
+                            li.dropdown
+                                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+                                    i.fa.fa-wrench
+                                ul.dropdown-menu(role='menu')
+                                    li
+                                        a(href='#') Settings 1
+                                    li
+                                        a(href='#') Settings 2
+                            li
+                                a.close-link
+                                    i.fa.fa-close
+                        .clearfix
+                    .x_content
+                        .row
+                            .col-sm-3.mail_list_column
+                                button#compose.btn.btn-sm.btn-success.btn-block(type='button') NUEVA CONVERSACIÓN
+                                a(href='#')
+                                    .mail_list
+                                        .left
+                                            i.fa.fa-circle
+                                            i.fa.fa-edit
+                                        .right
+                                            h3
+                                                | Dennis Mugo
+                                                small 3.00 PM
+                                            p
+                                                | Ut enim ad minim veniam, quis nostrud exercitation enim ad minim veniam, quis nostrud exercitation...
+                                a(href='#')
+                                    .mail_list
+                                        .left
+                                            i.fa.fa-star
+                                        .right
+                                            h3
+                                                | Jane Nobert
+                                                small 4.09 PM
+                                            p
+                                                span.badge To
+                                                |  Ut enim ad minim veniam, quis nostrud exercitation enim ad minim veniam, quis nostrud exercitation...
+                                a(href='#')
+                                    .mail_list
+                                        .left
+                                            i.fa.fa-circle-o
+                                            i.fa.fa-paperclip
+                                        .right
+                                            h3
+                                                | Musimbi Anne
+                                                small 4.09 PM
+                                            p
+                                                span.badge CC
+                                                |  Ut enim ad minim veniam, quis nostrud exercitation enim ad minim veniam, quis nostrud exercitation...
+                                a(href='#')
+                                    .mail_list
+                                        .left
+                                            i.fa.fa-paperclip
+                                        .right
+                                            h3
+                                                | Jon Dibbs
+                                                small 4.09 PM
+                                            p
+                                                | Ut enim ad minim veniam, quis nostrud exercitation enim ad minim veniam, quis nostrud exercitation...
+                                a(href='#')
+                                    .mail_list
+                                        .left
+                                            | .
+                                        .right
+                                            h3
+                                                | Debbis & Raymond
+                                                small 4.09 PM
+                                            p
+                                                | Ut enim ad minim veniam, quis nostrud exercitation enim ad minim veniam, quis nostrud exercitation...
+                                a(href='#')
+                                    .mail_list
+                                        .left
+                                            | .
+                                        .right
+                                            h3
+                                                | Debbis & Raymond
+                                                small 4.09 PM
+                                            p
+                                                | Ut enim ad minim veniam, quis nostrud exercitation enim ad minim veniam, quis nostrud exercitation...
+                                a(href='#')
+                                    .mail_list
+                                        .left
+                                            i.fa.fa-circle
+                                            i.fa.fa-edit
+                                        .right
+                                            h3
+                                                | Dennis Mugo
+                                                small 3.00 PM
+                                            p
+                                                | Ut enim ad minim veniam, quis nostrud exercitation enim ad minim veniam, quis nostrud exercitation...
+                                a(href='#')
+                                    .mail_list
+                                        .left
+                                            i.fa.fa-star
+                                        .right
+                                            h3
+                                                | Jane Nobert
+                                                small 4.09 PM
+                                            p
+                                                | Ut enim ad minim veniam, quis nostrud exercitation enim ad minim veniam, quis nostrud exercitation...
+                            // /MAIL LIST
+                            // CONTENT MAIL
+                            .col-sm-9.mail_view
+                                .inbox-body
+                                    .mail_heading.row
+                                        .col-md-8
+                                            .btn-group
+                                                button.btn.btn-sm.btn-primary(type='button')
+                                                    i.fa.fa-reply
+                                                    |  Reply
+                                                button.btn.btn-sm.btn-default(type='button', data-placement='top', data-toggle='tooltip', data-original-title='Forward')
+                                                    i.fa.fa-share
+                                                button.btn.btn-sm.btn-default(type='button', data-placement='top', data-toggle='tooltip', data-original-title='Print')
+                                                    i.fa.fa-print
+                                                button.btn.btn-sm.btn-default(type='button', data-placement='top', data-toggle='tooltip', data-original-title='Trash')
+                                                    i.fa.fa-trash-o
+                                        .col-md-4.text-right
+                                            p.date  8:02 PM 12 FEB 2014
+                                        .col-md-12
+                                            h4
+                                                | Donec vitae leo at sem lobortis porttitor eu consequat risus. Mauris sed congue orci. Donec ultrices faucibus rutrum.
+                                    .sender-info
+                                        .row
+                                            .col-md-12
+                                                strong Jon Doe
+                                                span (jon.doe@gmail.com)
+                                                |  to
+                                                strong me
+                                                a.sender-dropdown
+                                                    i.fa.fa-chevron-down
+                                    .view-mail
+                                        p
+                                            | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                            | Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        p
+                                            | Riusmod tempor incididunt ut labor erem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                                            | nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                                            | mollit anim id est laborum.
+                                        p
+                                            | Modesed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                                            | velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    .attachment
+                                        p
+                                            span
+                                                i.fa.fa-paperclip
+                                                |  3 attachments —
+                                            a(href='#') Download all attachments
+                                            |  |
+                                            a(href='#') View all images
+                                        ul
+                                            li
+                                                a.atch-thumb(href='#')
+                                                    img(src='images/inbox.png', alt='img')
+                                                .file-name
+                                                    | image-name.jpg
+                                                span 12KB
+                                                .links
+                                                    a(href='#') View
+                                                    |  -
+                                                    a(href='#') Download
+                                            li
+                                                a.atch-thumb(href='#')
+                                                    img(src='images/inbox.png', alt='img')
+                                                .file-name
+                                                    | img_name.jpg
+                                                span 40KB
+                                                .links
+                                                    a(href='#') View
+                                                    |  -
+                                                    a(href='#') Download
+                                            li
+                                                a.atch-thumb(href='#')
+                                                    img(src='images/inbox.png', alt='img')
+                                                .file-name
+                                                    | img_name.jpg
+                                                span 30KB
+                                                .links
+                                                    a(href='#') View
+                                                    |  -
+                                                    a(href='#') Download
+                                    .btn-group
+                                        button.btn.btn-sm.btn-primary(type='button')
+                                            i.fa.fa-reply
+                                            |  Reply
+                                        button.btn.btn-sm.btn-default(type='button', data-placement='top', data-toggle='tooltip', data-original-title='Forward')
+                                            i.fa.fa-share
+                                        button.btn.btn-sm.btn-default(type='button', data-placement='top', data-toggle='tooltip', data-original-title='Print')
+                                            i.fa.fa-print
+                                        button.btn.btn-sm.btn-default(type='button', data-placement='top', data-toggle='tooltip', data-original-title='Trash')
+                                            i.fa.fa-trash-o
+                            // /CONTENT MAIL
