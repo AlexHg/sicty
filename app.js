@@ -12,6 +12,7 @@ var auth = require('./funciones/authentication');
 // Controladores
 var ReporteLocal = require('./routes/Reporte_Local');
 var ReporteEmprsa = require('./routes/Reporte_Empresa');
+var categoria = require('./routes/Categorias');
 
 var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
@@ -45,6 +46,7 @@ app.use(function(req, res, next){
 app.use('/',routes);
 app.use('/reporte_local',ReporteLocal);
 app.use('/reporte_Empresa',ReporteEmprsa);
+app.use('/categoria',categoria);
 
 /*app.all('*',function (req,res,next) {
     auth.mach(req,res,function (req,res) {

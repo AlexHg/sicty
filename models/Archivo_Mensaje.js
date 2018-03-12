@@ -81,6 +81,7 @@ ArchivoModelo.save=function(archivo,callback){
 };
 
 
+
 /*ReporteLocalModel.delete = function (id,callback) {
  if (connection){
  var sql = "select * from reporte inner join reporte_local on reporte.idreporte = reporte_local.idreporte_local where idreporte = ?";
@@ -93,6 +94,5 @@ ArchivoModelo.save=function(archivo,callback){
  });
  }
  };*/
-
 
 module.exports= ArchivoModelo;

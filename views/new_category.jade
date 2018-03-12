@@ -33,7 +33,7 @@ block content
                                     i.fa.fa-close
                         .clearfix
                     .x_content
-                        form.form-horizontal.form-label-left(action="/report-submit" method="post")
+                        form.form-horizontal.form-label-left(action="/categoria" method="post")
 
                             .form-group
                                 label.control-label.col-md-3.col-sm-3.col-xs-12(for='nombre')
@@ -44,13 +44,16 @@ block content
                             .form-group
                                 label.control-label.col-md-3.col-sm-3.col-xs-12 Prioridad
                                 .col-md-6.col-sm-6.col-xs-12
-                                    select.select2_single.form-control(tabindex='-1' name="estado")
-                                        option
+                                    select.select2_single.form-control(tabindex='-1' name="prioridad")
                                         option(value='1') niv 1
                                         option(value='2') niv 2
+                                        option(value='3') niv 3
                             .form-group
                                 label.control-label.col-md-3.col-sm-3.col-xs-12
                                     | Descripcion
                                     span.required *
                                 .col-md-6.col-sm-6.col-xs-12
                                     textarea.form-control(rows='3', name="descripcion" id="descripcion")
+                            .form-group
+                                .col-md-7.center
+                                    button(id="send" type="submit" class="btn btn-success") Guardar
