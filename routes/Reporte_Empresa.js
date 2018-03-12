@@ -39,14 +39,21 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-    var reporte = [],a=req.body;
-    reporte[0] = [a.fecha,a.fecha,1,a.cat,a.operador,0];
-    reporte[1] = [0,a.correo,a.nombre,a.tel,a.tel2,a.props,a.fechaentrega];
-    reporteEmpresa.save(reporte,function (err, data) {
+    var reporte  = [],
+        a        = req.body,
+        now      = dateFormat(now, "yyyy-mm-dd"),
+        operador = req.session.nombre.idusuario;
+
+    console.log(now);
+    console.log(util.inspect(a, false, null));
+    reporte[0] = [a.nombrereporte, a.descripcion,now,now,"Abierto",a.categoria,operador,0];
+    reporte[1] = [0, a.correo, a.nombre, a.telefono, a.telefono2, "{}", a.fechaentrega];
+    console.log(util.inspect(reporte, false, null));
+    reporteLcal.save(reporte,function (err, data) {
         if (!err){
             console.log(data)
             //res.status(200).json(data);
-            res.redirect('reporte_local/'+data)
+            res.redirect('reporte_empresa/'+data)
 
         }
     });

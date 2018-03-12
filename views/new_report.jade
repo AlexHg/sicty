@@ -117,11 +117,35 @@ block content
                                             local = client_type[0],
                                             empresa = client_type[1];
 
+                                        function displayEmpresa(){
+                                            document.querySelector("#idempresa").style="display:block";
+                                        }
+
+                                        function hiddenEmpresa(){
+                                            document.querySelector("#idempresa").style="display:none";
+                                        }
+
+                                        function hiddenLocal(){
+                                            document.querySelector("[for=nombre]").parentElement.style="display:none";
+                                            document.querySelector("[for=correo]").parentElement.style="display:none";
+                                            document.querySelector("[for=telefono]").parentElement.style="display:none";
+                                            document.querySelector("[for=telefono2]").parentElement.style="display:none";
+                                        }
+
+                                        function displayLocal(){
+
+                                            document.querySelector("[for=nombre]").parentElement.style = "display:block";
+                                            document.querySelector("[for=correo]").parentElement.style = "display:block";
+                                            document.querySelector("[for=telefono]").parentElement.style = "display:block";
+                                            document.querySelector("[for=telefono2]").parentElement.style = "display:block";
+                                        }
+
                                         local.addEventListener('click', function(){
                                             setTimeout(function(){
                                                 if (local.querySelector('input').checked) {
                                                     document.wizard.action = "/reporte_local"
-                                                    document.querySelector("#idempresa").style="display:none";
+                                                    hiddenEmpresa();
+                                                    displayLocal();
                                                 }
                                             },10);
 
@@ -131,7 +155,8 @@ block content
                                             setTimeout(function () {
                                                 if (empresa.querySelector('input').checked) {
                                                     document.wizard.action = "/reporte_empresa"
-                                                    document.querySelector("#idempresa").style="display:block";
+                                                    hiddenLocal();
+                                                    displayEmpresa();
                                                 }
                                             }, 10);
 
