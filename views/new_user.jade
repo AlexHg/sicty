@@ -4,7 +4,7 @@ block content
     div
         .page-title
             .title_left
-                h3 Nueva empresa
+                h3 Nuevo usuario
             .title_right
                 .col-md-5.col-sm-5.col-xs-12.form-group.pull-right.top_search
                     .input-group
@@ -37,20 +37,26 @@ block content
 
                             .form-group
                                 label.control-label.col-md-3.col-sm-3.col-xs-12(for='nombre')
-                                    | Nombre de la empresa
+                                    | Nombre completo
                                     span.required *
                                 .col-md-6.col-sm-6.col-xs-12
                                     input.form-control.col-md-7.col-xs-12(type='text', id="nombre", name="nombre", required='required')
                             .form-group
-                                label.control-label.col-md-3.col-sm-3.col-xs-12 Prioridad
-                                .col-md-6.col-sm-6.col-xs-12
-                                    select.select2_single.form-control(tabindex='-1' name="estado")
-                                        option
-                                        option(value='1') niv 1
-                                        option(value='2') niv 2
-                            .form-group
-                                label.control-label.col-md-3.col-sm-3.col-xs-12
-                                    | Descripcion
+                                label.control-label.col-md-3.col-sm-3.col-xs-12(for='nombre')
+                                    | Correo electronico
                                     span.required *
                                 .col-md-6.col-sm-6.col-xs-12
-                                    textarea.form-control(rows='3', name="descripcion" id="descripcion")
+                                    input.form-control.col-md-7.col-xs-12(type='text', id="correo", name="correo", required='required')
+                            .form-group
+                                label.control-label.col-md-3.col-sm-3.col-xs-12 Rol
+                                .col-md-6.col-sm-6.col-xs-12
+                                    select.select2_single.form-control(tabindex='-1' name="rol")
+                                        option
+                                        option(value='1') Administrador
+                                        option(value='2') Soporte
+                            .form-group
+                                label.control-label.col-md-3.col-sm-3.col-xs-12
+                                    | Contraseña
+                                    span.required *
+                                .col-md-6.col-sm-6.col-xs-12
+                                    input.form-control.col-md-7.col-xs-12(type='password', id="contra", name="contra", required='required')

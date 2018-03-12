@@ -106,6 +106,28 @@ router.get('/client-list', function(req, res, next) {
     });
 });
 
+router.get('/new-user', function(req, res, next) {
+    auth.mach(req,res,function (req,res) {
+        reporteLcal.getAll(function (err, data) {
+            if (!err){
+                //Recibe datos del wizard
+                res.render('new_user',{title: 'Sicty report system',datos:data,user:req.session.nombre});
+            }
+        });
+    });
+});
+
+router.get('/user-admin', function(req, res, next) {
+    auth.mach(req,res,function (req,res) {
+        reporteLcal.getAll(function (err, data) {
+            if (!err){
+                //Recibe datos del wizard
+                res.render('user_admin',{title: 'Sicty report system',datos:data,user:req.session.nombre});
+            }
+        });
+    });
+});
+
 router.get('/new-category', function(req, res, next) {
     auth.mach(req,res,function (req,res) {
         reporteLcal.getAll(function (err, data) {
