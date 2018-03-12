@@ -46,7 +46,7 @@ router.post('/login', function(req, res, next) {
 router.get('/app', function(req, res, next) {
   auth.mach(req,res,
       function (req,res) {
-        res.render('demo', { title: 'Sicty report system',user:req.session.nombre });
+        res.render('blank', { title: 'Sicty report system',user:req.session.nombre });
       }
   );
 

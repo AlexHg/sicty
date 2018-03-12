@@ -1,6 +1,10 @@
 extends layout
 
 block content
+    style.
+        blockquote {
+            font-size: 15px;
+        }
     div
         .page-title
             .title_left
@@ -149,8 +153,16 @@ block content
                                 .panel-body
                                     h3.green #{data.info.nombreReporte}
 
-                                    p
-                                        | #{data.info.descripcion}
+                                    div
+                                        div(style="overflow: hidden;max-height: 100px;transition:all .5s;")#vdescription
+                                            p
+                                                | #{data.info.descripcion}
+                                        a(href="#")#viewmore(style="opacity:1;transition:all .5s;") Ver mas...
+                                        script(type="text/javascript").
+                                            document.querySelector("a#viewmore").addEventListener('click', function(){
+                                               document.querySelector("#vdescription").style="overflow: hidden;max-height: 1000px;transition:all .5s;"
+                                                this.style="opacity:0;transition:all .5s;";
+                                            });
                                     br
                                     div.row
                                         .project_detail.col-md-6
