@@ -32,6 +32,43 @@ ReporteLocalModel.findById = function (id,callback) {
 };
 
 
+ReporteLocalModel.findByReportId = function (id , callback) {
+    if (connection){
+        connection.beginTransaction(function(err) {
+            if (err) { callback(true,{"er":"connection","cod":error}); }
+
+            connection.query("INSERT INTO `reporte`  VALUES (NULL, ?, ?, ?, ?, ?, ?)",reporte[0],function (error, results) {
+                if (error) {
+                    return connection.rollback(function() {
+                        callback(true,{"er":"usr","cod":error});
+                    });
+                }else{
+                    reporte[1][0] = results.insertId;
+                    connection.query("INSERT INTO `reporte_local` VALUES (?, ?, ?, ?, ?, ?,?)",reporte[1], function (error, results, fields) {
+                        if (error) {
+                            return connection.rollback(function() {
+                                callback(true,{"er":"log","cod":error});
+                            });
+                        }else{
+                            connection.commit(function(err) {
+                                if (err) {
+                                    return connection.rollback(function() {
+                                        callback(true,{"er":"comit","cod":error});
+                                    });
+                                }
+                                console.log('success!');
+                                callback(false, reporte[1][0]);
+                            });
+                        }
+                    });
+                }
+
+            });
+        });
+    }
+};
+
+
 ReporteLocalModel.save=function(reporte,callback){
 
     connection.beginTransaction(function(err) {

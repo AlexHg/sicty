@@ -6,8 +6,8 @@ block content
             .title_left
                 h3
                     | Reporte cliente local
-                    small  #254854
-            .title_right
+                    small  #REPLOC#{data.info.idreporte}
+            //.title_right
                 .col-md-5.col-sm-5.col-xs-12.form-group.pull-right.top_search
                     .input-group
                         input.form-control(type='text', placeholder='Search for...')
@@ -18,8 +18,8 @@ block content
             .col-md-12
                 .x_panel
                     .x_title
-                        h2 Cambio de pantalla Galaxy S9+
-                        ul.nav.navbar-right.panel_toolbox
+                        h2 #{data.info.nombreReporte}
+                        //ul.nav.navbar-right.panel_toolbox
                             li
                                 a.collapse-link
                                     i.fa.fa-chevron-up
@@ -40,19 +40,19 @@ block content
                             ul.stats-overview
                                 li
                                     span.name  Ultima actualización
-                                    span.value.text-success #{data.info.fechaini}
+                                    span#fec1.value.text-success #{new Date(data.info.fechaini).toLocaleString('en-GB', { timeZone: 'UTC' })}
                                 li
                                     span.name  Fecha de entrega
-                                    span.value.text-success  06/04/2018
+                                    span#fec2.value.text-success #{new Date(data.info.fechamod).toLocaleString('en-GB', { timeZone: 'UTC' })}
                                 li.hidden-phone
                                     span.name  Estado
-                                    span.value.text-success  En revisión
+                                    span.value.text-success  #{data.info.idestado}
                             br
                             .col-md-12
                                 .col-md-55
                                     .thumbnail
                                         .image.view.view-first
-                                            img(style='width: 100%; display: block;', src='images/media.jpg', alt='image')
+                                            img(style='width: 100%; display: block;', src='/images/prod-2.jpg', alt='image')
                                             .mask.no-caption
                                                 .tools.tools-bottom
                                                     a(href='#')
@@ -68,74 +68,8 @@ block content
                                 .col-md-55
                                     .thumbnail
                                         .image.view.view-first
-                                            img(style='width: 100%; display: block;', src='images/media.jpg', alt='image')
+                                            img(style='width: 100%; display: block;', src='/images/prod-2.jpg', alt='image')
                                             .mask.no-caption
-                                                .tools.tools-bottom
-                                                    a(href='#')
-                                                        i.fa.fa-link
-                                                    a(href='#')
-                                                        i.fa.fa-pencil
-                                                    a(href='#')
-                                                        i.fa.fa-times
-                                        .caption
-                                            p
-                                                strong Image Name
-                                            p Snow and Ice Incoming
-
-                                .col-md-55
-                                    .thumbnail
-                                        .image.view.view-first
-                                            img(style='width: 100%; display: block;', src='images/media.jpg', alt='image')
-                                            .mask.no-caption
-                                                .tools.tools-bottom
-                                                    a(href='#')
-                                                        i.fa.fa-link
-                                                    a(href='#')
-                                                        i.fa.fa-pencil
-                                                    a(href='#')
-                                                        i.fa.fa-times
-                                        .caption
-                                            p
-                                                strong Image Name
-                                            p Snow and Ice Incoming
-                                .col-md-55
-                                    .thumbnail
-                                        .image.view.view-first
-                                            img(style='width: 100%; display: block;', src='images/media.jpg', alt='image')
-                                            .mask.no-caption
-                                                .tools.tools-bottom
-                                                    a(href='#')
-                                                        i.fa.fa-link
-                                                    a(href='#')
-                                                        i.fa.fa-pencil
-                                                    a(href='#')
-                                                        i.fa.fa-times
-                                        .caption
-                                            p
-                                                strong Image Name
-                                            p Snow and Ice Incoming
-
-                                .col-md-55
-                                    .thumbnail
-                                        .image.view.view-first
-                                            img(style='width: 100%; display: block;', src='images/media.jpg', alt='image')
-                                            .mask.no-caption
-                                                .tools.tools-bottom
-                                                    a(href='#')
-                                                        i.fa.fa-link
-                                                    a(href='#')
-                                                        i.fa.fa-pencil
-                                                    a(href='#')
-                                                        i.fa.fa-times
-                                        .caption
-                                            p
-                                                strong Image Name
-                                            p Snow and Ice Incoming
-                                .col-md-55
-                                    .thumbnail
-                                        .image.view.view-first
-                                            img(style='width: 100%; display: block;', src='images/media.jpg', alt='image')
-                                            .mask.no-caption    
                                                 .tools.tools-bottom
                                                     a(href='#')
                                                         i.fa.fa-link
@@ -166,67 +100,42 @@ block content
                             div
                                 ul.messages
                                     div.message_wrapper(style="padding-top:3em;")
-                                    li
-                                        img.avatar(src='images/img.jpg', alt='Avatar')
-                                        .message_date
-                                            h3.date.text-info 24
-                                            p.month May
-                                        .message_wrapper
-                                            h4.heading Desmond Davison
-                                                span.label.label-primary(style="font-size: 10px;margin-left: 1rem;") Usuario Sicty
-                                                span.label.label-danger(style="font-size: 10px;margin-left: 1rem;") Privado
-                                            blockquote.message
-                                                | Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.
-                                            br
-                                            p.url
-                                                span.fs1.text-info(aria-hidden='true', data-icon='')
-                                                a(href='#')
-                                                    i.fa.fa-paperclip
-                                                    |  User Acceptance Test.doc
-                                    li
-                                        img.avatar(src='images/img.jpg', alt='Avatar')
-                                        .message_date
-                                            h3.date.text-error 21
-                                            p.month May
-                                        .message_wrapper
-                                            h4.heading Brian Michaels
-                                                span.label.label-default(style="font-size: 10px;margin-left: 1rem;") Cliente Local
-                                            blockquote.message
-                                                | Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.
-                                            br
-                                            p.url
-                                                span.fs1(aria-hidden='true', data-icon='')
-                                                a(href='#', data-original-title='') Download
-                                    li
-                                        img.avatar(src='images/img.jpg', alt='Avatar')
-                                        .message_date
-                                            h3.date.text-error 21
-                                            p.month May
-                                        .message_wrapper
-                                            h4.heading Brian Michaels
-                                                span.label.label-success(style="font-size: 10px;margin-left: 1rem;") Cliente Empresarial
-                                            blockquote.message
-                                                | Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.
-                                            br
-                                            p.url
-                                                span.fs1(aria-hidden='true', data-icon='')
-                                                a(href='#', data-original-title='') Download
-                                    li
-                                        img.avatar(src='images/img.jpg', alt='Avatar')
-                                        .message_date
-                                            h3.date.text-info 24
-                                            p.month May
-                                        .message_wrapper
-                                            h4.heading Desmond Davison
-                                                span.label.label-warning(style="font-size: 10px;margin-left: 1rem;") Admin Sicty
-                                            blockquote.message
-                                                | Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.
-                                            br
-                                            p.url
-                                                span.fs1.text-info(aria-hidden='true', data-icon='')
-                                                a(href='#')
-                                                    i.fa.fa-paperclip
-                                                    |  User Acceptance Test.doc
+                                    each comentarioC in data.comentariosC
+                                        li
+                                            img.avatar(src='/images/perfil/user.png', alt='Avatar')
+                                            .message_date
+                                                h3.date.text-info #{new Date(comentarioC.fecha).getDay()}
+                                                p.month #{ new Date(comentarioC.fecha).toDateString().split(' ')[1] }
+                                            .message_wrapper
+                                                h4.heading #{comentarioC.correocliente}
+                                                    span.label.label-info(style="font-size: 10px;margin-left: 1rem;") Cliente
+                                                blockquote.message
+                                                    | #{comentarioC.cuerpo}
+                                                br
+                                                p.url
+                                                    span.fs1.text-info(aria-hidden='true', data-icon='')
+                                                    //a(href='#')
+                                                        i.fa.fa-paperclip
+                                                        |  User Acceptance Test.doc
+                                    each comentarioU in data.comentariosU
+                                        li
+                                            img.avatar(src='/images/perfil/#{comentarioU.idusuario}.jpg', alt='Avatar')
+                                            .message_date
+                                                h3.date.text-info #{new Date(comentarioU.fecha).getDay()}
+                                                p.month #{ new Date(comentarioU.fecha).toDateString().split(' ')[1] }
+                                            .message_wrapper
+                                                h4.heading #{comentarioU.nombre}
+                                                    span.label.label-primary(style="font-size: 10px;margin-left: 1rem;") Usuario Sicty
+                                                    span.label.label-danger(class=comentarioU.isnota == '0' ? 'disNO' : 'disSi', style="font-size: 10px;margin-left: 1rem;") Privado
+                                                blockquote.message
+                                                    | #{comentarioU.cuerpo}
+                                                br
+                                                p.url
+                                                    span.fs1.text-info(aria-hidden='true', data-icon='')
+                                                    //a(href='#')
+                                                        i.fa.fa-paperclip
+                                                        |  User Acceptance Test.doc
+
                                 // end of user messages
                         // start project-detail sidebar
                         .col-md-4.col-sm-4.col-xs-12
@@ -235,53 +144,35 @@ block content
                                     h2 Detalles
                                     .clearfix
                                 .panel-body
-                                    h3.green Cambio de pantalla Galaxy S9+
+                                    h3.green #{data.info.nombreReporte}
 
                                     p
-                                        | Se recibió equipo con detalles en la pantalla, es necesario un cambio de todo el display.
+                                        | #{data.info.descripcion}
                                     br
                                     div.row
                                         .project_detail.col-md-6
                                             p.title Nombre
-                                            p Ricardo Ramirez
+                                            p #{data.info.nombre}
                                             p.title Empresa
                                             p Deveint Inc
                                             p.title Correo
-                                            p devi@gmail.com
+                                            p #{data.info.correocliente}
                                             p.title Telefono
-                                            p 552874258
-                                        .project_detail.col-md-6
-                                            p.title Reporte anterior
-                                            p
-                                                a(href="#") #5045w23
+                                            p #{data.info.telefono1}
                                             p.title Categoria
                                             p
-                                                a(href="#") Celulares & tablets
+                                                a(href="#") #{data.info.idcategoria}
                                     br
-                                    h5 Archivos adjuntos
+                                    h5 Propiedades
                                     ul.list-unstyled.project_files
-                                        li
-                                            a(href='')
-                                                i.fa.fa-file-word-o
-                                                |  Functional-requirements.docx
-                                        li
-                                            a(href='')
-                                                i.fa.fa-file-pdf-o
-                                                |  UAT.pdf
-                                        li
-                                            a(href='')
-                                                i.fa.fa-mail-forward
-                                                |  Email-from-flatbal.mln
-                                        li
-                                            a(href='')
-                                                i.fa.fa-picture-o
-                                                |  Logo.png
-                                        li
-                                            a(href='')
-                                                i.fa.fa-file-word-o
-                                                |  Contract-10_12_2014.docx
+                                        each props in data.propiedades
+                                            li
+                                                a(href='')
+                                                    i.fa.fa-check-square
+                                                    |  #{props}
                                     br
                                     .text-center.mtop20
                                         a.btn.btn-sm.btn-primary(href='#') Add files
                                         a.btn.btn-sm.btn-warning(href='#') Report contact
                         // end project-detail sidebar
+
