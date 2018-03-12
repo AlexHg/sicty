@@ -27,22 +27,15 @@ router.get('/:id', function(req, res, next) {
             if (!err){
                 datos.info = data[0];
                 datos.propiedades = datos.info.propiedades.split(',');
-                comentarioModel.clientefindByReporte(id,function (errC,dataC) {
+                comentarioModel.clientefindByReporteAux(id,function (errC,dataC) {
                     if(!errC){
                         datos.comentariosC = dataC;
-                        dataC.forEach(function (e) {
-                            //console.log(e);
-                            file.findByReporte(e.idmensaje,function (err,da) {
-                                if(!err){
-                                    e.archivos = da;
-                                }
-                            });
-                        });
 
-                        comentarioModel.usariofindByReporte(id,function (errU,dataU) {
+                        comentarioModel.usariofindByReporteAux(id,function (errU,dataU) {
                             if(!errU){
                                 datos.comentariosU = dataU;
-                                //res.status(200).json(datos);
+                                //
+                                // res.status(200).json(datos);
                                 res.render('report',{title: 'Sicty report system', data:datos, user:req.session.nombre});
                             }
                         });

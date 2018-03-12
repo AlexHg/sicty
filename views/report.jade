@@ -112,11 +112,12 @@ block content
                                                 blockquote.message
                                                     | #{comentarioC.cuerpo}
                                                 br
-                                                p.url
-                                                    span.fs1.text-info(aria-hidden='true', data-icon='')
-                                                    //a(href='#')
-                                                        i.fa.fa-paperclip
-                                                        |  User Acceptance Test.doc
+                                                each file in comentarioC.archivos
+                                                    p.url
+                                                        span.fs1.text-info(aria-hidden='true', data-icon='')
+                                                        a(href='#')
+                                                            i.fa.fa-paperclip
+                                                            |  #{file.ruta}
                                     each comentarioU in data.comentariosU
                                         li
                                             img.avatar(src='/images/perfil/#{comentarioU.idusuario}.jpg', alt='Avatar')
@@ -129,12 +130,14 @@ block content
                                                     span.label.label-danger(class=comentarioU.isnota == '0' ? 'disNO' : 'disSi', style="font-size: 10px;margin-left: 1rem;") Privado
                                                 blockquote.message
                                                     | #{comentarioU.cuerpo}
+                                                    | #{comentarioU.idmensaje}
                                                 br
-                                                p.url
-                                                    span.fs1.text-info(aria-hidden='true', data-icon='')
-                                                    //a(href='#')
-                                                        i.fa.fa-paperclip
-                                                        |  User Acceptance Test.doc
+                                                each file in comentarioU.archivos
+                                                    p.url
+                                                        span.fs1.text-info(aria-hidden='true', data-icon='')
+                                                        a(href='#')
+                                                            i.fa.fa-paperclip
+                                                            |  #{file.ruta}
 
                                 // end of user messages
                         // start project-detail sidebar
