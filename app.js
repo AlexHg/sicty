@@ -13,6 +13,7 @@ var auth = require('./funciones/authentication');
 var ReporteLocal = require('./routes/Reporte_Local');
 var ReporteEmprsa = require('./routes/Reporte_Empresa');
 var categoria = require('./routes/Categorias');
+var usuario = require('./routes/Usuarios');
 
 var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
@@ -47,6 +48,7 @@ app.use('/',routes);
 app.use('/reporte_local',ReporteLocal);
 app.use('/reporte_Empresa',ReporteEmprsa);
 app.use('/categoria',categoria);
+app.use('/usuario',usuario);
 
 /*app.all('*',function (req,res,next) {
     auth.mach(req,res,function (req,res) {

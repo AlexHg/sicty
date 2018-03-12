@@ -33,7 +33,7 @@ block content
                                     i.fa.fa-close
                         .clearfix
                     .x_content
-                        form.form-horizontal.form-label-left(action="/report-submit" method="post")
+                        form.form-horizontal.form-label-left(action="/usuario" method="post")
 
                             .form-group
                                 label.control-label.col-md-3.col-sm-3.col-xs-12(for='nombre')
@@ -60,3 +60,6 @@ block content
                                     span.required *
                                 .col-md-6.col-sm-6.col-xs-12
                                     input.form-control.col-md-7.col-xs-12(type='password', id="contra", name="contra", required='required')
+                            .form-group
+                                .col-md-7.center
+                                    button(id="send" type="submit" class="btn btn-success") Guardar

@@ -22,15 +22,16 @@ block content
                                 th Correo
                                 th Rol
                                 th n° Reportes
-                                th
+                                th Acciones
                         tbody
-                            tr.even.pointer
-                                td.a-center 1
-                                td.a-center Devinc
-                                td.a-center Devi@gmail.com
-                                td.a-center Administrador
-                                td.a-center 122
-                                td.a-center Acciones
+                            each dato in datos
+                                tr.even.pointer
+                                    td.a-center #{dato.idusuario}
+                                    td.a-center #{dato.nombre}
+                                    td.a-center #{dato.correo}
+                                    td.a-center #{dato.rol}
+                                    td.a-center 546
+                                    td Borrar | Editar
                             //each dato in datos
                                 tr.even.pointer
                                     td.a-center

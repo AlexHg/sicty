@@ -210,35 +210,11 @@ router.get('/user/:id', function(req, res, next) {
 });
 
 
-router.post('/user', function(req, res, next) {
-  var UserArray = [req.body.correo,req.body.nombre,req.body.rol,req.body.contra]
-  usuario.save(UserArray,function (err, data) {
-    if (!err){
-      res.status(200).json(data);
-    }
-  });
-});
 
-router.get('/user/', function(req, res, next) {
-  //console.log(req.body)
-  usuario.getAll(function (err, data) {
-    if (!err){
-      res.status(200).json(data);
-    }
-  });
-});
 
-router.post('/user/:id', function(req, res, next) {
-  var UserArray = [req.body.valor,req.params.id]
-  console.log(UserArray)
-  usuario.cambiarPassword(UserArray,function (err, data) {
-    if (!err){
-      res.status(200).json(data);
-    }else{
-      res.status(400).json(data);
-    }
-  });
-});
+
+
+
 
 
 
