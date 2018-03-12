@@ -5,7 +5,11 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+const util = require('util');
+var dateFormat = require('dateformat');
+var now = new Date();
+
 
 var reporteLcal = require('../models/Reportes_LocalModel');
 var comentarioModel = require('../models/Comentario');
@@ -49,10 +53,28 @@ router.get('/:id', function(req, res, next) {
     });
 });
 
+
+//`idreporte`, `nombreReporte`, `descripcion`, `fechaini`, `fechamod`, `idestado`, `idcategoria`, `idoperador`, `prioridad`
+
 router.post('/', urlencodedParser, function(req, res, next) {
-    res.render('report',{title: 'Sicty report system', data:req.body, user:req.session.nombre});
-    //if (!req.body) return res.sendStatus(400)
-    //res.send('welcome, ' + req.body.nombre)
+    var reporte  = [],
+        a        = req.body,
+        now      = dateFormat(now, "yyyy-mm-dd"),
+        operador = req.session.nombre.idusuario;
+
+    console.log(now);
+    console.log(util.inspect(a, false, null));
+    reporte[0] = [a.nombrereporte, a.descripcion,now,now,"Abierto",a.categoria,operador,0];
+    reporte[1] = [0, a.correo, a.nombre, a.telefono, a.telefono2, "{}", a.fechaentrega];
+    console.log(util.inspect(reporte, false, null));
+    reporteLcal.save(reporte,function (err, data) {
+        if (!err){
+            console.log(data)
+            //res.status(200).json(data);
+            res.redirect('reporte_local/'+data)
+
+        }
+    });
 });
 
 

@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 const fileUpload = require('express-fileupload');
 var auth = require('./funciones/authentication');
+const util = require('util');
 
 
 // Controladores

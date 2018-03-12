@@ -40,7 +40,7 @@ ReporteLocalModel.save=function(reporte,callback){
     connection.beginTransaction(function(err) {
         if (err) { callback(true,{"er":"connection","cod":error}); }
 
-        connection.query("INSERT INTO `reporte`  VALUES (NULL, ?, ?, ?, ?, ?, ?)",reporte[0],function (error, results) {
+        connection.query("INSERT INTO `reporte`  VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?)",reporte[0],function (error, results) {
             if (error) {
                 return connection.rollback(function() {
                     callback(true,{"er":"usr","cod":error});

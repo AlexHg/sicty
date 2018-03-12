@@ -94,17 +94,23 @@ block content
                                         .col-md-6.col-sm-6.col-xs-12
                                             input.form-control.col-md-7.col-xs-12(type='text', id="empresa", name="empresa", required='required')
                                     .form-group
-                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='email')
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='correo')
                                             | Correo electronico
                                             span.required *
                                         .col-md-6.col-sm-6.col-xs-12
-                                            input.form-control.col-md-7.col-xs-12(type='text', name='email' id="email")
+                                            input.form-control.col-md-7.col-xs-12(type='text', name='correo' id="correo")
                                     .form-group
                                         label.control-label.col-md-3.col-sm-3.col-xs-12(for='telefono')
                                             | Telefono
                                             span.required *
                                         .col-md-6.col-sm-6.col-xs-12
                                             inpuT.form-control.col-md-7.col-xs-12(type='text', name='telefono' id="telefono")
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='telefono2')
+                                            | Telefono 2
+                                            span.required *
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            inpuT.form-control.col-md-7.col-xs-12(type='text', name='telefono2' id="telefono2")
                                     script(type='text/javascript').
 
                                         var client_type = document.querySelectorAll(".tipoCliente"),
@@ -141,10 +147,16 @@ block content
                                 #step-2
                                     form.form-horizontal.form-label-left
                                         .form-group
-                                            label.control-label.col-md-3.col-sm-3.col-xs-12(for='reporte-ant')
+                                            label.control-label.col-md-3.col-sm-3.col-xs-12(for='nombrereporte')
+                                                | Nombre del reporte
+                                                span.required *
+                                            .col-md-6.col-sm-6.col-xs-12
+                                                input.form-control.col-md-7.col-xs-12(type='text', id="nombrereporte", name="nombrereporte", required='required')
+                                        .form-group
+                                            label.control-label.col-md-3.col-sm-3.col-xs-12(for='reporteant')
                                                 | Reporte anterior (opcional) {id del reporte anterior}
                                             .col-md-6.col-sm-6.col-xs-12
-                                                input.form-control.col-md-7.col-xs-12(type='text', id="reporte-ant", name="reporte-ant")
+                                                input.form-control.col-md-7.col-xs-12(type='text', id="reporteant", name="reporteant")
                                         .form-group
                                             label.control-label.col-md-3.col-sm-3.col-xs-12(for='costo')
                                                 | Costo del servicio (opcional)
@@ -152,11 +164,11 @@ block content
                                             .col-md-6.col-sm-6.col-xs-12
                                                 input.form-control.col-md-7.col-xs-12(type='text', id="costo" name="costo" )
                                         .form-group
-                                            label.control-label.col-md-3.col-sm-3.col-xs-12(for='fecha')
+                                            label.control-label.col-md-3.col-sm-3.col-xs-12(for='fechaentrega')
                                                 | Fecha de entrega (opcional)
                                                 span.required *
                                             .col-md-6.col-sm-6.col-xs-12
-                                                input.form-control.col-md-7.col-xs-12(type='text', id="fecha" name="fecha")
+                                                input.form-control.col-md-7.col-xs-12(type='text', id="fechaentrega" name="fechaentrega")
                                         .form-group
                                             label.control-label.col-md-3.col-sm-3.col-xs-12 Categoría
                                             .col-md-6.col-sm-6.col-xs-12
