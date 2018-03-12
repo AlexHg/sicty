@@ -95,6 +95,17 @@ router.get('/company-list', function(req, res, next) {
     });
 });
 
+router.get('/client-list', function(req, res, next) {
+    auth.mach(req,res,function (req,res) {
+        reporteLcal.getAll(function (err, data) {
+            if (!err){
+                //Recibe datos del wizard
+                res.render('client_list',{title: 'Sicty report system',datos:data,user:req.session.nombre});
+            }
+        });
+    });
+});
+
 router.get('/new-category', function(req, res, next) {
     auth.mach(req,res,function (req,res) {
         reporteLcal.getAll(function (err, data) {
