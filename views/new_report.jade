@@ -66,7 +66,7 @@ block content
                                             | Paso 4
                                             br
                                             small Comentarios
-                            form.form-horizontal.form-label-left(action="/reporte_local" method="post" name="wizard")
+                            form.form-horizontal.form-label-left(action="/reporte_local" method="post" name="wizard" enctype='multipart/form-data')
                                 #step-1
 
                                     .form-group
@@ -170,7 +170,7 @@ block content
 
 
                                 #step-2
-                                    form.form-horizontal.form-label-left
+                                    form.form-horizontal.form-label-left(enctype='multipart/form-data')
                                         .form-group
                                             label.control-label.col-md-3.col-sm-3.col-xs-12(for='nombrereporte')
                                                 | Nombre del reporte
@@ -215,9 +215,15 @@ block content
                                             .col-md-6.col-sm-6.col-xs-12
                                                 textarea.form-control(rows='3', name="descripcion" id="descripcion")
                                 #step-3
-                                    .x_content
+                                    form.form-horizontal.form-label-left(enctype='multipart/form-data')
+                                        .form-group
+                                            label.control-label.col-md-3.col-sm-3.col-xs-12(for='file')
+                                                | Fecha de entrega (opcional)
+                                                span.required *
+                                            .col-md-6.col-sm-6.col-xs-12
+                                                input.form-control.col-md-7.col-xs-12(type='file', id="file" name="file")
                                         p
-                                        form.dropzone(action='form_upload.html' )
+                                        //div.dropzone(action='/reporte_local/files' )
                                         br
                                         br
                                         br

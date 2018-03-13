@@ -62,14 +62,16 @@ router.post('/', urlencodedParser, function(req, res, next) {
         now      = dateFormat(now, "yyyy-mm-dd"),
         operador = req.session.nombre.idusuario;
 
-    console.log(now);
-    console.log(util.inspect(a, false, null));
+    //console.log(now);
+    //console.log(util.inspect(a, false, null));
+    //console.log(req.body)
+    console.log(req.files)
     reporte[0] = [a.nombrereporte, a.descripcion,now,now,"Abierto",a.categoria,operador,0];
     reporte[1] = [0, a.correo, a.nombre, a.telefono, a.telefono2, "{}", a.fechaentrega];
-    console.log(util.inspect(reporte, false, null));
+    //console.log(util.inspect(reporte, false, null));
     reporteLcal.save(reporte,function (err, data) {
         if (!err){
-            console.log(data)
+            //console.log(data)
             //res.status(200).json(data);
             res.redirect('reporte_local/'+data)
 
@@ -77,7 +79,12 @@ router.post('/', urlencodedParser, function(req, res, next) {
     });
 });
 
+router.post('/files', urlencodedParser, function(req, res, next) {
 
+    console.log(req.files);
+    res.send("ok");
+
+});
 
 
 module.exports = router;
