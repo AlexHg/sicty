@@ -53,6 +53,7 @@ app.use('/reporte_local',ReporteLocal);
 app.use('/reporte_Empresa',ReporteEmprsa);
 app.use('/categoria',categoria);
 app.use('/usuario',usuario);
+app.use('/empresas',usuario);
 
 /*app.all('*',function (req,res,next) {
     auth.mach(req,res,function (req,res) {
