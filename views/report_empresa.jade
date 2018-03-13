@@ -166,8 +166,8 @@ block content
                                     br
                                     div.row
                                         .project_detail.col-md-6
-                                            p.title Nombre
-                                            p #{data.info.nombre}
+                                            p.title Empresa
+                                            p Deveint Inc
                                             p.title Correo
                                             p #{data.info.correocliente}
                                             p.title Telefono
@@ -175,14 +175,6 @@ block content
                                             p.title Categoria
                                             p
                                                 a(href="#") #{data.info.idcategoria}
-                                    br
-                                    h5 Propiedades
-                                    ul.list-unstyled.project_files
-                                        each props in data.propiedades
-                                            li
-                                                a(href='')
-                                                    i.fa.fa-check-square
-                                                    |  #{props}
                                     br
                                     .text-center.mtop20
                                         a.btn.btn-sm.btn-primary(href='#') Add files
