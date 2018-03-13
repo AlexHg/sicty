@@ -5,12 +5,7 @@ block content
         .page-title
             .title_left
                 h3 Nueva empresa
-            .title_right
-                .col-md-5.col-sm-5.col-xs-12.form-group.pull-right.top_search
-                    .input-group
-                        input.form-control(type='text', placeholder='Search for...')
-                        span.input-group-btn
-                            button.btn.btn-default(type='button') Go!
+
         .clearfix
         .row
             .col-md-12.col-sm-12.col-xs-12
@@ -45,12 +40,22 @@ block content
                                 label.control-label.col-md-3.col-sm-3.col-xs-12 Prioridad
                                 .col-md-6.col-sm-6.col-xs-12
                                     select.select2_single.form-control(tabindex='-1' name="estado")
-                                        option
-                                        option(value='1') niv 1
-                                        option(value='2') niv 2
+                                        option(value="0") 0
+                                        option(value='1') 1
+                                        option(value='2') 2
+                                        option(value="3") 3
+                                        option(value='4') 4
+                                        option(value='5') 5
+                                        option(value="6") 6
+                                        option(value='7') 7
+                                        option(value='8') 8
+                                        option(value="9") 9
+                                        option(value='10') 10
                             .form-group
                                 label.control-label.col-md-3.col-sm-3.col-xs-12
                                     | Descripcion
                                     span.required *
                                 .col-md-6.col-sm-6.col-xs-12
                                     textarea.form-control(rows='3', name="descripcion" id="descripcion")
+                            .form-group
+                                button(type="button").btn.btn-success Guardar
