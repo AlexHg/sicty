@@ -12,10 +12,10 @@
  */
 
 var connection = require('../connection/connection');
-var Catoegoria = {};
+var Categoria = {};
 
 
-Catoegoria.getAll = function (callback) {
+Categoria.getAll = function (callback) {
     if (connection){
         var sql = "SELECT * FROM `categoria`";
         connection.query(sql, function (error,data) {
@@ -28,7 +28,7 @@ Catoegoria.getAll = function (callback) {
     }
 };
 
-Catoegoria.findById = function (id,callback) {
+Categoria.findById = function (id,callback) {
     if (connection){
         var sql = "SELECT * FROM `categoria` WHERE `idcategoria` = ?";
         connection.query(sql,id, function (error,data) {
@@ -42,7 +42,7 @@ Catoegoria.findById = function (id,callback) {
 };
 
 
-Catoegoria.save=function(archivo,callback){
+Categoria.save=function(archivo,callback){
     if (connection){
         connection.beginTransaction(function(err) {
             if (err) { callback(true,{"er":"connection","cod":error}); }
@@ -93,4 +93,4 @@ Catoegoria.save=function(archivo,callback){
  }
  };*/
 
-module.exports= Catoegoria;
+module.exports= Categoria;

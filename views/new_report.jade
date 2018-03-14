@@ -21,6 +21,7 @@ block content
                             small
                         .clearfix
                     .x_content
+<<<<<<< HEAD
                         form#reporte.form-horizontal.form-label-left.input_mask(action="/reporte_local" method="post")
                             .col-md-6.col-sm-6.col-xs-12.form-group.has-feedback(style="display:none")
                                 input#ma.form-control.has-feedback-left(type='text',  placeholder='Nombre del Cliente' name="prop")
@@ -74,6 +75,230 @@ block content
                         .form-group
                             .col-md-12.col-sm-12.col-xs-12(style="text-align: center;")
                                 button.btn.btn-success.enviar(type='submit') Guardar
+=======
+                        // Smart Wizard
+                        p
+                            //| This is a basic form wizard example that inherits the colors from the selected scheme.
+                        #wizard.form_wizard.wizard_horizontal
+                            ul.wizard_steps
+                                li
+                                    a(href='#step-1')
+                                        span.step_no 1
+                                        span.step_descr
+                                            | Paso 1
+                                            br
+                                            small Datos del cliente
+                                li
+                                    a(href='#step-2')
+                                        span.step_no 2
+                                        span.step_descr
+                                            | Paso 2
+                                            br
+                                            small Descripciones
+                                li
+                                    a(href='#step-3')
+                                        span.step_no 3
+                                        span.step_descr
+                                            | Paso 3
+                                            br
+                                            small Archivos adjuntos
+                                li
+                                    a(href='#step-4')
+                                        span.step_no 4
+                                        span.step_descr
+                                            | Paso 4
+                                            br
+                                            small Comentarios
+                            style.
+                                .stepContainer{
+                                    height: auto!important;
+                                }
+                            form.form-horizontal.form-label-left(action="/reporte_local" method="post" name="wizard" enctype='multipart/form-data')
+                                #step-1
+
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12
+                                            | Tipo de cliente
+                                            span.required *
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            #gender.btn-group(data-toggle='buttons' )
+                                                label.btn.btn-default(data-toggle-class='btn-primary', data-toggle-passive-class='btn-default' class="tipoCliente")
+                                                    input(type='radio', name='tipo', value='local' checked)
+                                                    |  Local
+                                                label.btn.btn-primary(data-toggle-class='btn-primary', data-toggle-passive-class='btn-default' class="tipoCliente")
+                                                    input(type='radio', name='tipo', value='empresa')
+                                                    |  Empresa
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='nombre')
+                                            | Nombre del cliente
+                                            span.required *
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            input.form-control.col-md-7.col-xs-12(type='text', id="nombre", name="nombre", required='required')
+                                    .form-group#idempresa(style="display:none")
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='empresa')
+                                            | id de la empresa (se cambiará por un select)
+                                            span.required *
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            input.form-control.col-md-7.col-xs-12(type='text', id="empresa", name="empresa", required='required')
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='correo')
+                                            | Correo electronico
+                                            span.required *
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            input.form-control.col-md-7.col-xs-12(type='text', name='correo' id="correo")
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='telefono')
+                                            | Telefono
+                                            span.required *
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            input.form-control(type='text', name='telefono' id="telefono" data-inputmask="'mask' : '(999) 999-9999'")
+                                            span.fa.fa-user.form-control-feedback.right(aria-hidden='true')
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='telefono2')
+                                            | Telefono 2
+                                            span.required *
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            input.form-control(type='text', name='telefono2' id="telefono2" data-inputmask="'mask' : '(999) 999-9999'")
+                                            span.fa.fa-user.form-control-feedback.right(aria-hidden='true')
+
+
+                                    script(type='text/javascript').
+
+                                        var client_type = document.querySelectorAll(".tipoCliente"),
+                                            local = client_type[0],
+                                            empresa = client_type[1];
+
+                                        function displayEmpresa(){
+                                            document.querySelector("#idempresa").style="display:block";
+                                        }
+
+                                        function hiddenEmpresa(){
+                                            document.querySelector("#idempresa").style="display:none";
+                                        }
+
+                                        function hiddenLocal(){
+                                            document.querySelector("[for=nombre]").parentElement.style="display:none";
+                                            document.querySelector("[for=correo]").parentElement.style="display:none";
+                                            document.querySelector("[for=telefono]").parentElement.style="display:none";
+                                            document.querySelector("[for=telefono2]").parentElement.style="display:none";
+                                        }
+
+                                        function displayLocal(){
+
+                                            document.querySelector("[for=nombre]").parentElement.style = "display:block";
+                                            document.querySelector("[for=correo]").parentElement.style = "display:block";
+                                            document.querySelector("[for=telefono]").parentElement.style = "display:block";
+                                            document.querySelector("[for=telefono2]").parentElement.style = "display:block";
+                                        }
+
+                                        local.addEventListener('click', function(){
+                                            setTimeout(function(){
+                                                if (local.querySelector('input').checked) {
+                                                    document.wizard.action = "/reporte_local"
+                                                    hiddenEmpresa();
+                                                    displayLocal();
+                                                }
+                                            },10);
+
+                                        });
+
+                                        empresa.addEventListener('click', function () {
+                                            setTimeout(function () {
+                                                if (empresa.querySelector('input').checked) {
+                                                    document.wizard.action = "/reporte_empresa"
+                                                    hiddenLocal();
+                                                    displayEmpresa();
+                                                }
+                                            }, 10);
+
+                                        });
+
+                                        setTimeout(function(){
+                                            local.click();
+                                        },600);
+
+
+
+
+                                #step-2
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='nombrereporte')
+                                            | Nombre del reporte
+                                            span.required *
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            input.form-control.col-md-7.col-xs-12(type='text', id="nombrereporte", name="nombrereporte", required='required')
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='reporteant')
+                                            | Reporte anterior (opcional) {id del reporte anterior}
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            input.form-control.col-md-7.col-xs-12(type='text', id="reporteant", name="reporteant")
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='costo')
+                                            | Costo del servicio (opcional)
+                                            span.required *
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            input.form-control.col-md-7.col-xs-12(type='text', id="costo" name="costo" )
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='single_cal4')
+                                            | Fecha de entrega (opcional)
+                                            span.required *
+                                        fieldset.col-md-6.col-sm-6.col-xs-12
+                                            .control-group
+                                                .controls
+                                                    div
+                                                        input#single_cal4.form-control.has-feedback-left(type='text', name="fechaentrega" placeholder='First Name', aria-describedby='inputSuccess2Status4')
+                                                        span.fa.fa-calendar-o.form-control-feedback.left(aria-hidden='true')
+                                                        span#inputSuccess2Status4.sr-only (success)
+
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12 Categoría
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            select.select2_single.form-control(tabindex='-1' name="categoria")
+                                                each dato in cat
+                                                    option(value='#{dato.idcategoria}') #{dato.nombre}
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12 Estado inicial
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            select.select2_single.form-control(tabindex='-1' name="estado")
+                                                option
+                                                option(value='1') Recibido por el tecnico
+                                                option(value='2') Reparando el equipo
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12
+                                            | Descripcion
+                                            span.required *
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            textarea.form-control(rows='3', name="descripcion" id="descripcion")
+                                #step-3
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='file')
+                                            | Fecha de entrega (opcional)
+                                            span.required *
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            input.form-control.col-md-7.col-xs-12(type='file', id="file" name="file")
+                                    p
+                                    //div.dropzone(action='/reporte_local/files' )
+                                    br
+                                    br
+                                    br
+                                    br
+                                #step-4
+                                    div
+                                        h4 Seguimiento & Comentarios
+                                        // end of user messages
+                                        br
+                                        textarea(id="textarea" required="required" name="comentarios" class="form-control col-md-7 col-xs-12" style="min-width:100%; max-width:100%; width:100%; margin-bottom:1rem; min-height:70px;")
+
+                                        div.message_wrapper(style="padding-top:4em;margin-top:2rem;")
+                                            .col-md-7
+                                                button(id="send" type="submit" class="btn btn-success") Enviar
+                                            .col-md-5(align="right")
+                                                div.checkbox
+                                                    input(type="checkbox" value="" checked)
+                                                    | Privado
+
+                                        br
+>>>>>>> 153a719e7037966096fc3c218e44e19c705a5283
         script(type="text/javascript").
             var props = "";
 
