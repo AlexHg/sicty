@@ -151,7 +151,7 @@ block content
                                         div(style="overflow: hidden;max-height: 100px;transition:all .5s;")#vdescription
                                             p
                                                 | #{data.info.descripcion}
-                                        a(href="#")#viewmore(style="opacity:1;transition:all .5s;") Ver mas...
+                                        a#viewmore(href="#" style="opacity:1;transition:all .5s;") Ver mas...
                                         script(type="text/javascript").
                                             document.querySelector("a#viewmore").addEventListener('click', function(){
                                                document.querySelector("#vdescription").style="overflow: hidden;max-height: 1000px;transition:all .5s;"

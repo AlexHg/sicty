@@ -4,7 +4,7 @@ block content
     div
         .page-title
             .title_left
-                h3 Nueva categoría
+                h3 Nuevo usuario
             .title_right
                 .col-md-5.col-sm-5.col-xs-12.form-group.pull-right.top_search
                     .input-group
@@ -33,36 +33,35 @@ block content
                                     i.fa.fa-close
                         .clearfix
                     .x_content
-                        form.form-horizontal.form-label-left(action="/categoria" method="post")
+                        form.form-horizontal.form-label-left(method="post")
 
                             .form-group
                                 label.control-label.col-md-3.col-sm-3.col-xs-12(for='nombre')
-                                    | Nombre de la categoría
+                                    | Nombre completo
                                     span.required *
                                 .col-md-6.col-sm-6.col-xs-12
-                                    input.form-control.col-md-7.col-xs-12(type='text', id="nombre", name="nombre", required='required')
+                                    input.form-control.col-md-7.col-xs-12(type='text', id="nombre", name="nombre", required='required' value="#{datos.nombre}")
                             .form-group
-                                label.control-label.col-md-3.col-sm-3.col-xs-12 Prioridad
+                                label.control-label.col-md-3.col-sm-3.col-xs-12(for='nombre')
+                                    | Correo electronico
+                                    span.required *
                                 .col-md-6.col-sm-6.col-xs-12
-                                    select.select2_single.form-control(tabindex='-1' name="prioridad")
-                                        option(value='0') 0
-                                        option(value='1') 1
-                                        option(value='2') 2
-                                        option(value='3') 3
-                                        option(value='4') 4
-                                        option(value='5') 5
-                                        option(value='6') 6
-                                        option(value='7') 7
-                                        option(value='8') 8
-                                        option(value='9') 9
-                                        option(value='10') 10
-
+                                    input.form-control.col-md-7.col-xs-12(type='text', id="correo", name="correo", required='required' value="#{datos.correo}")
+                            .form-group
+                                label.control-label.col-md-3.col-sm-3.col-xs-12 Rol
+                                .col-md-6.col-sm-6.col-xs-12
+                                    select.select2_single.form-control(tabindex='#{datos.rol}"' name="rol")
+                                        option
+                                        option(value='1') Administrador
+                                        option(value='2') Soporte
+                                    script.
+                                        document.querySelector("select[name=rol]").selectedIndex = '#{datos.rol}';
                             .form-group
                                 label.control-label.col-md-3.col-sm-3.col-xs-12
-                                    | Descripcion
+                                    | Contraseña
                                     span.required *
                                 .col-md-6.col-sm-6.col-xs-12
-                                    textarea.form-control(rows='3', name="descripcion" id="descripcion")
+                                    input.form-control.col-md-7.col-xs-12(type='password', id="contra", name="contra", required='required' value="#{datos.contra}")
                             .form-group
                                 .col-md-7.center
-                                    button(id="send" type="submit" class="btn btn-success") Guardar
+                                    button(id="send" type="submit" class="btn btn-success") Actualizar
