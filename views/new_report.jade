@@ -66,6 +66,10 @@ block content
                                             | Paso 4
                                             br
                                             small Comentarios
+                            style.
+                                .stepContainer{
+                                    height: auto!important;
+                                }
                             form.form-horizontal.form-label-left(action="/reporte_local" method="post" name="wizard" enctype='multipart/form-data')
                                 #step-1
 
@@ -174,70 +178,67 @@ block content
 
 
                                 #step-2
-                                    form.form-horizontal.form-label-left(enctype='multipart/form-data')
-                                        .form-group
-                                            label.control-label.col-md-3.col-sm-3.col-xs-12(for='nombrereporte')
-                                                | Nombre del reporte
-                                                span.required *
-                                            .col-md-6.col-sm-6.col-xs-12
-                                                input.form-control.col-md-7.col-xs-12(type='text', id="nombrereporte", name="nombrereporte", required='required')
-                                        .form-group
-                                            label.control-label.col-md-3.col-sm-3.col-xs-12(for='reporteant')
-                                                | Reporte anterior (opcional) {id del reporte anterior}
-                                            .col-md-6.col-sm-6.col-xs-12
-                                                input.form-control.col-md-7.col-xs-12(type='text', id="reporteant", name="reporteant")
-                                        .form-group
-                                            label.control-label.col-md-3.col-sm-3.col-xs-12(for='costo')
-                                                | Costo del servicio (opcional)
-                                                span.required *
-                                            .col-md-6.col-sm-6.col-xs-12
-                                                input.form-control.col-md-7.col-xs-12(type='text', id="costo" name="costo" )
-                                        .form-group
-                                            label.control-label.col-md-3.col-sm-3.col-xs-12(for='single_cal4')
-                                                | Fecha de entrega (opcional)
-                                                span.required *
-                                            fieldset.col-md-6.col-sm-6.col-xs-12
-                                                .control-group
-                                                    .controls
-                                                        div
-                                                            input#single_cal4.form-control.has-feedback-left(type='text', name="fechaentrega" placeholder='First Name', aria-describedby='inputSuccess2Status4')
-                                                            span.fa.fa-calendar-o.form-control-feedback.left(aria-hidden='true')
-                                                            span#inputSuccess2Status4.sr-only (success)
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='nombrereporte')
+                                            | Nombre del reporte
+                                            span.required *
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            input.form-control.col-md-7.col-xs-12(type='text', id="nombrereporte", name="nombrereporte", required='required')
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='reporteant')
+                                            | Reporte anterior (opcional) {id del reporte anterior}
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            input.form-control.col-md-7.col-xs-12(type='text', id="reporteant", name="reporteant")
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='costo')
+                                            | Costo del servicio (opcional)
+                                            span.required *
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            input.form-control.col-md-7.col-xs-12(type='text', id="costo" name="costo" )
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='single_cal4')
+                                            | Fecha de entrega (opcional)
+                                            span.required *
+                                        fieldset.col-md-6.col-sm-6.col-xs-12
+                                            .control-group
+                                                .controls
+                                                    div
+                                                        input#single_cal4.form-control.has-feedback-left(type='text', name="fechaentrega" placeholder='First Name', aria-describedby='inputSuccess2Status4')
+                                                        span.fa.fa-calendar-o.form-control-feedback.left(aria-hidden='true')
+                                                        span#inputSuccess2Status4.sr-only (success)
 
-                                        .form-group
-                                            label.control-label.col-md-3.col-sm-3.col-xs-12 Categoría
-                                            .col-md-6.col-sm-6.col-xs-12
-                                                select.select2_single.form-control(tabindex='-1' name="categoria")
-                                                    each dato in cat
-                                                        option(value='#{dato.idcategoria}') #{dato.nombre}
-                                        .form-group
-                                            label.control-label.col-md-3.col-sm-3.col-xs-12 Estado inicial
-                                            .col-md-6.col-sm-6.col-xs-12
-                                                select.select2_single.form-control(tabindex='-1' name="estado")
-                                                    option
-                                                    option(value='1') Recibido por el tecnico
-                                                    option(value='2') Reparando el equipo
-                                        .form-group
-                                            label.control-label.col-md-3.col-sm-3.col-xs-12
-                                                | Descripcion
-                                                span.required *
-                                            .col-md-6.col-sm-6.col-xs-12
-                                                textarea.form-control(rows='3', name="descripcion" id="descripcion")
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12 Categoría
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            select.select2_single.form-control(tabindex='-1' name="categoria")
+                                                each dato in cat
+                                                    option(value='#{dato.idcategoria}') #{dato.nombre}
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12 Estado inicial
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            select.select2_single.form-control(tabindex='-1' name="estado")
+                                                option
+                                                option(value='1') Recibido por el tecnico
+                                                option(value='2') Reparando el equipo
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12
+                                            | Descripcion
+                                            span.required *
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            textarea.form-control(rows='3', name="descripcion" id="descripcion")
                                 #step-3
-                                    form.form-horizontal.form-label-left(enctype='multipart/form-data')
-                                        .form-group
-                                            label.control-label.col-md-3.col-sm-3.col-xs-12(for='file')
-                                                | Fecha de entrega (opcional)
-                                                span.required *
-                                            .col-md-6.col-sm-6.col-xs-12
-                                                input.form-control.col-md-7.col-xs-12(type='file', id="file" name="file")
-                                        p
-                                        //div.dropzone(action='/reporte_local/files' )
-                                        br
-                                        br
-                                        br
-                                        br
-
+                                    .form-group
+                                        label.control-label.col-md-3.col-sm-3.col-xs-12(for='file')
+                                            | Fecha de entrega (opcional)
+                                            span.required *
+                                        .col-md-6.col-sm-6.col-xs-12
+                                            input.form-control.col-md-7.col-xs-12(type='file', id="file" name="file")
+                                    p
+                                    //div.dropzone(action='/reporte_local/files' )
+                                    br
+                                    br
+                                    br
+                                    br
                                 #step-4
                                     div
                                         h4 Seguimiento & Comentarios
