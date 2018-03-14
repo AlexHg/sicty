@@ -6,7 +6,8 @@
 var express = require('express');
 var router = express.Router();
 var auth = require('../funciones/authentication');
-var usuario = require('../models/UserModel')
+var usuario = require('../models/UserModel');
+var categoria = require('../models/CategoriaModel');
 var reporteLcal = require('../models/Reportes_LocalModel');
 var reporteEmpresa = require('../models/Reporte_EmpresaModel');
 var comentarioModel = require('../models/Comentario');
@@ -144,7 +145,14 @@ router.get('/user-admin', function(req, res, next) {
 router.get('/new-report', function(req, res, next) {
   auth.mach(req,res,
       function (req,res) {
-        res.render('new_report', { title: 'Sicty report system',user:req.session.nombre });
+          categoria.getAll(function (er,da) {
+              //datos.categorias = da;
+              if (!er) {
+                  res.render('new_report', { title: 'Sicty report system',user:req.session.nombre,cat:da });
+
+              }
+          });
+
       }
   );
   //console.log(req.session.nombre)

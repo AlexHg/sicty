@@ -104,13 +104,17 @@ block content
                                             | Telefono
                                             span.required *
                                         .col-md-6.col-sm-6.col-xs-12
-                                            inpuT.form-control.col-md-7.col-xs-12(type='text', name='telefono' id="telefono")
+                                            input.form-control(type='text', name='telefono' id="telefono" data-inputmask="'mask' : '(999) 999-9999'")
+                                            span.fa.fa-user.form-control-feedback.right(aria-hidden='true')
                                     .form-group
                                         label.control-label.col-md-3.col-sm-3.col-xs-12(for='telefono2')
                                             | Telefono 2
                                             span.required *
                                         .col-md-6.col-sm-6.col-xs-12
-                                            inpuT.form-control.col-md-7.col-xs-12(type='text', name='telefono2' id="telefono2")
+                                            input.form-control(type='text', name='telefono2' id="telefono2" data-inputmask="'mask' : '(999) 999-9999'")
+                                            span.fa.fa-user.form-control-feedback.right(aria-hidden='true')
+
+
                                     script(type='text/javascript').
 
                                         var client_type = document.querySelectorAll(".tipoCliente"),
@@ -189,18 +193,23 @@ block content
                                             .col-md-6.col-sm-6.col-xs-12
                                                 input.form-control.col-md-7.col-xs-12(type='text', id="costo" name="costo" )
                                         .form-group
-                                            label.control-label.col-md-3.col-sm-3.col-xs-12(for='fechaentrega')
+                                            label.control-label.col-md-3.col-sm-3.col-xs-12(for='single_cal4')
                                                 | Fecha de entrega (opcional)
                                                 span.required *
-                                            .col-md-6.col-sm-6.col-xs-12
-                                                input.form-control.col-md-7.col-xs-12(type='text', id="fechaentrega" name="fechaentrega")
+                                            fieldset.col-md-6.col-sm-6.col-xs-12
+                                                .control-group
+                                                    .controls
+                                                        div
+                                                            input#single_cal4.form-control.has-feedback-left(type='text', name="fechaentrega" placeholder='First Name', aria-describedby='inputSuccess2Status4')
+                                                            span.fa.fa-calendar-o.form-control-feedback.left(aria-hidden='true')
+                                                            span#inputSuccess2Status4.sr-only (success)
+
                                         .form-group
                                             label.control-label.col-md-3.col-sm-3.col-xs-12 Categoría
                                             .col-md-6.col-sm-6.col-xs-12
                                                 select.select2_single.form-control(tabindex='-1' name="categoria")
-                                                    option
-                                                    option(value='1') Celulares & Tablets
-                                                    option(value='2') Laptop
+                                                    each dato in cat
+                                                        option(value='#{dato.idcategoria}') #{dato.nombre}
                                         .form-group
                                             label.control-label.col-md-3.col-sm-3.col-xs-12 Estado inicial
                                             .col-md-6.col-sm-6.col-xs-12
