@@ -9,6 +9,8 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const util = require('util');
 var dateFormat = require('dateformat');
 var now = new Date();
+var Archivos = require('../models/Archivo_Mensaje');
+var path = require('path');
 
 
 var reporteLcal = require('../models/Reportes_LocalModel');
@@ -34,6 +36,7 @@ router.get('/:id', function(req, res, next) {
             if (!err){
                 datos.info = data[0];
                 datos.propiedades = datos.info.propiedades.split(',');
+                console.log(datos.info.propiedades)
                 comentarioModel.clientefindByReporteAux(id,function (errC,dataC) {
                     if(!errC){
                         datos.comentariosC = dataC;
@@ -65,9 +68,9 @@ router.post('/', urlencodedParser, function(req, res, next) {
     //console.log(now);
     //console.log(util.inspect(a, false, null));
     //console.log(req.body)
-    console.log(req.files)
-    reporte[0] = [a.nombrereporte, a.descripcion,now,now,"Abierto",a.categoria,operador,0];
-    reporte[1] = [0, a.correo, a.nombre, a.telefono, a.telefono2, "{}", a.fechaentrega];
+    console.log(req)
+    reporte[0] = ["Reporte Local", a.descripcion,now,now,"Abierto",a.categoria,operador,0];
+    reporte[1] = [0, a.correo, a.nombre, a.telefono, a.telefono2, a.prop, a.fechaentrega];
     //console.log(util.inspect(reporte, false, null));
     reporteLcal.save(reporte,function (err, data) {
         if (!err){
@@ -79,12 +82,55 @@ router.post('/', urlencodedParser, function(req, res, next) {
     });
 });
 
-router.post('/files', urlencodedParser, function(req, res, next) {
+/*router.post('/files/:id', urlencodedParser, function(req, res, next) {
 
-    console.log(req.files);
-    res.send("ok");
+    var archivo = req.files.file;
+    console.log(archivo);
+    var aux = archivo.mimetype.split('/');
+    var reporte = [aux[1],req.params.id];
+    console.log(reporte)
+    var pth =  path.join(__dirname,'../files/perfil/');
 
+    //res.send('File uploaded!');
+
+    Archivos.save(reporte,function (err, data) {
+        if (!err){
+            console.log(data);
+            var name = data+'.'+aux[1];
+            var aux = '../files/perfil/'+ name;
+            archivo.mv(aux , function(err) {
+                if (err)
+                     res.status(500).send(err);
+                res.redirect('reporte_local/'+data)
+            });
+        }else{
+            res.status(500).send("no");
+        }
+    });
+});*/
+
+router.post('/files/:id', function(req, res, next) {
+    console.log("HOla")
+    var archivo = req.files.file;
+    var auxq = archivo.mimetype.split('/');
+    var reporte = [auxq[1],req.params.id,archivo.name];
+
+    Archivos.saveReport(reporte,function (err, data) {
+        if (!err){
+            console.log(data);
+            var name = data+'.'+auxq[1];
+            var aux = 'files/'+ name;
+            console.log(aux);
+            archivo.mv(aux , function(err) {
+                if (err)
+                    res.status(500).send(err);
+                res.redirect('/reporte_local/'+req.params.id)
+            });
+        }
+    });
 });
+
+
 
 
 module.exports = router;

@@ -3898,6 +3898,8 @@ fieldset {
 .wizard_horizontal ul.wizard_steps li:first-child a:before {
     left: 50%
 }
+
+
 .wizard_horizontal ul.wizard_steps li:last-child a:before {
     right: 50%;
     width: 50%;

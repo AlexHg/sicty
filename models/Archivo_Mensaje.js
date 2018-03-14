@@ -69,7 +69,21 @@ ArchivoModelo.findByReporteU = function (id,callback) {
 
 ArchivoModelo.save=function(archivo,callback){
     if (connection){
-        var sql = "INSERT INTO `archivo` VALUES (NULL, ? , '1', ?);";
+        var sql = "INSERT INTO `archivo` VALUES (NULL,?, ?,?);";
+        connection.query(sql,archivo, function (error,data) {
+            if (error)
+                callback(true,null);
+            else{
+                callback(null,data.insertId);
+            }
+        });
+    }
+};
+
+
+ArchivoModelo.saveReport=function(archivo,callback){
+    if (connection){
+        var sql = "INSERT INTO `archivo_reporte` VALUES (NULL,?, ?,?);";
         connection.query(sql,archivo, function (error,data) {
             if (error)
                 callback(true,null);

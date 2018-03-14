@@ -23,21 +23,6 @@ block content
                 .x_panel
                     .x_title
                         h2 #{data.info.nombreReporte}
-                        //ul.nav.navbar-right.panel_toolbox
-                            li
-                                a.collapse-link
-                                    i.fa.fa-chevron-up
-                            li.dropdown
-                                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
-                                    i.fa.fa-wrench
-                                ul.dropdown-menu(role='menu')
-                                    li
-                                        a(href='#') Settings 1
-                                    li
-                                        a(href='#') Settings 2
-                            li
-                                a.close-link
-                                    i.fa.fa-close
                         .clearfix
                     .x_content
                         .col-md-8.col-sm-8.col-xs-12
@@ -52,6 +37,15 @@ block content
                                     span.name  Estado
                                     span.value.text-success  #{data.info.idestado}
                             br
+                            .col-md-12
+                                //form#uploadForm(ref='uploadForm', action='/reporte_local/files/#{data.info.idreporte}', method='post', enctype='multipart/form-data')
+                                    input(type='file', name='file')
+                                    input(type='submit', value='Upload!')
+                                form#formARchivos.dropzone.dz-clickable(action='/reporte_local/files/#{data.info.idreporte}')
+                                    .dz-default.dz-message
+                                        span Drop files here to upload
+
+
                             .col-md-12
                                 .col-md-55
                                     .thumbnail
@@ -121,7 +115,7 @@ block content
                                                         span.fs1.text-info(aria-hidden='true', data-icon='')
                                                         a(href='#')
                                                             i.fa.fa-paperclip
-                                                            |  #{file.ruta}
+                                                            |  #{file.path}
                                     each comentarioU in data.comentariosU
                                         li
                                             img.avatar(src='/images/perfil/#{comentarioU.idusuario}.jpg', alt='Avatar')
@@ -141,7 +135,7 @@ block content
                                                         span.fs1.text-info(aria-hidden='true', data-icon='')
                                                         a(href='#')
                                                             i.fa.fa-paperclip
-                                                            |  #{file.ruta}
+                                                            |  #{file.path}
 
                                 // end of user messages
                         // start project-detail sidebar
@@ -188,4 +182,15 @@ block content
                                         a.btn.btn-sm.btn-primary(href='#') Add files
                                         a.btn.btn-sm.btn-warning(href='#') Report contact
                         // end project-detail sidebar
+    script(src="/vendor/dropzone/dist/dropzone.js")
+
+    script.
+
+        var myDropzone = new Dropzone("#formARchivos", { url: "/reporte_local/files/#{data.info.idreporte}"});
+
+        myDropzone.on("success", function (file) {
+            myDropzone.removeFile(file);
+            //alert("asd");
+            $.notify("Se Guardaron Correctamente los archivos","success");
+        });
 
