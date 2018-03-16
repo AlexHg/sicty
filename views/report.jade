@@ -36,65 +36,30 @@ block content
                                 li.hidden-phone
                                     span.name  Estado
                                     span.value.text-success  #{data.info.idestado}
-                            br
                             .col-md-12
-                                //form#uploadForm(ref='uploadForm', action='/reporte_local/files/#{data.info.idreporte}', method='post', enctype='multipart/form-data')
-                                    input(type='file', name='file')
-                                    input(type='submit', value='Upload!')
-                                form#formARchivos.dropzone.dz-clickable(action='/reporte_local/files/#{data.info.idreporte}')
-                                    .dz-default.dz-message
-                                        span Drop files here to upload
-
-
-                            .col-md-12
-                                .col-md-55
-                                    .thumbnail
-                                        .image.view.view-first
-                                            img(style='width: 100%; display: block;', src='/images/prod-2.jpg', alt='image')
-                                            .mask.no-caption
-                                                .tools.tools-bottom
-                                                    a(href='#')
-                                                        i.fa.fa-link
-                                                    a(href='#')
-                                                        i.fa.fa-pencil
-                                                    a(href='#')
-                                                        i.fa.fa-times
-                                        .caption
-                                            p
-                                                strong Image Name
-                                            p Snow and Ice Incoming
-                                .col-md-55
-                                    .thumbnail
-                                        .image.view.view-first
-                                            img(style='width: 100%; display: block;', src='/images/prod-2.jpg', alt='image')
-                                            .mask.no-caption
-                                                .tools.tools-bottom
-                                                    a(href='#')
-                                                        i.fa.fa-link
-                                                    a(href='#')
-                                                        i.fa.fa-pencil
-                                                    a(href='#')
-                                                        i.fa.fa-times
-                                        .caption
-                                            p
-                                                strong Image Name
-                                            p Snow and Ice Incoming
+                                section.panel
+                                    .panel-body
+                                        //h3.green(style="margin:0") #{data.info.nombreReporte}
+                                        div
+                                            div#vdescription
+                                                p
+                                                    | #{data.info.descripcion}
+                                            //a#viewmore(href="#" style="opacity:1;transition:all .5s;") Ver mas...
+                                            //script(type="text/javascript").
+                                                document.querySelector("a#viewmore").addEventListener('click', function () {
+                                                    document.querySelector("#vdescription").style = "overflow: hidden;max-height: 1000px;transition:all .5s;"
+                                                    this.style = "opacity:0;transition:all .5s;";
+                                                });
 
                             div
-                                h4 Seguimiento & Comentarios
+                                .col-md-12
+                                    h4 Seguimiento & Comentarios
+                                .col-md-12(style="text-align: right;")
+                                    button.btn.green(type='button', data-toggle='modal', data-target='.bs-example-modal-sm', style="background:white;border:1px solid;padding:0 .5em;line-height: 2;")
+                                        i.fa.fa-plus(style="margin-right:.5em")
+                                        | Agregar Comentario
                                 // end of user messages
-                                br
-                                textarea(id="textarea" required="required" name="textarea" class="form-control col-md-7 col-xs-12" style="min-width:100%; max-width:100%; width:100%; margin-bottom:1rem; min-height:70px;")
 
-                                div.message_wrapper(style="padding-top:4em;margin-top:2rem;")
-                                    .col-md-7
-                                        button(id="send" type="submit" class="btn btn-success") Enviar
-                                    .col-md-5(align="right")
-                                        div.checkbox
-                                            input(type="checkbox" value="" checked)
-                                            | Privado
-
-                                br
                             div
                                 ul.messages
                                     div.message_wrapper(style="padding-top:3em;")
@@ -141,24 +106,8 @@ block content
                         // start project-detail sidebar
                         .col-md-4.col-sm-4.col-xs-12
                             section.panel
-                                .x_title(style="margin-top: 12px;border-bottom: 1px solid #E6E9ED;")
-                                    h2 Detalles
-                                    .clearfix
                                 .panel-body
-                                    h3.green #{data.info.nombreReporte}
-
-                                    div
-                                        div(style="overflow: hidden;max-height: 100px;transition:all .5s;")#vdescription
-                                            p
-                                                | #{data.info.descripcion}
-                                        a#viewmore(href="#" style="opacity:1;transition:all .5s;") Ver mas...
-                                        script(type="text/javascript").
-                                            document.querySelector("a#viewmore").addEventListener('click', function(){
-                                               document.querySelector("#vdescription").style="overflow: hidden;max-height: 1000px;transition:all .5s;"
-                                                this.style="opacity:0;transition:all .5s;";
-                                            });
-                                    br
-                                    div.row
+                                    .row
                                         .project_detail.col-md-6
                                             p.title Nombre
                                             p #{data.info.nombre}
@@ -169,28 +118,100 @@ block content
                                             p.title Categoria
                                             p
                                                 a(href="#") #{data.info.idcategoria}
-                                    br
-                                    h5 Propiedades
-                                    ul.list-unstyled.project_files
-                                        each props in data.propiedades
-                                            li
-                                                a(href='')
-                                                    i.fa.fa-check-square
-                                                    |  #{props}
-                                    br
-                                    .text-center.mtop20
-                                        a.btn.btn-sm.btn-primary(href='#') Add files
-                                        a.btn.btn-sm.btn-warning(href='#') Report contact
-                        // end project-detail sidebar
+                                        .col-md-6.project_detail
+                                            p.title Propiedades
+                                                ul.list-unstyled.project_files
+                                                    each props in data.propiedades
+                                                        li
+                                                            a(href='')
+                                                                i.fa.fa-check-square
+                                                                |  #{props}
+
+                                    form#formARchivos.dropzone.dz-clickable(action='/reporte_local/files/#{data.info.idreporte}')
+                                        .dz-default.dz-message
+                                            span Agrega archivos Aqui
+                                    .col-md-12(style="margin-top:1em;")
+                                        h3.title.center Archivos
+                                        .col-md-6
+                                            .thumbnail
+                                                .image.view.view-first
+                                                    img(style='width: 100%; display: block;', src='/images/prod-2.jpg', alt='image')
+                                                    .mask.no-caption
+                                                        .tools.tools-bottom
+                                                            a(href='#')
+                                                                i.fa.fa-link
+                                                            a(href='#')
+                                                                i.fa.fa-pencil
+                                                            a(href='#')
+                                                                i.fa.fa-times
+                                                .caption
+                                                    p
+                                                        strong Image Name
+                                                    p Snow and Ice Incoming
+                                        .col-md-6
+                                            .thumbnail
+                                                .image.view.view-first
+                                                    img(style='width: 100%; display: block;', src='/images/prod-2.jpg', alt='image')
+                                                    .mask.no-caption
+                                                        .tools.tools-bottom
+                                                            a(href='#')
+                                                                i.fa.fa-link
+                                                            a(href='#')
+                                                                i.fa.fa-pencil
+                                                            a(href='#')
+                                                                i.fa.fa-times
+                                                .caption
+                                                    p
+                                                        strong Image Name
+                                                    p Snow and Ice Incoming
+    .modal.fade.bs-example-modal-sm.in(tabindex='-1', role='dialog', aria-hidden='true', style='display: none; padding-right: 17px;')
+        .modal-dialog.modal-md
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                        span(aria-hidden='true') ×
+                    h4#myModalLabel2.modal-title(style="text-align: center;font-weight:bold") Ingresa tu Comentario
+                .modal-body(style="padding-bottom:5em;")
+                    form#comentarioForm(action="/comentarios", method="POST")
+                        textarea(id="textarea" required="required" name="body" class="form-control col-md-7 col-xs-12" style="min-width:100%; max-width:100%; width:100%; margin-bottom:1rem; min-height:70px;")
+                        input(name="reporte", type="hidden", value="#{data.info.idreporte}")
+                        input(name="user", type="hidden", value="#{user.idusuario}")
+                        input(name="fecha", type="hidden", id="fecha" value="#{new Date().toLocaleString('en-GB', { timeZone: 'UTC' })}")
+                        div.message_wrapper(style="padding-top:4em;margin-top:2rem;")
+                            .col-md-12(style="text-align: right;")
+                                    div.checkbox
+                                        input(type="checkbox",name="isnota" ,value="1" checked)
+                                        | Privado
+                            .col-md-12(style="text-align: center;")
+                                button(id="guardar" type="submit" class="btn btn-success") Guardar Comentario
+
     script(src="/vendor/dropzone/dist/dropzone.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/pnotify/3.2.1/pnotify.js")
+
 
     script.
 
+        function not(){
+            new PNotify({
+                title: 'Regular Notice',
+                text: 'Check me out! I\'m a notice.',
+                text_escape: true // <-- old options work
+            });
+        }
         var myDropzone = new Dropzone("#formARchivos", { url: "/reporte_local/files/#{data.info.idreporte}"});
+        var myDropzoneComentario = new Dropzone("#formARchivosComentario", { url: "/reporte_local/files/#{data.info.idreporte}"});
 
         myDropzone.on("success", function (file) {
-            myDropzone.removeFile(file);
-            //alert("asd");
-            $.notify("Se Guardaron Correctamente los archivos","success");
-        });
+                console.log(file);
+                myDropzone.removeFile(file);
+                //alert("asd");
+                new PNotify({
+                    title: 'Archivo Subido Correctamente',
+                    text: 'Tu archivo '+file.name+ ' se subio correctamente',
+                    type: 'success',
+                    styling: 'bootstrap3'
+                });
+            });
+
+
 

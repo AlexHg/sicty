@@ -19,12 +19,15 @@ var auth = require('../funciones/authentication');
 var file = require('../models/Archivo_Mensaje');
 var fileUser = require('../models/Archivo_MensajeUser');
 
+
+
 router.get('/', function(req, res, next) {
-    //console.log(req.body)
-    reporteLcal.getAll(function (err, data) {
-        if (!err){
-            res.status(200).json(data);
-        }
+    auth.mach(req,res,function (req,res) {
+        reporteLcal.getAll(function (err, data) {
+            if (!err){
+                res.render('report_history',{title: 'Sicty report system',datos:data,user:req.session.nombre});
+            }
+        });
     });
 });
 

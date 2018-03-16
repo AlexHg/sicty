@@ -14,6 +14,7 @@ var comentarioModel = require('../models/Comentario');
 var Notas = require('../models/NotaModel');
 var Archivos = require('../models/Archivo_Mensaje');
 var fs = require('file-system');
+var now = new Date();
 /* GET home page. */
 
 router.get('/', function(req, res, next) {
@@ -167,8 +168,6 @@ router.get('/report-list', function(req, res, next) {
       }
     });
   });
-
-
 });
 
 
@@ -244,20 +243,21 @@ router.get('/reportes/', function(req, res, next) {
 
 
 
-
+/*
 router.post('/comentario', function(req, res, next) {
+    console.log("das");
   var reporte = [],a=req.body;
-  reporte[0] = [a.reporte,a.fecha,a.body];
+  reporte[0] = [a.reporte,dateFormat(now, "yyyy-mm-dd"),a.body];
   reporte[1] = [0,a.user];
-  comentarioModel.save(reporte,function (err, data) {
-    if (!err){
-      console.log(data)
-      res.status(200).json(data);
-    }
-  });
+    comentarioModel.save(reporte,function (err, data) {
+        if (!err){
+            console.log(data);
+            res.status(200).json(data);
+        }
+    });
 });
 
-router.get('/comentario/', function(req, res, next) {
+router.get('/comentariocomentario/', function(req, res, next) {
   //console.log(req.body)
   comentarioModel.getAll(function (err, data) {
     if (!err){
@@ -267,14 +267,14 @@ router.get('/comentario/', function(req, res, next) {
 });
 
 router.get('/comentario/:id', function(req, res, next) {
-  //console.log(req.body)
+  console.log(req.body)
   comentarioModel.findByReporte(req.params.id,function (err, data) {
     if (!err){
       res.status(200).json(data);
     }
   });
 });
-
+*/
 
 
 router.post('/notas', function(req, res, next) {

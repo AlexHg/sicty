@@ -16,6 +16,7 @@ var ReporteLocal = require('./routes/Reporte_Local');
 var ReporteEmprsa = require('./routes/Reporte_Empresa');
 var categoria = require('./routes/Categorias');
 var usuario = require('./routes/Usuarios');
+var comentario = require('./routes/Comentario');
 
 
 var app = express();
@@ -54,6 +55,7 @@ app.use('/reporte_Empresa',ReporteEmprsa);
 app.use('/categoria',categoria);
 app.use('/usuario',usuario);
 app.use('/empresas',usuario);
+app.use('/comentarios',comentario);
 
 /*app.all('*',function (req,res,next) {
     auth.mach(req,res,function (req,res) {

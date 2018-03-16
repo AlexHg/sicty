@@ -22,11 +22,12 @@ block content
                         thead
                             tr
                                 th Id
-                                th Nomre
+                                th Nombre
                                 th Correo
                                 th Numero
                                 th Fecha
-                                th Propiedades
+                                th Estado
+                                th Operaciones
                         tbody
                             each dato in datos
                                 tr.even.pointer
@@ -34,5 +35,9 @@ block content
                                     td.a-center #{dato.nombre}
                                     td.a-center #{dato.correocliente}
                                     td.a-center #{dato.telefono1}
-                                    td.a-center #{dato.fechaini}
-                                    td.a-center #{dato.propiedades}
+                                    td.a-center #{new Date(dato.fechaini).toLocaleString('en-GB', { timeZone: 'UTC' }).split(',')[0]}
+                                    td.a-center #{dato.idestado}
+                                    td.a-center
+                                        a.green(href="/reporte_local/#{dato.idreporte_local}") Ver
+
+
