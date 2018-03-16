@@ -186,32 +186,25 @@ block content
                                 button(id="guardar" type="submit" class="btn btn-success") Guardar Comentario
 
     script(src="/vendor/dropzone/dist/dropzone.js")
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/pnotify/3.2.1/pnotify.js")
-
-
+    
     script.
-
-        function not(){
-            new PNotify({
-                title: 'Regular Notice',
-                text: 'Check me out! I\'m a notice.',
-                text_escape: true // <-- old options work
-            });
-        }
-        var myDropzone = new Dropzone("#formARchivos", { url: "/reporte_local/files/#{data.info.idreporte}"});
-        var myDropzoneComentario = new Dropzone("#formARchivosComentario", { url: "/reporte_local/files/#{data.info.idreporte}"});
-
+        var myDropzone = new Dropzone("#formARchivos", {url: "/reporte_local/files/#{data.info.idreporte}"});
         myDropzone.on("success", function (file) {
-                console.log(file);
-                myDropzone.removeFile(file);
-                //alert("asd");
-                new PNotify({
-                    title: 'Archivo Subido Correctamente',
-                    text: 'Tu archivo '+file.name+ ' se subio correctamente',
-                    type: 'success',
-                    styling: 'bootstrap3'
-                });
+            console.log(file.xhr.response);
+            myDropzone.removeFile(file);
+            //alert("asd");
+            new PNotify({
+                title: 'Archivo Subido Correctamente',
+                text: 'Tu archivo ' + file.name + ' se subio correctamente',
+                type: 'success',
+                styling: 'bootstrap3'
             });
+        });
+
+
+
+
+
 
 
 

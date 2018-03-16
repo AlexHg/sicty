@@ -127,7 +127,7 @@ router.post('/files/:id', function(req, res, next) {
             archivo.mv(aux , function(err) {
                 if (err)
                     res.status(500).send(err);
-                res.redirect('/reporte_local/'+req.params.id)
+                res.send("id:"+data+",name:"+name);
             });
         }
     });
