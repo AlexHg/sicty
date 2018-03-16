@@ -11,6 +11,16 @@ router.get('/new', function(req, res, next) {
     });
 });
 
+router.get('/:id/editar', function(req, res, next) {
+    auth.mach(req,res,function (req,res) {
+        var id = req.params.id;
+        categoria.findById(id, function(err, data){
+            //res.status(200).json(data);
+            res.render('edit_category',{title: 'Sicty report system',user:req.session.nombre, datos: data[0]});
+        });
+    });
+});
+
 router.get('/', function(req, res, next) {
     auth.mach(req,res,function (req,res) {
         categoria.getAll(function (er,da) {

@@ -78,6 +78,19 @@ UsuarioModel.save = function (user,callback) {
     }
 };
 
+UsuarioModel.save = function (id,user,callback) {
+    if (connection){
+        var sql = "UPDATE `usuario` SET `idusuario`=?,`correo`=?,`nombre`=?,`contra`=? WHERE idrol =" +id;
+        connection.query(sql,user, function (error,data) {
+            if (error)
+                callback(true,null);
+            else{
+                callback(null,data.insertId);
+            }
+        });
+    }
+};
+
 
 UsuarioModel.cambiarPassword = function (user,callback) {
     if (connection){

@@ -32,7 +32,10 @@ block content
                                     td.a-center #{dato.correo}
                                     td.a-center #{dato.rol}
                                     td.a-center 546
-                                    td Borrar | Editar
+                                    td
+                                        a(href="#") Borrar
+                                        span |
+                                        a(href="/usuario/#{dato.idusuario}/editar") Editar
                             //each dato in datos
                                 tr.even.pointer
                                     td.a-center

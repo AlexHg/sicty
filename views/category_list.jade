@@ -31,8 +31,8 @@ block content
                                     td.a-center #{dato.nombre}
                                     td.a-center 325
                                     td.a-center #{dato.prioridad}
-                                    td Borrar | Editar
-                            //each dato in datos
-                                tr.even.pointer
-                                    td.a-center
+                                    td
+                                        a(href="#") Borrar
+                                        span |
+                                        a(href="/categoria/#{dato.idcategoria}/editar") Editar
 

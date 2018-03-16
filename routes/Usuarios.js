@@ -22,8 +22,32 @@ router.get('/', function(req, res, next) {
     });
 });
 
+router.get('/:id/editar', function(req, res, next) {
+    auth.mach(req,res,function (req,res) {
+        var id = req.params.id;
+        usuario.findById(id,function (er,da){
+            if (!er) {
+                //Recibe datos del wizard
+                //res.status(200).json(da);
+                res.render('edit_user',{title: 'Sicty report system',datos:da[0],user:req.session.nombre});
+            }
+        });
+    });
+});
+
+router.post('/:id/editar', function(req, res, next){
+    auth.mach(req, res, function(req, res){
+        var UserArray = [req.body.correo,req.body.nombre,req.body.rol,req.body.contra];
+        usuario.update(id, UserArray, function (err, data){
+            if (!err){
+                res.redirect('/usuario');
+            }
+        });
+    });
+});
+
 router.post('/', function(req, res, next) {
-    var UserArray = [req.body.correo,req.body.nombre,req.body.rol,req.body.contra]
+    var UserArray = [req.body.correo,req.body.nombre,req.body.rol,req.body.contra];
     usuario.save(UserArray,function (err, data) {
         if (!err){
             res.redirect('/usuario');
