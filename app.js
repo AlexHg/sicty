@@ -22,10 +22,19 @@ var comentario = require('./routes/Comentario');
 var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
+
+var expiryDate = new Date( Date.now() + 60 * 60 * 1000 );
 var sess = {
     secret: 'AppSycti',
     saveUninitialized: true,
     resave: false,
+    cookie: { secure: false,
+        httpOnly: false,
+        //domain: 'example.com',
+        //path: 'foo/bar',
+        expires: expiryDate
+    }
+
     //cookie: { maxAge: 60000 }
 };
 
@@ -140,7 +149,7 @@ if (app.get('env') === 'development') {
 
 if (app.get('env') === 'production') {
     app.set('trust proxy', 1) // trust first proxy
-    sess.cookie.secure = true // serve secure cookies
+    //sess.cookie.secure = true // serve secure cookies
 }
 
 

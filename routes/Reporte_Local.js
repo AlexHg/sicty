@@ -39,9 +39,17 @@ router.get('/:id', function(req, res, next) {
         var id = req.params.id;
         reporteLcal.findById(id,function (err, data) {
             if (!err){
+
                 datos.info = data[0];
-                datos.propiedades = datos.info.propiedades.split(',');
-                console.log(datos.info.propiedades)
+                console.log("esto->>>"+  datos.info.propiedades);
+                if(datos.info.propiedades != null) {
+                    datos.propiedades = datos.info.propiedades.split(',');
+                    console.log(datos.info.propiedades)
+                }else{
+                        datos.propiedades = [];
+                }
+
+
                 comentarioModel.clientefindByReporteAux(id,function (errC,dataC) {
                     if(!errC){
                         datos.comentariosC = dataC;
