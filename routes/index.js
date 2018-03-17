@@ -84,6 +84,9 @@ router.get('/recibo', function(req, res, next){
     })
 });
 
+
+
+
 router.get('/report-submit', function(req, res, next) {
     auth.mach(req,res,function (req,res) {
         reporteLcal.getAll(function (err, data) {

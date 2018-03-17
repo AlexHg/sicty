@@ -8,7 +8,7 @@ head
     title= title
 
     link(href="/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet")
-    link(href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet")
+
     link(href="/vendor/nprogress/nprogress.css" rel="stylesheet")
     link(href="/vendor/iCheck/skins/flat/green.css" rel="stylesheet")
     link(href="/vendor/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet")
@@ -20,7 +20,18 @@ head
     link(href="/vendor/dropzone/dist/min/dropzone.min.css" rel="stylesheet")
     link(href="/vendor/pnotify/dist/pnotify.nonblock.css" rel="stylesheet")
     link(href="/vendor/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet")
+    //link(href="/fonts/din-pro/style.css" rel="stylesheet" type="text/css")
+    style.
+        @font-face {
+            font-family: 'DIN Pro';
+            font-style: normal;
+            font-weight: normal;
+            src: local('DIN Pro'), url('/fonts/din-pro/DINPro.woff') format('woff');
+        }
     link(href="/css/juan.css" rel="stylesheet")
+
+
+
     script(src="../vendor/jquery/dist/jquery.min.js")
     script(src="../vendor/bootstrap/dist/js/bootstrap.min.js")
     script(src="../vendor/fastclick/lib/fastclick.js")
@@ -54,16 +65,35 @@ head
     script(src="/js/notify.js" )
 
     style.
-        body {font-size: 90%;background:white;}
+        body {font-size: 90%;background:white;font-family:'DIN Pro';font-weight:normal;}
+        p, span, h1, h2, h3, h4, .parent, .print-wrap.page1{
+            font-family:'DIN Pro'!important;
+            font-weight:normal!important;
+        }
+        tr, th {
 
+        }
         .h1, h1 {
             font-size: 30px;
         }
 
-block content
-    div(style="")
-        div(style="width:600px" ).print-wrap.page1
+        .x_panel {
+            border: 1px solid white;
+        }
 
+        .table > thead > tr > th {
+            vertical-align: bottom;
+            border-bottom: 0px;
+        }
+        .table.table1>tbody>tr:first-child >td{
+            border-top: 0px!important;
+        }
+
+
+block content
+
+    div(style="").parent
+        div(style="width:600px" ).print-wrap.page1
             .row
                 .col-md-12
                     .x_panel
@@ -72,9 +102,10 @@ block content
                                 // title row
                                 .row
                                     .col-xs-12.invoice-header
-                                        h1
-                                            | SICTY
-                                            small.pull-right Fecha: 16/03/2018
+                                        span(style="display:flex; justify-content:space-between; align-items:center;")
+                                            img(src="/images/logo-recibo.png" style="width: 90px;margin-bottom:  40px; ")
+
+                                            h5.pull-right Fecha: 16/03/2018
                                     // /.col
                                 // info row
                                 .row.invoice-info
@@ -105,7 +136,7 @@ block content
                                             | Email: jon@ironadmin.com
                                     // /.col
                                     .col-sm-4.invoice-col
-                                        b Invoice #007612
+                                        b Recibo #007612
                                         br
                                         br
                                         b Order ID:
@@ -121,12 +152,12 @@ block content
                                 // Table row
                                 .row
                                     .col-xs-12.table
-                                        table.table.table-striped
-                                            thead
+                                        table.table.table-striped.table1
+                                            thead(style="background:#003b71; color:white;")
                                                 tr
                                                     th Cant.
                                                     th Servicio
-                                                    th Código #
+                                                    th Reporte #
                                                     th(style='width: 45%') Descripción
                                                     th Subtotal
                                             tbody
@@ -161,19 +192,16 @@ block content
                                             | Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
                                     // /.col
                                     .col-xs-6
-                                        p.lead Amount Due 2/22/2014
                                         .table-responsive
+                                            br
                                             table.table
                                                 tbody
                                                     tr
                                                         th(style='width:50%') Subtotal:
                                                         td $250.30
                                                     tr
-                                                        th Tax (9.3%)
+                                                        th IVA (16%)
                                                         td $10.34
-                                                    tr
-                                                        th Shipping:
-                                                        td $5.80
                                                     tr
                                                         th Total:
                                                         td $265.24
@@ -195,8 +223,8 @@ block content
         setTimeout(function(){
             var pdf = new jsPDF('p', 'pt', 'letter');
             var canvas = pdf.canvas;
-
-
+            pdf.addFont('Verdana', 'Verdana', 'normal');
+            pdf.setFont('Verdana');
             var recibo = document.querySelector(".print-wrap.page1");
 
             html2canvas(recibo, {
