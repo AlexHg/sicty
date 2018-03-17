@@ -223,8 +223,7 @@ block content
         setTimeout(function(){
             var pdf = new jsPDF('p', 'pt', 'letter');
             var canvas = pdf.canvas;
-            pdf.addFont('Verdana', 'Verdana', 'normal');
-            pdf.setFont('Verdana');
+
             var recibo = document.querySelector(".print-wrap.page1");
 
             html2canvas(recibo, {
