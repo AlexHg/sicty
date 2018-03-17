@@ -1,21 +1,21 @@
 var express = require('express');
 var router = express.Router();
-
+var now = new Date();
 var comentarioModel = require('../models/Comentario');
 var auth = require('../funciones/authentication');
 
 
 router.post('/', function(req, res, next) {
-    console.log("das");
+    console.log();
     var reporte = [],a=req.body;
-    reporte[0] = [a.reporte,a.fecha,a.body];
+    reporte[0] = [a.reporte,a.body];
     reporte[1] = [0,a.user];
     console.log(reporte[0]);
     console.log(reporte[1]);
     comentarioModel.save(reporte,function (err, data) {
         if (!err){
             console.log(data);
-            res.redirect('/reporte_local/'+a.reporte)
+            res.redirect('/reporte_local/'+a.reporte+'#msjs')
         }
     });
 });

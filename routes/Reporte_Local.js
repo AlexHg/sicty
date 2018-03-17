@@ -31,6 +31,8 @@ router.get('/', function(req, res, next) {
     });
 });
 
+
+
 router.get('/:id', function(req, res, next) {
     auth.mach(req,res,function (req,res) {
         var datos ={};
@@ -49,7 +51,12 @@ router.get('/:id', function(req, res, next) {
                                 datos.comentariosU = dataU;
                                 //
                                 // res.status(200).json(datos);
-                                res.render('report',{title: 'Sicty report system', data:datos, user:req.session.nombre});
+                                Archivos.findByReporteU(id,function (e,d) {
+                                    datos.fiAdd = d;
+                                    console.log(datos);
+                                    res.render('report',{title: 'Sicty report system', data:datos, user:req.session.nombre});
+                                });
+
                             }
                         });
                     }
@@ -115,7 +122,7 @@ router.post('/', urlencodedParser, function(req, res, next) {
 router.post('/files/:id', function(req, res, next) {
     console.log("HOla")
     var archivo = req.files.file;
-    var auxq = archivo.mimetype.split('/');
+    var auxq = archivo.name.split('.');
     var reporte = [auxq[1],req.params.id,archivo.name];
 
     Archivos.saveReport(reporte,function (err, data) {
@@ -127,13 +134,36 @@ router.post('/files/:id', function(req, res, next) {
             archivo.mv(aux , function(err) {
                 if (err)
                     res.status(500).send(err);
-                res.send("id:"+data+",name:"+name);
+                res.send(''+data+'');
             });
         }
     });
 });
 
+router.post('/filescomentario/:id/:rep', function(req, res, next) {
+    console.log(req.files);
+    var archivo = req.files.file;
+    var auxq = archivo.name.split('.');
+    var reporte = [auxq[1],req.params.id,archivo.name];
 
+
+    Archivos.saveComen(reporte,function (err, data) {
+        if (!err){
+            var name = data+'.'+auxq[1];
+            var aux = 'files_c/'+ name;
+
+            archivo.mv(aux , function(err) {
+                if (err)
+                    res.status(500).send(err);
+                res.redirect('/reporte_local/'+req.params.rep+'#inputImage'+req.params.id)
+            });
+
+        }
+        else{
+            console.log("Error Aqui")
+        }
+    });
+});
 
 
 module.exports = router;

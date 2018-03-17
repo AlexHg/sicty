@@ -63,6 +63,32 @@ app.use('/comentarios',comentario);
     })
 });*/
 
+app.get('/file_local/', function(req, res, next) {
+    var fileName = __dirname+"\\files\\"+req.query.id;
+    console.log(fileName)
+    res.download(fileName, function (err) {
+        if (err) {
+            console.log('No se envio:', fileName);
+        } else {
+            console.log('Sent:', fileName);
+        }
+    });
+});
+
+
+app.get('/file_coment/', function(req, res, next) {
+    var fileName = __dirname+"\\files_c\\"+req.query.id;
+    console.log(fileName)
+    res.download(fileName, function (err) {
+        if (err) {
+            console.log('No se envio:', fileName);
+        } else {
+            console.log('Sent:', fileName);
+        }
+    });
+});
+
+
 var id  = 1;
 
 app.post('/upload', function(req, res) {

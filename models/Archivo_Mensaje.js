@@ -54,7 +54,7 @@ ArchivoModelo.findByReporte = function (id,callback) {
 };
 ArchivoModelo.findByReporteU = function (id,callback) {
     if (connection){
-        var sql = "SELECT * FROM `archivo` WHERE `idmensaje` = ?";
+        var sql = "SELECT * FROM `archivo_reporte` WHERE `idmensaje` = ?";
         connection.query(sql,id, function (error,data) {
             if (error)
                 throw error;
@@ -67,7 +67,7 @@ ArchivoModelo.findByReporteU = function (id,callback) {
 
 //INSERT INTO `archivo` (`idarchivo`, `ruta`, `tipo`, `idmensaje`) VALUES (NULL, 'a.jpg', '1', '3');
 
-ArchivoModelo.save=function(archivo,callback){
+ArchivoModelo.saveComen=function(archivo,callback){
     if (connection){
         var sql = "INSERT INTO `archivo` VALUES (NULL,?, ?,?);";
         connection.query(sql,archivo, function (error,data) {

@@ -51,7 +51,7 @@ block content
                                                     this.style = "opacity:0;transition:all .5s;";
                                                 });
 
-                            div
+                            div#msjs
                                 .col-md-12
                                     h4 Seguimiento & Comentarios
                                 .col-md-12(style="text-align: right;")
@@ -78,7 +78,7 @@ block content
                                                 each file in comentarioC.archivos
                                                     p.url
                                                         span.fs1.text-info(aria-hidden='true', data-icon='')
-                                                        a(href='#')
+                                                        a(href='/file_local/?id=#{file.idarchivo}.#{file.tipo}')
                                                             i.fa.fa-paperclip
                                                             |  #{file.path}
                                     each comentarioU in data.comentariosU
@@ -94,11 +94,17 @@ block content
                                                 blockquote.message
                                                     | #{comentarioU.cuerpo}
                                                     | #{comentarioU.idmensaje}
+                                                blockquote
+                                                    form(action='/reporte_local/filescomentario/#{comentarioU.idmensaje}/#{data.info.idreporte}',method="POST", enctype='multipart/form-data')
+                                                        label.btn.btn-primary.btn-upload(for='inputImage#{comentarioU.idmensaje}', title='Upload image file')
+                                                            input.sr-only(type='file', name='file', id="inputImage#{comentarioU.idmensaje}")
+                                                            span.fa.fa-upload
+                                                        input(type="submit", value="Subir")
                                                 br
                                                 each file in comentarioU.archivos
                                                     p.url
                                                         span.fs1.text-info(aria-hidden='true', data-icon='')
-                                                        a(href='#')
+                                                        a(href='/file_coment/?id=#{file.idarchivo}.#{file.tipo}')
                                                             i.fa.fa-paperclip
                                                             |  #{file.path}
 
@@ -127,43 +133,20 @@ block content
                                                                 i.fa.fa-check-square
                                                                 |  #{props}
 
-                                    form#formARchivos.dropzone.dz-clickable(action='/reporte_local/files/#{data.info.idreporte}')
+                                    form#formARchivos.dropzone.dz-clickable(action='/reporte_local/files/#{data.info.idreporte}', enctype='multipart/form-data')
                                         .dz-default.dz-message
-                                            span Agrega archivos Aqui
+                                            i.fa.fa-plus(style="margin-right:.5em")
+                                            span Agregar archivos
                                     .col-md-12(style="margin-top:1em;")
-                                        h3.title.center Archivos
-                                        .col-md-6
-                                            .thumbnail
-                                                .image.view.view-first
-                                                    img(style='width: 100%; display: block;', src='/images/prod-2.jpg', alt='image')
-                                                    .mask.no-caption
-                                                        .tools.tools-bottom
-                                                            a(href='#')
-                                                                i.fa.fa-link
-                                                            a(href='#')
-                                                                i.fa.fa-pencil
-                                                            a(href='#')
-                                                                i.fa.fa-times
-                                                .caption
-                                                    p
-                                                        strong Image Name
-                                                    p Snow and Ice Incoming
-                                        .col-md-6
-                                            .thumbnail
-                                                .image.view.view-first
-                                                    img(style='width: 100%; display: block;', src='/images/prod-2.jpg', alt='image')
-                                                    .mask.no-caption
-                                                        .tools.tools-bottom
-                                                            a(href='#')
-                                                                i.fa.fa-link
-                                                            a(href='#')
-                                                                i.fa.fa-pencil
-                                                            a(href='#')
-                                                                i.fa.fa-times
-                                                .caption
-                                                    p
-                                                        strong Image Name
-                                                    p Snow and Ice Incoming
+                                       .project_detail
+                                            p.title Propiedades
+                                                ul#list_files.list-unstyled.project_files
+                                                    each fileAdd in data.fiAdd
+                                                        li
+                                                            a(href='/file_local/?id=#{fileAdd.idarchivo}.#{fileAdd.tipo}')
+                                                                i.fa.fa-paperclip
+                                                                |  #{fileAdd.path}
+
     .modal.fade.bs-example-modal-sm.in(tabindex='-1', role='dialog', aria-hidden='true', style='display: none; padding-right: 17px;')
         .modal-dialog.modal-md
             .modal-content
@@ -176,7 +159,7 @@ block content
                         textarea(id="textarea" required="required" name="body" class="form-control col-md-7 col-xs-12" style="min-width:100%; max-width:100%; width:100%; margin-bottom:1rem; min-height:70px;")
                         input(name="reporte", type="hidden", value="#{data.info.idreporte}")
                         input(name="user", type="hidden", value="#{user.idusuario}")
-                        input(name="fecha", type="hidden", id="fecha" value="#{new Date().toLocaleString('en-GB', { timeZone: 'UTC' })}")
+                        input(name="fecha", type="hidden", id="fecha" value="#{new Date(data.info.fechaini).toLocaleString('en-GB', { timeZone: 'UTC' })}")
                         div.message_wrapper(style="padding-top:4em;margin-top:2rem;")
                             .col-md-12(style="text-align: right;")
                                     div.checkbox
@@ -188,17 +171,25 @@ block content
     script(src="/vendor/dropzone/dist/dropzone.js")
     
     script.
+        console.dir(#{data.info.idreporte});
         var myDropzone = new Dropzone("#formARchivos", {url: "/reporte_local/files/#{data.info.idreporte}"});
         myDropzone.on("success", function (file) {
-            console.log(file.xhr.response);
-            myDropzone.removeFile(file);
+            console.log(file);
+            setTimeout(function(){
+                myDropzone.removeFile(file);
+            }, 3000);
+
             //alert("asd");
             new PNotify({
                 title: 'Archivo Subido Correctamente',
                 text: 'Tu archivo ' + file.name + ' se subio correctamente',
                 type: 'success',
-                styling: 'bootstrap3'
+                styling: 'bootstrap3',
             });
+            var ele = document.createElement('li');
+            ele.innerHTML='<li><a href="/file_local/?id='+file.xhr.response+'.'+file.name.split('.')[1]+'"><i class="fa fa-paperclip"></i>'+file.name+'</a></li>';
+            document.getElementById('list_files').appendChild(ele)
+
         });
 
 
