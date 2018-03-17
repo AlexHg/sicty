@@ -17,26 +17,48 @@ block content
                 .x_panel
                     .x_title
                         h2
-                            | Reporte de Local
+                            | Reporte de
+                            span#titlelocal(style="color:#337ab7") Local
+                            span#titleempresa(style="color:#337ab7") Empresa
                             small
                         .clearfix
                     .x_content
                         form#reporte.form-horizontal.form-label-left.input_mask(action="/reporte_local" method="post")
-                            .col-md-6.col-sm-6.col-xs-12.form-group.has-feedback(style="display:none")
-                                input#ma.form-control.has-feedback-left(type='text',  placeholder='Nombre del Cliente' name="prop")
-                                span.fa.fa-user.form-control-feedback.left(aria-hidden='true')
-                            .col-md-6.col-sm-6.col-xs-12.form-group.has-feedback
-                                input#inputSuccess2.form-control.has-feedback-left(type='text',  placeholder='Nombre del Cliente' name="nombre")
-                                span.fa.fa-user.form-control-feedback.left(aria-hidden='true')
-                            .col-md-6.col-sm-6.col-xs-12.form-group.has-feedback
-                                input#inputSuccess4.form-control.has-feedback-right(type='email', placeholder='Correo del Cliente' name="correo")
-                                span.fa.fa-envelope.form-control-feedback.right(aria-hidden='true')
-                            .col-md-6.col-sm-6.col-xs-12.form-group.has-feedback
-                                input#inputSuccess6.form-control.has-feedback-left(type='text', placeholder='Telefono del Cliente' name="telefono")
-                                span.fa.fa-phone.form-control-feedback.left(aria-hidden='true')
-                            .col-md-6.col-sm-6.col-xs-12.form-group.has-feedback
-                                input#inputSuccess9.form-control(type='text', placeholder='Otro Telefono' name="telefono2")
-                                span.fa.fa-phone.form-control-feedback.right(aria-hidden='true')
+                            div#empresaform
+                                .col-md-6.col-sm-6.col-xs-12.form-group.no-padding
+                                    label.control-label.col-md-4.col-sm-3.col-xs-3(style="text-align:left") Empresa
+                                    .col-md-8.col-sm-9.col-xs-9
+                                        select.form-control(name="categoria")
+                                            option(value="1") Software
+                                            option(value="0") Option one
+                                            option Option two
+                                            option Option three
+                                            option Option fou
+
+                                .col-md-6.col-sm-6.col-xs-12.form-group.no-padding
+                                    button(type="button") Nueva empresa
+
+                            div#localform
+                                .col-md-6.col-sm-6.col-xs-12.form-group.has-feedback(style="display:none")
+                                    input#ma.form-control.has-feedback-left(type='text',  placeholder='Propiedades' name="prop")
+                                    span.fa.fa-user.form-control-feedback.left(aria-hidden='true')
+
+                                .col-md-6.col-sm-6.col-xs-12.form-group.has-feedback
+                                    input#inputSuccess2.form-control.has-feedback-left(type='text',  placeholder='Nombre del Cliente' name="nombre")
+                                    span.fa.fa-user.form-control-feedback.left(aria-hidden='true')
+
+                                .col-md-6.col-sm-6.col-xs-12.form-group.has-feedback
+                                    input#inputSuccess4.form-control.has-feedback-right(type='email', placeholder='Correo del Cliente' name="correo")
+                                    span.fa.fa-envelope.form-control-feedback.right(aria-hidden='true')
+
+                                .col-md-6.col-sm-6.col-xs-12.form-group.has-feedback
+                                    input#inputSuccess6.form-control.has-feedback-left(type='text', placeholder='Telefono del Cliente' name="telefono")
+                                    span.fa.fa-phone.form-control-feedback.left(aria-hidden='true')
+
+                                .col-md-6.col-sm-6.col-xs-12.form-group.has-feedback
+                                    input#inputSuccess9.form-control(type='text', placeholder='Otro Telefono' name="telefono2")
+                                    span.fa.fa-phone.form-control-feedback.right(aria-hidden='true')
+
                             .col-md-6.col-sm-6.col-xs-12.form-group.no-padding
                                 label.control-label.col-md-4.col-sm-3.col-xs-3(style="text-align:left") Categoria
                                 .col-md-8.col-sm-9.col-xs-9
@@ -46,15 +68,18 @@ block content
                                         option Option two
                                         option Option three
                                         option Option four
+
                             .col-md-6.col-sm-6.col-xs-12.form-group.has-feedback(style="margin-bottom:0")
                                 label.control-label.col-md-4.col-sm-3.col-xs-3(style="text-align:left") Fecha de Entrega
                                 .col-md-8.col-sm-9.col-xs-9.no-padding
                                     input#single_cal4.form-control.has-feedback-right(name="fechaentrega" type='text', placeholder='First Name', aria-describedby='inputSuccess2Status4')
                                     span.fa.fa-calendar.form-control-feedback.right(aria-hidden='true')
+
                             .col-md-12.col-sm-12.col-xs-12.form-group.has-feedback.no-padding
                                 label.control-label.col-md-12.col-sm-12.col-xs-12(style="text-align:left") Descipción
                                 .col-md-12.col-sm-12.col-xs-12
                                     textarea.form-control(rows='3', placeholder='Descipción Completa del Problema' name="descripcion")
+
                             .col-md-12.col-sm-12.col-xs-12.form-group.has-feedback.no-padding
                                 label.control-label.col-md-12.col-sm-12.col-xs-12(style="text-align:left") Propiedades
                                 .col-md-6.col-sm-6.col-xs-12(style="margin-top:1em")

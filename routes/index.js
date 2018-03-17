@@ -17,6 +17,10 @@ var fs = require('file-system');
 var now = new Date();
 /* GET home page. */
 
+
+
+
+
 router.get('/', function(req, res, next) {
 
   auth.loginMach(req,res,function () {
@@ -73,6 +77,11 @@ router.get('/mensajeria', function(req, res, next) {
             }
         });
     });
+});
+router.get('/recibo', function(req, res, next){
+    auth.mach(req, res, function(err, data){
+        res.render('recibo',{title: 'Sicty report system',datos:data,user:req.session.nombre});
+    })
 });
 
 router.get('/report-submit', function(req, res, next) {
