@@ -62,13 +62,13 @@ head
 
 block content
     div(style="")
-        div(style="width:612px")
+        div(style="width:600px" ).print-wrap.page1
 
             .row
                 .col-md-12
                     .x_panel
                         .x_content
-                            section.content.invoice#recibo
+                            section.content.invoice
                                 // title row
                                 .row
                                     .col-xs-12.invoice-header
@@ -135,7 +135,7 @@ block content
                                                     td Call of Duty
                                                     td 455-981-221
                                                     td
-                                                        | El snort testosterone trophy driving gloves handsome gerry Richardson helvetica tousled street art master testosterone trophy driving gloves handsome gerry Richardson
+                                                        | El snort testosterone trophy driving gloves handsome...
                                                     td $64.50
                                                 tr
                                                     td 1
@@ -148,35 +148,9 @@ block content
                                                     td Monsters DVD
                                                     td 735-845-642
                                                     td
-                                                        | Terry Richardson helvetica tousled street art master, El snort testosterone trophy driving gloves handsome letterpress erry Richardson helvetica tousled
+                                                        | Terry Richardson helvetica tousled street art master...
                                                     td $10.70
-                                                tr
-                                                    td 1
-                                                    td Grown Ups Blue Ray
-                                                    td 422-568-642
-                                                    td
-                                                        | Tousled lomo letterpress erry Richardson helvetica tousled street art master helvetica tousled street art master, El snort testosterone
-                                                    td $25.99
-                                                tr
-                                                    td 1
-                                                    td Call of Duty
-                                                    td 455-981-221
-                                                    td
-                                                        | El snort testosterone trophy driving gloves handsome gerry Richardson helvetica tousled street art master testosterone trophy driving gloves handsome gerry Richardson
-                                                    td $64.50
-                                                tr
-                                                    td 1
-                                                    td Need for Speed IV
-                                                    td 247-925-726
-                                                    td Wes Anderson umami biodiesel
-                                                    td $50.00
-                                                tr
-                                                    td 1
-                                                    td Monsters DVD
-                                                    td 735-845-642
-                                                    td
-                                                        | Terry Richardson helvetica tousled street art master, El snort testosterone trophy driving gloves handsome letterpress erry Richardson helvetica tousled
-                                                    td $10.70
+
                                     // /.col
                                 // /.row
                                 .row
@@ -205,30 +179,36 @@ block content
                                                         td $265.24
 
 
+        div.print-wrap.page2
     script(src='../dist/jspdf.debug.js')
     script(src='../libs/html2pdf.js')
+    //script.
+        var pdf = new jsPDF('p', 'pt', 'a4');
+        var options = {
+            //pagesplit: true
+        };
+        //pdf.internal.scaleFactor = 1.75;
+        pdf.addHTML(document.querySelector(".print-wrap.page1"), options, function () {
+            pdf.save("test.pdf");
+        });
     script.
         setTimeout(function(){
             var pdf = new jsPDF('p', 'pt', 'letter');
             var canvas = pdf.canvas;
 
 
-            var recibo = document.body;
-
+            var recibo = document.querySelector(".print-wrap.page1");
 
             html2canvas(recibo, {
                 canvas: canvas,
+                pagesplit: true,
                 onrendered: function (canvas) {
-                    //var iframe = document.createElement('iframe');
-                    //iframe.setAttribute('style', 'position:absolute;top:0;right:0;height:100%; width:600px');
-                    //document.body.appendChild(iframe);
+
                     pdf.save('filenam1e.pdf');
 
-                    //var div = document.createElement('pre');
-                    //div.innerText=pdf.output();
-                    //document.body.appendChild(div);
                 }
             });
+
         },1000);
 
 

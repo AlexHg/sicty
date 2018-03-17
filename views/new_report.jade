@@ -17,47 +17,32 @@ block content
                 .x_panel
                     .x_title
                         h2
-                            | Reporte de
-                            span#titlelocal(style="color:#337ab7") Local
-                            span#titleempresa(style="color:#337ab7") Empresa
+                            | Reporte de Local
                             small
                         .clearfix
                     .x_content
                         form#reporte.form-horizontal.form-label-left.input_mask(action="/reporte_local" method="post")
-                            div#empresaform
-                                .col-md-6.col-sm-6.col-xs-12.form-group.no-padding
-                                    label.control-label.col-md-4.col-sm-3.col-xs-3(style="text-align:left") Empresa
-                                    .col-md-8.col-sm-9.col-xs-9
-                                        select.form-control(name="categoria")
-                                            option(value="1") Software
-                                            option(value="0") Option one
-                                            option Option two
-                                            option Option three
-                                            option Option fou
 
-                                .col-md-6.col-sm-6.col-xs-12.form-group.no-padding
-                                    button(type="button") Nueva empresa
 
-                            div#localform
-                                .col-md-6.col-sm-6.col-xs-12.form-group.has-feedback(style="display:none")
-                                    input#ma.form-control.has-feedback-left(type='text',  placeholder='Propiedades' name="prop")
-                                    span.fa.fa-user.form-control-feedback.left(aria-hidden='true')
+                            .col-md-6.col-sm-6.col-xs-12.form-group.has-feedback(style="display:none")
+                                input#ma.form-control.has-feedback-left(type='text',  placeholder='Propiedades' name="prop")
+                                span.fa.fa-user.form-control-feedback.left(aria-hidden='true')
 
-                                .col-md-6.col-sm-6.col-xs-12.form-group.has-feedback
-                                    input#inputSuccess2.form-control.has-feedback-left(type='text',  placeholder='Nombre del Cliente' name="nombre")
-                                    span.fa.fa-user.form-control-feedback.left(aria-hidden='true')
+                            .col-md-6.col-sm-6.col-xs-12.form-group.has-feedback
+                                input#inputSuccess2.form-control.has-feedback-left(type='text',  placeholder='Nombre del Cliente' name="nombre")
+                                span.fa.fa-user.form-control-feedback.left(aria-hidden='true')
 
-                                .col-md-6.col-sm-6.col-xs-12.form-group.has-feedback
-                                    input#inputSuccess4.form-control.has-feedback-right(type='email', placeholder='Correo del Cliente' name="correo")
-                                    span.fa.fa-envelope.form-control-feedback.right(aria-hidden='true')
+                            .col-md-6.col-sm-6.col-xs-12.form-group.has-feedback
+                                input#inputSuccess4.form-control.has-feedback-right(type='email', placeholder='Correo del Cliente' name="correo")
+                                span.fa.fa-envelope.form-control-feedback.right(aria-hidden='true')
 
-                                .col-md-6.col-sm-6.col-xs-12.form-group.has-feedback
-                                    input#inputSuccess6.form-control.has-feedback-left(type='text', placeholder='Telefono del Cliente' name="telefono")
-                                    span.fa.fa-phone.form-control-feedback.left(aria-hidden='true')
+                            .col-md-6.col-sm-6.col-xs-12.form-group.has-feedback
+                                input#inputSuccess6.form-control.has-feedback-left(type='text', placeholder='Telefono del Cliente' name="telefono")
+                                span.fa.fa-phone.form-control-feedback.left(aria-hidden='true')
 
-                                .col-md-6.col-sm-6.col-xs-12.form-group.has-feedback
-                                    input#inputSuccess9.form-control(type='text', placeholder='Otro Telefono' name="telefono2")
-                                    span.fa.fa-phone.form-control-feedback.right(aria-hidden='true')
+                            .col-md-6.col-sm-6.col-xs-12.form-group.has-feedback
+                                input#inputSuccess9.form-control(type='text', placeholder='Otro Telefono' name="telefono2")
+                                span.fa.fa-phone.form-control-feedback.right(aria-hidden='true')
 
                             .col-md-6.col-sm-6.col-xs-12.form-group.no-padding
                                 label.control-label.col-md-4.col-sm-3.col-xs-3(style="text-align:left") Categoria
