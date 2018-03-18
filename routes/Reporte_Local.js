@@ -74,6 +74,47 @@ router.get('/:id', function(req, res, next) {
     });
 });
 
+router.get('/:id/exportar', function(req, res, next) {
+    auth.mach(req,res,function (req,res) {
+        var datos ={};
+        var id = req.params.id;
+        reporteLcal.findById(id,function (err, data) {
+            if (!err){
+
+                datos.info = data[0];
+                console.log("esto->>>"+  datos.info.propiedades);
+                if(datos.info.propiedades != null) {
+                    datos.propiedades = datos.info.propiedades.split(',');
+                    console.log(datos.info.propiedades)
+                }else{
+                    datos.propiedades = [];
+                }
+
+
+                comentarioModel.clientefindByReporteAux(id,function (errC,dataC) {
+                    if(!errC){
+                        datos.comentariosC = dataC;
+
+                        comentarioModel.usariofindByReporteAux(id,function (errU,dataU) {
+                            if(!errU){
+                                datos.comentariosU = dataU;
+                                //
+                                // res.status(200).json(datos);
+                                Archivos.findByReporteU(id,function (e,d) {
+                                    datos.fiAdd = d;
+                                    console.log(datos);
+                                    res.render('pdf_report',{title: 'Sicty report system', data:datos, user:req.session.nombre});
+                                });
+
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    });
+});
+
 
 //`idreporte`, `nombreReporte`, `descripcion`, `fechaini`, `fechamod`, `idestado`, `idcategoria`, `idoperador`, `prioridad`
 
