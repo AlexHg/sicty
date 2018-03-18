@@ -41,10 +41,10 @@ router.get('/:id', function(req, res, next) {
             if (!err){
 
                 datos.info = data[0];
-                console.log("esto->>>"+  datos.info.propiedades);
+                //console.log("esto->>>"+  datos.info.propiedades);
                 if(datos.info.propiedades != null) {
                     datos.propiedades = datos.info.propiedades.split(',');
-                    console.log(datos.info.propiedades)
+                    //console.log(datos.info.propiedades)
                 }else{
                         datos.propiedades = [];
                 }
@@ -61,7 +61,7 @@ router.get('/:id', function(req, res, next) {
                                 // res.status(200).json(datos);
                                 Archivos.findByReporteU(id,function (e,d) {
                                     datos.fiAdd = d;
-                                    console.log(datos);
+                                    //console.log(datos);
                                     res.render('report',{title: 'Sicty report system', data:datos, user:req.session.nombre});
                                 });
 
@@ -74,7 +74,7 @@ router.get('/:id', function(req, res, next) {
     });
 });
 
-router.get('/:id/exportar', function(req, res, next) {
+router.get('/exportar/:id', function(req, res, next) {
     auth.mach(req,res,function (req,res) {
         var datos ={};
         var id = req.params.id;
@@ -82,10 +82,10 @@ router.get('/:id/exportar', function(req, res, next) {
             if (!err){
 
                 datos.info = data[0];
-                console.log("esto->>>"+  datos.info.propiedades);
+                //console.log("esto->>>"+  datos.info.propiedades);
                 if(datos.info.propiedades != null) {
                     datos.propiedades = datos.info.propiedades.split(',');
-                    console.log(datos.info.propiedades)
+                    //console.log(datos.info.propiedades)
                 }else{
                     datos.propiedades = [];
                 }
@@ -102,7 +102,7 @@ router.get('/:id/exportar', function(req, res, next) {
                                 // res.status(200).json(datos);
                                 Archivos.findByReporteU(id,function (e,d) {
                                     datos.fiAdd = d;
-                                    console.log(datos);
+                                    //console.log(datos);
                                     res.render('pdf_report',{title: 'Sicty report system', data:datos, user:req.session.nombre});
                                 });
 
