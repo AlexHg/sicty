@@ -26,14 +26,7 @@ app.use(cookieParser());
 var expiryDate = new Date( Date.now() + 60 * 60 * 1000 );
 var sess = {
     secret: 'AppSycti',
-    saveUninitialized: true,
-    resave: false,
-    cookie: { secure: false,
-        httpOnly: false,
-        //domain: 'example.com',
-        //path: 'foo/bar',
-        expires: expiryDate
-    }
+    saveUninitialized: true
 
     //cookie: { maxAge: 60000 }
 };
