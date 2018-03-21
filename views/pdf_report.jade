@@ -66,7 +66,7 @@ head
     script(src="/js/notify.js" )
 
     style.
-        body {font-size: 90%;background:white;font-family:'DIN Pro';font-weight:normal;}
+        body {font-size: 90%;background:white;font-family:'DIN Pro';font-weight:normal;color:black;}
         p, span, h1, h2, h3, h4, .parent, .print-wrap.page1{
             font-family:'DIN Pro'!important;
             font-weight:normal!important;
@@ -151,7 +151,8 @@ head
             line-height: 100%;
         }
 block content
-
+    div(style="position:fixed;bottom:0; left:0; background:#2A3F54; width: 100%; height:50px; display:flex; justify-content:flex-start; align-items:center; padding-left:1rem;")
+        button(type="button" class="btn btn-primary" onclick="pdfgen()") Descargar
     div(style="").parent
         div(style="width:600px" ).print-wrap.page1
             .row
@@ -239,7 +240,7 @@ block content
                                                             span ]
 
                                                         blockquote.message
-                                                            | #{comentarioU.cuerpo} 
+                                                            | #{comentarioU.cuerpo}
         div.print-wrap.page2
     script(src='../dist/jspdf.debug.js')
     script(src='../libs/html2pdf.js')
@@ -253,7 +254,7 @@ block content
             pdf.save("test.pdf");
         });
     script.
-        setTimeout(function(){
+        var pdfgen = function(){
             var pdf = new jsPDF('p', 'pt', 'letter');
             var canvas = pdf.canvas;
 
@@ -269,6 +270,6 @@ block content
                 }
             });
 
-        },1000);
+        }
 
 
